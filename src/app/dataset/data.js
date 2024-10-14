@@ -20,4 +20,7 @@ const Menu=[
         link: "/contact-us"
     },
 ];
+const Tabs=[
+    {}
+]
 export default Menu;

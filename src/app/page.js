@@ -1,9 +1,9 @@
-import Navbar from "./components/navbar";
+import Tool from "./components/tool";
 
 const Index=()=>{
   return (
     <>
-      <Navbar/>
+    <Tool/>
     </>
   )
 }
