@@ -12,7 +12,6 @@ const Tool = () => {
     <>
       <div className="container-fluid p-0 ">
         <div className="">
-          {/* Title Section */}
           <div className="flex justify-center items-center text-center">
             <div className="w-full sm:w-[600px] lg:w-[800px]">
               <h1 className="text-2xl sm:text-3xl font-bold">Paragraph Rewriter</h1>
@@ -21,13 +20,9 @@ const Tool = () => {
               </p>
             </div>
           </div>
-
-          {/* Content Section */}
           <div className="mt-5 p-5 w-full lg:max-w-[1320px] mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 bg-slate-100 rounded-lg p-3">
-              {/* Tab/Select Menu Section */}
               <div className="w-full">
-                {/* Mobile Dropdown for smaller screens */}
                 <div className="md:hidden mb-4">
                   <label htmlFor="tabs" className="sr-only">
                     Select your option
@@ -46,8 +41,6 @@ const Tool = () => {
                     <option value="Academic">Academic</option>
                   </select>
                 </div>
-
-                {/* Tabs for larger screens */}
                 <ul className="hidden md:flex space-x-3 text-sm font-medium text-center text-gray-500">
                   {["Normal", "Fluent", "Formal", "Innovative", "Coherent", "Academic"].map((tab) => (
                     <li className="w-full" key={tab}>
@@ -66,8 +59,6 @@ const Tool = () => {
                 </ul>
               </div>
             </div>
-
-            {/* Additional Content Section */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-5">
               <div className="gap-1 bg-slate-100 p-5 rounded-lg">
                 <div className="relative h-[400px] w-full">
@@ -105,7 +96,6 @@ const Tool = () => {
               <div className="gap-1 bg-slate-100 p-5 rounded-lg">
 
               </div>
-              {/* You can add more content here if necessary */}
             </div>
           </div>
         </div>
