@@ -1,3 +1,4 @@
+'use client';
 import Tool from "./components/tool";
 
 const Index=()=>{
