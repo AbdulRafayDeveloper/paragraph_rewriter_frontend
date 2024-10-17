@@ -130,7 +130,7 @@ const Tool = () => {
               </button>
             </div>
           </div>
-          <div className="gap-1 bg-slate-100 p-5 rounded-lg">
+          <div className="gap-1 bg-slate-100 p-5 rounded-lg hidden sm:block">
           <textarea
             className="bg-slate-100 text-xl w-full h-full resize-none border-none p-2"
             placeholder="Rewritten paragraph will appear here..."
