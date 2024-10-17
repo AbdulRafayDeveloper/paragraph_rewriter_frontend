@@ -5,30 +5,67 @@ const Tool = () => {
   const [activeTab, setActiveTab] = useState("Normal");
   const [inputData, setInputData] = useState(""); // State for input textarea
   const [rewrittenData, setRewrittenData] = useState(""); // State for rewritten textarea
-  
-  const SampleText = "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.";
+  const [isRewritten, setIsRewritten] = useState(false); // State to control input visibility on mobile
+
+  const SampleText =
+    "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...";
+
   const sampleText = () => {
     setInputData(SampleText);
   };
+
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
   };
+
   const handlePaste = async () => {
     try {
       const clipboardText = await navigator.clipboard.readText();
-      setInputData(clipboardText);
+      const combinedText = inputData + clipboardText;
+      if (combinedText.length > 1500) {
+        setInputData(combinedText.substring(0, 1500));
+      } else {
+        setInputData(combinedText);
+      }
     } catch (err) {
       console.error("Failed to read clipboard contents: ", err);
     }
   };
+
   const handleFileChange = (e) => {
-    const files = e.target.files;
-    console.log(files); // Handle file uploads here
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setInputData(e.target.result);
+      };
+      reader.readAsText(file);
+    }
   };
-  const handleRewrite = () => {
-    console.log("Rewrite button clicked");
-    const generatedText = "This is a generated text for the rewriting tool. It serves as a placeholder to show how the tool can transform text based on user input. The aim is to provide a unique output while maintaining the essence of the original input.";
-    setRewrittenData(generatedText.length > 1500 ? generatedText.substring(0, 1500) : generatedText);
+
+  const handleRewrite = async () => {
+    if (!inputData) return;
+    try {
+      const generatedText =
+        "This is a generated text for the rewriting tool...";
+      setRewrittenData(generatedText);
+      setIsRewritten(true);
+    } catch (error) {
+      console.error("Error rewriting text:", error);
+    }
+  };
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(rewrittenData);
+    alert("Rewritten text copied to clipboard!");
+  };
+
+  const handleDownload = (fileType) => {
+    const blob = new Blob([rewrittenData], { type: "text/plain" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `rewritten-text.${fileType}`;
+    link.click();
   };
 
   return (
@@ -37,34 +74,33 @@ const Tool = () => {
         <div className="w-full sm:w-[600px] lg:w-[800px]">
           <h1 className="text-2xl sm:text-3xl font-bold">Paragraph Rewriter</h1>
           <p className="text-md sm:text-lg">
-            Use our AI Paragraph Rewriter tool to turn any paragraph into a new and unique one without changing the original context.
+            Use our AI Paragraph Rewriter tool to turn any paragraph into a new and unique one.
           </p>
         </div>
       </div>
+
       <div className="mt-5 p-5 w-full lg:max-w-[1320px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 bg-slate-100 rounded-lg p-3">
           <div className="w-full">
-            <div className="md:hidden mb-4">
-              <label htmlFor="tabs" className="sr-only">Select your option</label>
+            <div className="sm:hidden">
+              <label htmlFor="tabs" className="sr-only">Select rewriting style</label>
               <select
                 id="tabs"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                onChange={(e) => handleTabClick(e.target.value)}
                 value={activeTab}
+                onChange={(e) => handleTabClick(e.target.value)}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[290px] p-2.5"
               >
-                {["Normal", "Fluent", "Formal", "Innovative", "Coherent", "Academic"].map(tab => (
+                {["Normal", "Fluent", "Formal", "Innovative", "Coherent", "Academic"].map((tab) => (
                   <option key={tab} value={tab}>{tab}</option>
                 ))}
               </select>
             </div>
-            <ul className="hidden md:flex space-x-3 text-sm font-medium text-center text-gray-500">
+            <ul className="hidden text-sm font-medium text-center text-gray-500 rounded-lg shadow sm:flex">
               {["Normal", "Fluent", "Formal", "Innovative", "Coherent", "Academic"].map((tab) => (
-                <li className="w-full" key={tab}>
+                <li className="w-full focus-within:z-10" key={tab}>
                   <button
-                    className={`text-lg inline-block w-full py-2 rounded-lg focus:ring-4 focus:ring-blue-300 ${
-                      activeTab === tab
-                        ? "bg-blue-400 text-white"
-                        : "bg-gray-100 hover:bg-blue-400 text-gray-900"
+                    className={`inline-block w-full p-4 text-gray-900 bg-gray-100 border-r border-gray-200 rounded-l-lg focus:ring-4 focus:ring-blue-300 active focus:outline-none ${
+                      activeTab === tab ? "bg-blue-600 text-white" : "bg-gray-50 hover:bg-gray-100"
                     }`}
                     onClick={() => handleTabClick(tab)}
                   >
@@ -75,68 +111,105 @@ const Tool = () => {
             </ul>
           </div>
         </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-5">
-          <div className="gap-1">
-            <div className="relative h-[400px] p-4 w-full bg-slate-100 rounded-lg">
-              <textarea
-                className="bg-slate-100 text-xl w-full h-[180px] resize-none border-none p-2"
-                placeholder="Enter Paragraph to rewrite..."
-                value={inputData}
-                onChange={(e) => setInputData(e.target.value)}
-                maxLength={1500}
-              />
-              <div className="mt-24 p-6 inset-0 flex justify-center items-center">
-                {inputData.length === 0 && (
-                  <div className="flex gap-2 h-[30px] justify-center items-center">
-                    <div
-                      className="border rounded-md border-gray-500 p-4 h-[90px] w-[130px] hover:bg-gray-300 cursor-pointer"
-                      onClick={handlePaste}
-                    >
-                      <div className="justify-center items-center text-center">
-                        <i className="fa-solid fa-paste text-2xl"></i>
-                        <p>Paste Text</p>
+          {!isRewritten && (
+            <div className="gap-1">
+              <div className="relative h-[400px] p-4 w-full bg-slate-100 rounded-lg">
+                <textarea
+                  className="bg-slate-100 text-xl w-full h-[180px] resize-none border-none p-2"
+                  placeholder="Enter paragraph to rewrite..."
+                  value={inputData}
+                  onChange={(e) => {
+                    if (e.target.value.length <= 1500) {
+                      setInputData(e.target.value);
+                    }
+                  }}
+                  maxLength={1500}
+                />
+                <div className="mt-24 p-6 inset-0 flex justify-center items-center">
+                  {inputData.length === 0 && (
+                    <div className="flex gap-2 h-[30px] justify-center items-center">
+                      <div
+                        className="border rounded-md border-gray-500 p-4 h-[90px] w-[130px] hover:bg-gray-300 cursor-pointer"
+                        onClick={handlePaste}
+                      >
+                        <div className="justify-center items-center text-center">
+                          <i className="fa-solid fa-paste text-2xl"></i>
+                          <p>Paste Text</p>
+                        </div>
+                      </div>
+                      <div
+                        className="border rounded-md border-gray-500 p-4 h-[90px] w-[130px] hover:bg-gray-300 cursor-pointer"
+                        onClick={sampleText}
+                      >
+                        <div className="justify-center items-center text-center">
+                          <i className="fa-regular fa-file-lines text-2xl"></i>
+                          <p>Sample Text</p>
+                        </div>
                       </div>
                     </div>
-                    <div
-                      className="border rounded-md border-gray-500 p-4 h-[90px] w-[130px] hover:bg-gray-300 cursor-pointer"
-                      onClick={sampleText}
-                    >
-                      <div className="justify-center items-center text-center">
-                        <i className="fa-regular fa-file-lines text-2xl"></i>
-                        <p>Sample Text</p>
-                      </div>
-                    </div>
-                  </div>
-                )}
+                  )}
+                </div>
+              </div>
+              <div className="flex justify-between items-center mt-2 bg-slate-100 rounded-lg p-4">
+                <label className="border border-gray-600 p-1 rounded-lg hover:bg-gray-700 hover:text-white flex items-center cursor-pointer">
+                  <i className="fa-solid fa-upload p-1"></i>
+                  <span className="ml-2">Upload</span>
+                  <input
+                    id="multiple_files"
+                    type="file"
+                    accept=".txt, .doc"
+                    className="hidden"
+                    onChange={handleFileChange}
+                  />
+                </label>
+                <span>{inputData.length} / 1500 characters</span>
+                <button
+                  className={`border border-gray-600 p-1 rounded-lg ${
+                    inputData.length === 0
+                      ? "cursor-not-allowed opacity-50"
+                      : "hover:bg-gray-700 hover:text-white"
+                  }`}
+                  onClick={handleRewrite}
+                  disabled={inputData.length === 0}
+                >
+                  Rewrite
+                </button>
               </div>
             </div>
-            <div className="flex justify-between items-center mt-2 bg-slate-100 rounded-lg p-4">
-              <label className="border border-gray-600 p-1 rounded-lg hover:bg-gray-700 hover:text-white flex items-center cursor-pointer">
-                <i className="fa-solid fa-upload p-1"></i>
-                <span className="ml-2">Upload</span>
-                <input
-                  id="multiple_files"
-                  type="file"
-                  accept=".txt, .doc, .docx, .pdf"  // Specify allowed file types
-                  className="hidden"
-                  onChange={handleFileChange}
-                />
-              </label>
+          )}
+          <div className="gap-1 grid-cols-2 bg-slate-100 p-5 rounded-lg">
+            <div>
+              <textarea
+                className="bg-slate-100 text-xl w-full h-[370px] resize-none border-none p-2"
+                placeholder="Rewritten paragraph will appear here..."
+                value={rewrittenData}
+                onChange={(e) => setRewrittenData(e.target.value)}
+              />
+            </div>
+            <div className="flex justify-between mt-3">
               <button
                 className="border border-gray-600 p-1 rounded-lg hover:bg-gray-700 hover:text-white"
-                onClick={handleRewrite}
+                onClick={handleCopy}
               >
-                <span className="p-2">Rewrite</span>
+                Copy <i className="fa-regular fa-copy ml-2"></i>
               </button>
+              <div className="flex">
+                <button
+                  className="border border-gray-600 p-1 rounded-lg hover:bg-gray-700 hover:text-white"
+                  onClick={() => handleDownload("txt")}
+                >
+                  Download .txt
+                </button>
+                <button
+                  className="border border-gray-600 p-1 rounded-lg hover:bg-gray-700 hover:text-white ml-2"
+                  onClick={() => handleDownload("doc")}
+                >
+                  Download .doc
+                </button>
+              </div>
             </div>
-          </div>
-          <div className="gap-1 bg-slate-100 p-5 rounded-lg hidden sm:block">
-          <textarea
-            className="bg-slate-100 text-xl w-full h-full resize-none border-none p-2"
-            placeholder="Rewritten paragraph will appear here..."
-            value={rewrittenData}
-            onChange={(e) => setRewrittenData(e.target.value)}
-          />
           </div>
         </div>
       </div>

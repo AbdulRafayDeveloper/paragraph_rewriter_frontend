@@ -14,7 +14,7 @@ const Featured=()=>{
                         </div>
                     </div>
                 </div>
-                <div className="flex mt-5 w-full lg:max-w-[1320px] mx-auto">
+                <div className="flex mt-5 w-full lg:max-w-[1320px] mx-auto p-7">
                     <FeaturedCards/>
                 </div>
             </div>

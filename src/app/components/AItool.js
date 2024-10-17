@@ -15,13 +15,13 @@ const AiTool=()=>{
                     </div>
                 </div>
                 <div className="mt-5 w-full lg:max-w-[1320px] mx-auto">
-                    <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-4">
+                    <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-4 p-6">
                         <div className="p-3">
                             {
                                 AIToolData.map((el,idx)=>(
                                     <div key={idx} className="flex gap-2">
                                         <div>
-                                            <i class="fa-solid fa-star text-cyan-800"></i>
+                                            <i className="fa-solid fa-star text-cyan-800"></i>
                                         </div>
                                         <div>
                                             <p className="text-lg text-justify">{el.content}</p>
