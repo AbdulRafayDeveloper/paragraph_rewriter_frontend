@@ -4,6 +4,8 @@ import WriterText from "./components/paragraphWriter";
 import Featured from "./components/featured";
 import AiTool from "./components/AItool";
 import RewriterTool from "./components/rewritertool";
+import FAQs from "./components/FAQ";
+import Footer from "./components/footer";
 const Index=()=>{
   return (
     <>
@@ -12,6 +14,8 @@ const Index=()=>{
       <Featured/>
       <AiTool/>
       <RewriterTool/>
+      <FAQs/>
+      <Footer/>
     </>
   )
 }

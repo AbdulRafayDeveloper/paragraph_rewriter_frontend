@@ -20,7 +20,7 @@ const RewriterTool=()=>{
                         {
                             Rewritertooldata.map((el,idx)=>(
                                 <div key={idx} className=" p-6 bg-slate-100 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 ">
-                                    <img src={el.image} alt="cards" />
+                                    <img src={el.image} alt={el.alt} />
                                     <a href="#">
                                         <h5 className="mb-2 mt-5 font-bold text-2xl tracking-tight text-gray-900 dark:text-white">{el.title}</h5>
                                     </a>

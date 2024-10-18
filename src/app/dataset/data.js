@@ -157,6 +157,38 @@ const Rewritertooldata=[
         title:"Bloggers",
         content: "Bloggers are required to write the bulk of content pieces. Here our AI rewriter can help bloggers to write plagiarism-free content, meet deadlines, and polish old blog posts. Additionally, it will help them adopt the same tone in all of their blogs.",
     },
+];
+const FAQsData=[
+    {
+        id: 1,
+        questionNo: "Q1: ",
+        question: "How to rewrite my paragraph?",
+        answer: "To rewrite paragraphs, you can use the Paragraph Rewriter. It will automatically rewrite paragraph and convert them into a unique, compelling, and new style."
+    },
+    {
+        id: 2,
+        questionNo: "Q2: ",
+        question: "Can I remove plagiarism from a paragraph?",
+        answer: "Yes, you can remove all instances of plagiarism from a paragraph using an online AI rewriter. All you need to do is to pass your paragraphs through the tool. The Paragraph rewriter will take no time to transform it from a plagiarized to a unique one."
+    },
+    {
+        id: 3, 
+        questionNo: "Q3: ",
+        question: "Can AI Paragraph Rewriter make my academic essay more fluent?",
+        answer: "Our AI online rewriter tool can help you make your academic essay more fluent. For this, you can try out our “Fluent” mode to make the required changes in your essay to make it more fluent."
+    },
+    {
+        id: 4,
+        questionNo: "Q4: ",
+        question: "Is using the rewriter tool for paragraphs Legal?",
+        answer: "Yes, using the online rewriter for your paragraphs is completely legal."
+    },
+    {
+        id: 5,
+        questionNo: "Q5: ",
+        question: "How does the Paragraph Rewriter tool help me write an effective blog?",
+        answer: "Paragraph rewriting tool will help you write an effective blog by uplifting the quality of your writing paragraphs. As a result, your blog post will be made more creative, unique, as well as compelling."
+    },
 ]
 export default Menu;
-export {Textparagraph,CardData,FeaturedCardData,AIToolData,Rewritertooldata};
+export {Textparagraph,CardData,FeaturedCardData,AIToolData,Rewritertooldata,FAQsData};
