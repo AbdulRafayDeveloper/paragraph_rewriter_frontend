@@ -128,5 +128,35 @@ const AIToolData=[
         content:"Paragraph Rewriter can automatically turn your boring paragraphs into compelling ones."
     },
 ];
+const Rewritertooldata=[
+    {
+        id:1,
+        image:"https://www.paragraphrewriter.net/web_assets/frontend/images/students.svg",
+        alt: "student",
+        title:"Students",
+        content: "Students can rewrite their academic assignments to make them more fluent and effective. Our AI rewriter can be used to give the writing a formal tone by switching words with relevant synonyms that set an academic tone.",
+    },
+    {
+        id:2,
+        image:"https://www.paragraphrewriter.net/web_assets/frontend/images/digital-market.svg",
+        alt: "Digital Marketing Expert",
+        title:"Digital Marketing Expert",
+        content: "The success of Digital Marketing highly depends on the quality of content. Our AI rewriter free tool can be helpful for digital marketing experts to uplift the quality of their different kinds of marketing content like emails, campaigns, social media captions, etc.",
+    },
+    {
+        id:3,
+        image:"https://www.paragraphrewriter.net/web_assets/frontend/images/writers.svg",
+        alt: "Copywriters",
+        title:"Copywriters",
+        content: "Copywriters can utilize our free AI paragraph rewriter to polish or repurpose their old content pieces. Moreover, they can transform their casual or boring copies into engaging to-read ones. Additionally, our paragraph changer tool is helpful for copywriters in the A/B testing strategy.",
+    },
+    {
+        id:4,
+        image:"https://www.paragraphrewriter.net/web_assets/frontend/images/bloggers.svg",
+        alt: "Bloggers",
+        title:"Bloggers",
+        content: "Bloggers are required to write the bulk of content pieces. Here our AI rewriter can help bloggers to write plagiarism-free content, meet deadlines, and polish old blog posts. Additionally, it will help them adopt the same tone in all of their blogs.",
+    },
+]
 export default Menu;
-export {Textparagraph,CardData,FeaturedCardData,AIToolData};
+export {Textparagraph,CardData,FeaturedCardData,AIToolData,Rewritertooldata};
