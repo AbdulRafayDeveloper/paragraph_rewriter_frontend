@@ -49,7 +49,7 @@ const Tool = () => {
     if (!inputData) return;
     try {
       const generatedText =
-        "This is a generated text for the rewriting tool...";
+        "Rafay-This is a generated text for the rewriting tool...";
       setRewrittenData(generatedText);
       
       // Only hide input if it's mobile view and show the rewritten section
