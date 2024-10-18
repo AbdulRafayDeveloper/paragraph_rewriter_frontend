@@ -174,12 +174,12 @@ const Tool = () => {
                   <input
                     id="multiple_files"
                     type="file"
-                    accept=".txt, .doc"
+                    accept=".txt, .doc, .docx, .pdf"
                     className="hidden"
                     onChange={handleFileChange}
                   />
                 </label>
-                <span>{inputData.length} / 1500 characters</span>
+                <span className="sm:text-sm">{inputData.length} / 1500 characters</span>
                 <button
                   className={`border border-gray-600 p-1 rounded-lg ${
                     inputData.length === 0

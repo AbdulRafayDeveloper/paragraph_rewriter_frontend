@@ -13,8 +13,8 @@ const Navbar = () => {
     <>
       <nav >
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
-            <img
+          <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+          <img
               src="https://th.bing.com/th/id/OIP.-WXWqkczZZsOk3kfdV2jtgHaF7?w=245&h=196&c=7&r=0&o=5&pid=1.7"
               className="h-[60px] w-[60px]"
               alt="Logo"
@@ -25,7 +25,7 @@ const Navbar = () => {
               </p>
               <span className="self-center text-sm font-serif">REWRITER</span>
             </div>
-          </a>
+          </Link>
           <button
             onClick={toggleMenu}
             data-collapse-toggle="navbar-solid-bg"
