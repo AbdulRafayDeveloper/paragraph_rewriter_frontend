@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "flowbite-react": "^0.10.2",
+    "g": "^2.0.1",
     "next": "14.2.15",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "vercel": "^37.11.0"
   },
   "devDependencies": {
     "eslint": "^8",
