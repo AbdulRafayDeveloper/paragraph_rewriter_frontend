@@ -1,11 +1,13 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Tool = () => {
   const [activeTab, setActiveTab] = useState("Normal");
   const [inputData, setInputData] = useState(""); // State for input textarea
   const [rewrittenData, setRewrittenData] = useState(""); // State for rewritten textarea
   const [isRewritten, setIsRewritten] = useState(false); // State to control input visibility on mobile
+  const [isMobile, setIsMobile] = useState(false); // State to track if the screen is mobile
+  const [showRewrittenSection, setShowRewrittenSection] = useState(false); // State to show rewritten textarea section on mobile
 
   const SampleText =
     "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...";
@@ -49,7 +51,12 @@ const Tool = () => {
       const generatedText =
         "This is a generated text for the rewriting tool...";
       setRewrittenData(generatedText);
-      setIsRewritten(true);
+      
+      // Only hide input if it's mobile view and show the rewritten section
+      if (isMobile) {
+        setIsRewritten(true);
+        setShowRewrittenSection(true); // Show the rewritten section in mobile view
+      }
     } catch (error) {
       console.error("Error rewriting text:", error);
     }
@@ -68,13 +75,29 @@ const Tool = () => {
     link.click();
   };
 
+  // Function to track if the screen is mobile
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Set initial value
+    handleResize();
+
+    // Listen for window resize
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup event listener on unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div className="container-fluid p-0">
       <div className="flex justify-center items-center text-center">
         <div className="w-full sm:w-[600px] lg:w-[800px]">
           <h1 className="text-2xl sm:text-3xl font-bold">Paragraph Rewriter</h1>
           <p className="text-md sm:text-lg">
-            Use our AI Paragraph Rewriter tool to turn any paragraph into a new and unique one.
+          Use our AI Paragraph Rewriter tool to turn any paragraph into a new and unique one without changing the original context.
           </p>
         </div>
       </div>
@@ -99,8 +122,8 @@ const Tool = () => {
               {["Normal", "Fluent", "Formal", "Innovative", "Coherent", "Academic"].map((tab) => (
                 <li className="w-full focus-within:z-10" key={tab}>
                   <button
-                    className={`inline-block w-full p-4 text-gray-900 bg-gray-100 border-r border-gray-200 rounded-l-lg focus:ring-4 focus:ring-blue-300 active focus:outline-none ${
-                      activeTab === tab ? "bg-blue-600 text-white" : "bg-gray-50 hover:bg-gray-100"
+                    className={`inline-block w-full p-4 text-gray-900 bg-slate-100 hover:bg-blue-600 hover:text-white  border-r border-gray-200 rounded-l-lg focus:ring-4 focus:ring-blue-300 active focus:outline-none ${
+                      activeTab === tab ? "bg-blue-600 text-black" : "bg-gray-50 hover:bg-gray-100"
                     }`}
                     onClick={() => handleTabClick(tab)}
                   >
@@ -179,38 +202,63 @@ const Tool = () => {
               </div>
             </div>
           )}
-          <div className="gap-1 grid-cols-2 bg-slate-100 p-5 rounded-lg">
-            <div>
-              <textarea
-                className="bg-slate-100 text-xl w-full h-[370px] resize-none border-none p-2"
-                placeholder="Rewritten paragraph will appear here..."
-                value={rewrittenData}
-                onChange={(e) => setRewrittenData(e.target.value)}
-              />
-            </div>
-            <div className="flex justify-between mt-3">
-              <button
-                className="border border-gray-600 p-1 rounded-lg hover:bg-gray-700 hover:text-white"
-                onClick={handleCopy}
-              >
-                Copy <i className="fa-regular fa-copy ml-2"></i>
-              </button>
-              <div className="flex">
-                <button
-                  className="border border-gray-600 p-1 rounded-lg hover:bg-gray-700 hover:text-white"
-                  onClick={() => handleDownload("txt")}
-                >
-                  Download .txt
-                </button>
-                <button
-                  className="border border-gray-600 p-1 rounded-lg hover:bg-gray-700 hover:text-white ml-2"
-                  onClick={() => handleDownload("doc")}
-                >
-                  Download .doc
-                </button>
-              </div>
-            </div>
-          </div>
+          
+          {/* Rewritten Section - Only show when the rewrite button is clicked on mobile */}
+          {/* Rewritten Section - Only show when the rewrite button is clicked on mobile */}
+{(!isMobile || showRewrittenSection) && (
+  <div className="gap-1 grid-cols-2 bg-slate-100 p-5 rounded-lg">
+    <div>
+      <textarea
+        className="bg-slate-100 w-full h-[370px] resize-none p-3 border-none text-lg"
+        placeholder="Rewritten text will appear here..."
+        value={rewrittenData}
+        onChange={(e) => setRewrittenData(e.target.value)} // Make it editable
+      />
+    </div>
+    <div className="flex justify-end items-center mt-2 bg-slate-100 rounded-lg">
+      <div className="p-1">
+        <button
+          className={`border border-gray-600 p-1 rounded-lg ${
+            rewrittenData.length === 0
+              ? "cursor-not-allowed opacity-50"
+              : "hover:bg-gray-700 hover:text-white"
+          }`}
+          onClick={handleCopy}
+          disabled={rewrittenData.length === 0}
+        >
+          Copy
+        </button>
+      </div>
+      <div className="p-1">
+        <button
+          className={`border border-gray-600 p-1 rounded-lg ${
+            rewrittenData.length === 0
+              ? "cursor-not-allowed opacity-50"
+              : "hover:bg-gray-700 hover:text-white"
+          }`}
+          onClick={() => handleDownload("txt")}
+          disabled={rewrittenData.length === 0}
+        >
+          Download .txt
+        </button>
+      </div>
+      <div className="p-1">
+        <button
+          className={`border border-gray-600 p-1 rounded-lg ${
+            rewrittenData.length === 0
+              ? "cursor-not-allowed opacity-50"
+              : "hover:bg-gray-700 hover:text-white"
+          }`}
+          onClick={() => handleDownload("doc")}
+          disabled={rewrittenData.length === 0}
+        >
+          Download .doc
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
         </div>
       </div>
     </div>
