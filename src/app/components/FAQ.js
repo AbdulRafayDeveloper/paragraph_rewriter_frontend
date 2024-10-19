@@ -28,7 +28,7 @@ const FAQs = () => {
                             <h2 id={`accordion-open-heading-${index}`}>
                                 <button
                                     type="button"
-                                    className="flex text-justify justify-between w-full p-5 font-medium text-gray-500 border border-b-0 border-slate-100 rounded-t-xl focus:ring-4 focus:ring-slate-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-slate-100 dark:hover:bg-gray-800 gap-3"
+                                    className="flex text-justify justify-between w-full p-5 font-medium text-gray-500 border border-b-0 border-slate-100 rounded-t-xl focus:ring-4 focus:ring-slate-200 hover:bg-slate-100 gap-3"
                                     onClick={() => toggleAccordion(index)}
                                     aria-expanded={openIndex === index}
                                     aria-controls={`accordion-open-body-${index}`}
@@ -51,7 +51,7 @@ const FAQs = () => {
                             </h2>
                             <div
                                 id={`accordion-open-body-${index}`}
-                                className={`p-5 text-lg border border-b-0 border-gray-200 dark:border-gray-700 transition-all duration-200 ${openIndex === index ? '' : 'hidden'}`}
+                                className={`p-5 text-lg border border-b-0 border-gray-200 transition-all duration-200 ${openIndex === index ? '' : 'hidden'}`}
                                 aria-labelledby={`accordion-open-heading-${index}`}
                             >
                                 {item.answer}

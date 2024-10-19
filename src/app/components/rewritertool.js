@@ -19,12 +19,12 @@ const RewriterTool=()=>{
                     <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-6 ">
                         {
                             Rewritertooldata.map((el,idx)=>(
-                                <div key={idx} className=" p-6 bg-slate-100 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 ">
+                                <div key={idx} className=" p-6 bg-slate-100 border border-gray-200 rounded-lg shadow">
                                     <img src={el.image} alt={el.alt} />
                                     <a href="#">
-                                        <h5 className="mb-2 mt-5 font-bold text-2xl tracking-tight text-gray-900 dark:text-white">{el.title}</h5>
+                                        <h5 className="mb-2 mt-5 font-bold text-2xl tracking-tight text-gray-900 ">{el.title}</h5>
                                     </a>
-                                    <p className="mb-3 mt-2 text-lg font-normal text-gray-500 dark:text-gray-400">{el.content}</p>
+                                    <p className="mb-3 mt-2 text-lg font-normal text-gray-500">{el.content}</p>
                                     
                                 </div>
                             ))

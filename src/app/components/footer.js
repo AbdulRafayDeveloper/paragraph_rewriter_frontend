@@ -17,7 +17,7 @@ const Footer = () => {
                   alt="Logo"
                 />
                 <div>
-                  <p className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+                  <p className="self-center text-xl font-semibold whitespace-nowrap">
                     PARAGRAPH
                   </p>
                   <span className="self-center text-sm font-serif">
