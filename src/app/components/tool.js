@@ -179,9 +179,9 @@ const Tool = () => {
                     onChange={handleFileChange}
                   />
                 </label>
-                <span className="sm:text-sm">{inputData.length} / 1500 characters</span>
+                <span className="text-sm px-4">{inputData.length} / 1500 characters</span>
                 <button
-                  className={`border border-gray-600 p-1 rounded-lg ${
+                  className={`border border-gray-600 p-1 rounded-lg text-sm ${
                     inputData.length === 0
                       ? "cursor-not-allowed opacity-50"
                       : "hover:bg-gray-700 hover:text-white"
