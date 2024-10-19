@@ -88,7 +88,7 @@ const Tool = () => {
       <div className="flex justify-center items-center text-center">
         <div className="w-full sm:w-[600px] lg:w-[800px]">
           <h1 className="text-2xl sm:text-3xl font-bold">Paragraph Rewriter</h1>
-          <p className="text-md sm:text-lg">
+          <p className="text-md sm:text-lg mt-4">
           Use our AI Paragraph Rewriter tool to turn any paragraph into a new and unique one without changing the original context.
           </p>
         </div>
