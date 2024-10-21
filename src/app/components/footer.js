@@ -39,6 +39,9 @@ const Footer = () => {
                 <h1 className="text-lg lg:text-xl font-bold">Information</h1>
               </div>
               <div className="mt-6 space-y-2 text-lg">
+              <Link href="/contact-us" className="block hover:text-blue-600">
+                  Contact Us
+                </Link>
                 <Link href="/about-us" className="block hover:text-blue-600">
                   About Us
                 </Link>
@@ -48,12 +51,15 @@ const Footer = () => {
                 <Link href="/terms" className="block hover:text-blue-600">
                   Terms & Conditions
                 </Link>
+                <Link href="/disclaimer" className="block hover:text-blue-600">
+                  Disclaimer
+                </Link>
               </div>
             </div>
             {/* Contact Us Section */}
             <div className="w-full lg:w-[300px] mt-4">
               <div>
-                <h1 className="text-lg lg:text-xl font-bold">Contact Us</h1>
+                <h1 className="text-lg lg:text-xl font-bold">Social Media</h1>
               </div>
               <div className="mt-6 space-y-2 text-lg">
                 <Link href="/about-us" className="flex items-center hover:text-blue-600">

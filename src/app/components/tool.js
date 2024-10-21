@@ -103,7 +103,7 @@ const Tool = () => {
                 id="tabs"
                 value={activeTab}
                 onChange={(e) => handleTabClick(e.target.value)}
-                className="bg-gray-50 border border-slate-300 text-gray-900  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[290px] p-2.5"
+                className="bg-gray-50 border border-slate-300 text-gray-900  text-sm rounded-lg focus:ring-gray-900 focus:border-gray-900 block w-[290px] p-2.5"
               >
                 {["Normal", "Fluent", "Formal", "Innovative", "Coherent", "Academic"].map((tab) => (
                   <option key={tab} value={tab}>{tab}</option>
@@ -114,7 +114,7 @@ const Tool = () => {
               {["Normal", "Fluent", "Formal", "Innovative", "Coherent", "Academic"].map((tab) => (
                 <li className="w-full focus-within:z-10" key={tab}>
                   <button
-                    className={`inline-block w-full p-4 text-gray-900 bg-slate-100 hover:bg-blue-600 hover:text-white  border-r border-gray-200 rounded-l-lg focus:ring-4 focus:ring-blue-300 active focus:outline-none ${
+                    className={`inline-block w-full p-4 text-gray-900 bg-slate-100 hover:bg-gray-500 hover:text-white  border-r border-gray-200 rounded-l-lg  active focus:outline-none ${
                       activeTab === tab ? "bg-blue-600 text-black" : "bg-gray-50 hover:bg-gray-500 "
                     }`}
                     onClick={() => handleTabClick(tab)}
@@ -132,7 +132,7 @@ const Tool = () => {
             <div className="gap-1">
               <div className="relative h-[400px] p-4 w-full bg-slate-100 rounded-lg">
                 <textarea
-                  className="bg-slate-100 text-xl w-full h-[180px] resize-none border-none p-2"
+                  className="bg-slate-100 text-xl w-full h-[180px] resize-none  p-2 border-none outline-none"
                   placeholder="Enter paragraph to rewrite..."
                   value={inputData}
                   onChange={(e) => {
@@ -150,7 +150,7 @@ const Tool = () => {
                         onClick={handlePaste}
                       >
                         <div className="justify-center items-center text-center">
-                          <i className="fa-solid fa-paste text-2xl"></i>
+                          <i className="fa-solid fa-paste text-2xl text-pink-700"></i>
                           <p>Paste Text</p>
                         </div>
                       </div>
@@ -159,7 +159,7 @@ const Tool = () => {
                         onClick={sampleText}
                       >
                         <div className="justify-center items-center text-center">
-                          <i className="fa-regular fa-file-lines text-2xl"></i>
+                          <i className="fa-regular fa-file-lines text-2xl text-cyan-600"></i>
                           <p>Sample Text</p>
                         </div>
                       </div>
@@ -168,8 +168,8 @@ const Tool = () => {
                 </div>
               </div>
               <div className="flex justify-between items-center mt-2 bg-slate-100 rounded-lg p-4">
-                <label className="border border-gray-600 p-1 rounded-lg hover:bg-gray-700 hover:text-white flex items-center cursor-pointer">
-                  <i className="fa-solid fa-upload p-1"></i>
+                <label className="border border-gray-600 p-1 rounded-lg hover:bg-gray-300  flex items-center cursor-pointer">
+                  <i className="fa-solid fa-upload p-1 text-cyan-800 "></i>
                   <span className="ml-2">Upload</span>
                   <input
                     id="multiple_files"
@@ -200,7 +200,7 @@ const Tool = () => {
             <div className="gap-1 grid-cols-2 bg-slate-100 p-5 rounded-lg">
               <div>
                 <textarea
-                  className="bg-slate-100 w-full h-[370px] resize-none p-3 border-none text-lg"
+                  className="bg-slate-100 w-full h-[370px] resize-none p-3 border-none text-lg  outline-none"
                   placeholder="Rewritten text will appear here..."
                   value={rewrittenData}
                   onChange={(e) => setRewrittenData(e.target.value)} // Make it editable
@@ -212,12 +212,12 @@ const Tool = () => {
                     className={`border border-gray-600 p-1 rounded-lg ${
                       rewrittenData.length === 0
                         ? "cursor-not-allowed opacity-50"
-                        : "hover:bg-gray-700 hover:text-white"
+                        : "hover:bg-gray-300 hover:text-white"
                     }`}
                     onClick={handleCopy}
                     disabled={rewrittenData.length === 0}
                   >
-                    Copy
+                   <i className="fa-solid fa-copy text-blue-800 text-2xl"></i>
                   </button>
                 </div>
                 <div className="p-1">
@@ -225,12 +225,12 @@ const Tool = () => {
                     className={`border border-gray-600 p-1 rounded-lg ${
                       rewrittenData.length === 0
                         ? "cursor-not-allowed opacity-50"
-                        : "hover:bg-gray-700 hover:text-white"
+                        : "hover:bg-gray-300 hover:text-black"
                     }`}
                     onClick={() => handleDownload("txt")}
                     disabled={rewrittenData.length === 0}
                   >
-                    Download .txt
+                    <i className="fa-solid fa-download text-2xl"></i> .txt
                   </button>
                 </div>
                 <div className="p-1">
@@ -238,12 +238,12 @@ const Tool = () => {
                     className={`border border-gray-600 p-1 rounded-lg ${
                       rewrittenData.length === 0
                         ? "cursor-not-allowed opacity-50"
-                        : "hover:bg-gray-700 hover:text-white"
+                        : "hover:bg-gray-300 hover:text-black"
                     }`}
                     onClick={() => handleDownload("doc")}
                     disabled={rewrittenData.length === 0}
                   >
-                    Download .doc
+                    <i className="fa-solid fa-download text-2xl"></i> .doc
                   </button>
                 </div>
               </div>
