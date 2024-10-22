@@ -11,8 +11,8 @@ const Navbar = () => {
 
   return (
     <>
-      <nav >
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <nav className="fixed top-0 left-0 w-full z-20 bg-slate-100">
+        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 ">
           <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img
               src="https://th.bing.com/th/id/OIP.-WXWqkczZZsOk3kfdV2jtgHaF7?w=245&h=196&c=7&r=0&o=5&pid=1.7"
@@ -26,6 +26,7 @@ const Navbar = () => {
               <span className="self-center text-sm font-serif">REWRITER</span>
             </div>
           </Link>
+          
           <button
             onClick={toggleMenu}
             data-collapse-toggle="navbar-solid-bg"
@@ -57,7 +58,7 @@ const Navbar = () => {
             } w-full md:block md:w-auto`}
             id="navbar-solid-bg"
           >
-            <ul className="flex flex-col text-lg mt-4 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent md:dark:bg-transparent dark:border-gray-700">
+            <ul className="flex flex-col text-lg mt-6 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent md:dark:bg-transparent dark:border-gray-700">
               {
                 Menu.map((el,idx)=>(
                     <li key={idx} className="block py-2 px-3 md:p-0 text-gray-500 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-gray-800  ">
@@ -67,8 +68,9 @@ const Navbar = () => {
                     </li>
                 ))
                 }
-            </ul>
-          </div>
+                <button type="button" className="text-white font-bold bg-gray-700 hover:bg-gray-400 hover:text-black rounded-lg text-sm px-4 py-2 text-center">Contact Us</button>
+              </ul>
+            </div>
         </div>
       </nav>
     </>

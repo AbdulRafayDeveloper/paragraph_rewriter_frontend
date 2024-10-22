@@ -16,8 +16,8 @@ const Menu=[
     },
     {
         id: 4,
-        title: "Contact Us",
-        link: "/contact-us"
+        title: "Blog",
+        link: "/blog"
     },
 ];
 const Tabs=[

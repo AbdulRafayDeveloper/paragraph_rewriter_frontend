@@ -84,7 +84,7 @@ const Tool = () => {
   }, []);
 
   return (
-    <div className="container-fluid p-0">
+    <div className="container-fluid p-0 mt-28">
       <div className="flex justify-center items-center text-center">
         <div className="w-full sm:w-[600px] lg:w-[800px]">
           <h1 className="text-2xl sm:text-3xl font-bold">Paragraph Rewriter</h1>
