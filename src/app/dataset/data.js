@@ -14,11 +14,6 @@ const Menu=[
         title: "Sentence Rewriter",
         link: "/sentencerewriter"
     },
-    {
-        id: 4,
-        title: "Blog",
-        link: "/blog"
-    },
 ];
 const Tabs=[
     {}
