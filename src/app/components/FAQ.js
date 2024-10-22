@@ -4,7 +4,8 @@ import { FAQsData } from '../dataset/data';
 
 const FAQs = () => {
     const [openIndex, setOpenIndex] = useState(null);
-
+    const [activeBtn, setActiveBtn] = useState(0);
+    
     const toggleAccordion = (index) => {
         setOpenIndex(prevIndex => (prevIndex === index ? null : index));
     };
@@ -21,21 +22,23 @@ const FAQs = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex mt-5 w-full lg:max-w-[950px] mx-auto p-7">
+            <div className="flex mt-5 w-full lg:max-w-[950px] mx-auto p-7 bg-slate-100">
                 <div id="accordion-open" data-accordion="open" className="w-full">
                     {FAQsData.map((item, index) => (
-                        <div key={index}>
+                        <div key={index} className='p-1'>
                             <h2 id={`accordion-open-heading-${index}`}>
                                 <button
                                     type="button"
-                                    className="flex text-justify justify-between w-full p-5 font-medium text-gray-500 border border-b-0 border-slate-100 rounded-t-xl focus:ring-4 focus:ring-slate-200 hover:bg-slate-100 gap-3"
-                                    onClick={() => toggleAccordion(index)}
+                                    className={`flex text-justify justify-between w-full p-5 font-medium ${activeBtn === index ? 'bg-gray-600 text-white' : 'text-black'} rounded-t-xl hover:bg-gray-600 hover:text-white gap-3`}
+                                    onClick={() => {
+                                        toggleAccordion(index);
+                                        setActiveBtn(index); // Set the active button
+                                    }}
                                     aria-expanded={openIndex === index}
                                     aria-controls={`accordion-open-body-${index}`}
                                 >
-                                
-                                <div className="flex items-center">
-                                        <span className="font-bold text-xl text-black">{item.questionNo}</span>
+                                    <div className="flex items-center">
+                                        <span className="font-bold text-xl">{item.questionNo}</span>
                                         <span className="font-normal ml-3 text-lg text-left"> {item.question}</span>
                                     </div>
                                     <svg
@@ -51,7 +54,7 @@ const FAQs = () => {
                             </h2>
                             <div
                                 id={`accordion-open-body-${index}`}
-                                className={`p-5 text-lg border border-b-0 border-gray-200 transition-all duration-200 ${openIndex === index ? '' : 'hidden'}`}
+                                className={`p-5 text-lg border border-b-0 border-gray-200 bg-slate-200 transition-all duration-200 ${openIndex === index ? '' : 'hidden'}`}
                                 aria-labelledby={`accordion-open-heading-${index}`}
                             >
                                 {item.answer}
