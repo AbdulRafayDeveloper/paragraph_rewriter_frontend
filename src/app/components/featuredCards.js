@@ -8,7 +8,7 @@ const FeaturedCards=()=>{
                     FeaturedCardData.map((el,idx)=>(
                         <div key={idx} className=" p-6 bg-slate-100 border border-gray-200 rounded-lg shadow ">
                             <a href="#">
-                                <span className="text-xl font-bold text-cyan-800">{el.id}:
+                                <span className="text-xl font-bold ">{el.id}:
                                 <span className="mb-2 text-xl tracking-tight text-gray-900">{el.title}</span>
                                 </span>
                             </a>

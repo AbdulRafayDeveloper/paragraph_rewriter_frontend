@@ -16,7 +16,36 @@ const Menu=[
     },
 ];
 const Tabs=[
-    {}
+    {
+        id: 1,
+        title: "Normal",
+        image: "https://cdn-icons-png.flaticon.com/512/5259/5259782.png",
+    },
+    {
+        id: 2,
+        title: "Fluent",
+        image: "https://cdn.iconscout.com/icon/premium/png-256-thumb/fluency-language-proficiency-11105645-9233611.png",
+    },
+    {
+        id: 3,
+        title: "Formal",
+        image: "https://cdn-icons-png.flaticon.com/128/7058/7058012.png",
+    },
+    {
+        id: 4,
+        title: "Innovative",
+        image: "https://cdn-icons-png.flaticon.com/512/8635/8635593.png",
+    },
+    {
+        id: 5,
+        title: "Coherent",
+        image: "https://cdn-icons-png.flaticon.com/128/13322/13322501.png",
+    },
+    {
+        id: 6,
+        title: "Academic",
+        image: "https://cdn-icons-png.flaticon.com/512/17314/17314035.png",
+    },
 ];
 
 const Textparagraph=[
@@ -256,4 +285,4 @@ const FAQsData=[
     },
 ]
 export default Menu;
-export {Textparagraph,CardData,FeaturedCardData,AIToolData,Rewritertooldata,FAQsData};
+export {Tabs,Textparagraph,CardData,FeaturedCardData,AIToolData,Rewritertooldata,FAQsData};
