@@ -67,7 +67,7 @@ const Navbar = () => {
               Blog
             </li>
             <button type="button" className="text-white font-bold bg-gray-700 hover:bg-gray-500 rounded-lg text-sm px-4 py-2 text-center">
-              Contact Us
+              <Link href='/contact'>Contact Us</Link>
             </button>
           </div>
         </div>

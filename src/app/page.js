@@ -15,7 +15,6 @@ const Index=()=>{
       <AiTool/>
       <RewriterTool/>
       <FAQs/>
-      <Footer/>
     </>
   )
 }
