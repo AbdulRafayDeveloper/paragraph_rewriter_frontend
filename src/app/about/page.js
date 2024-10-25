@@ -15,7 +15,7 @@ const About=()=>{
                 <div className="flex mt-5 w-full lg:max-w-[1220px] mx-auto p-7">
                     <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1">
                         <div className="p-6">
-                            <img src="https://img.freepik.com/free-vector/office-work-school-education-man-writing-chart-board-woman-designer-drawing-graphic-tablet-teacher-stand-knee-giving-book-little-girl-with-schoolbag_33099-2516.jpg" alt="" className="shrink-0 w-[600px] lg:h-[300px] h-[200px]"/>
+                            <img src="https://img.freepik.com/free-vector/office-work-school-education-man-writing-chart-board-woman-designer-drawing-graphic-tablet-teacher-stand-knee-giving-book-little-girl-with-schoolbag_33099-2516.jpg" alt="" className="shrink-0 w-[600px] "/>
                         </div>
                         <div className="bg-slate-100">
                             <div className="p-8">

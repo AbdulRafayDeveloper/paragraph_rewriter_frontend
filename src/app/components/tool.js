@@ -140,9 +140,8 @@ const Tool = () => {
                           className={`inline-block w-full p-2 text-gray-900 bg-slate-100 hover:bg-gray-500 hover:text-black border rounded-lg active focus:outline-none ${activeTab === idx ? "bg-gray-500 text-black" : "bg-gray-50"
                             }`}
                         >
-                          <span className="px-2 py-2 flex">
-                            <img src={el.image} alt={el.title} className="w-7 h-7 mr-2" />
-                            {el.title}
+                          <span className="p-1 flex">{el.icon}
+                            <span className="ml-1">{el.title}</span>
                           </span>
                         </button>
                       </li>
@@ -160,8 +159,9 @@ const Tool = () => {
                       className={`inline-block w-full p-1 border rounded-l-lg focus:outline-none ${activeTab === idx ? "bg-gray-500 text-white" : "bg-slate-100 hover:bg-gray-500 hover:text-white"}`}
                       onClick={() => handleTabClick(idx, el.title)}
                     >
-                      <span className="px-2 py-2 flex"><img src={el.image} alt={el.title} className=" w-5 h-6 mr-1" />
-                        {el.title}</span>
+                      <span className="p-1 flex">{el.icon}
+                        <span className="ml-1">{el.title}</span>
+                      </span>
                     </button>
                   </li>
                 ))}
@@ -174,7 +174,8 @@ const Tool = () => {
             <div className="gap-1">
               <div className="relative h-[400px] p-4 w-full bg-slate-100 rounded-lg">
                 <textarea
-                  className="bg-slate-100 text-xl w-full h-[180px] resize-none  p-2 border-none outline-none"
+                  className={`bg-slate-100 text-xl w-full ${inputData.length === 0 ? 'h-[180px]' : 'h-full'} resize-none p-2 border-none outline-none`}
+                  
                   placeholder="Enter paragraph to rewrite..."
                   value={inputData}
                   onChange={(e) => {

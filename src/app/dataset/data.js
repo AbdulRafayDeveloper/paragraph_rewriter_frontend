@@ -1,8 +1,14 @@
+import FormatColorFillIcon from '@mui/icons-material/FormatColorFill';
+import BorderColorIcon from '@mui/icons-material/BorderColor';
+import HighlightIcon from '@mui/icons-material/Highlight';
+import SchoolIcon from '@mui/icons-material/School';
+import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
+import FlareIcon from '@mui/icons-material/Flare';
 const Menu=[
     {
         id: 1,
         title: "Paragaph Rewriter",
-        link: "/paragraphrewriter"
+        link: "/",
     },
     {
         id: 2,
@@ -19,32 +25,32 @@ const Tabs=[
     {
         id: 1,
         title: "Normal",
-        image: "https://cdn-icons-png.flaticon.com/512/5259/5259782.png",
+        icon: <FormatColorFillIcon style={{color: '#D4BDAC'}}/>
     },
     {
         id: 2,
         title: "Fluent",
-        image: "https://cdn.iconscout.com/icon/premium/png-256-thumb/fluency-language-proficiency-11105645-9233611.png",
+        icon: <BorderColorIcon style={{color: 'green'}}/>
     },
     {
         id: 3,
         title: "Formal",
-        image: "https://cdn-icons-png.flaticon.com/128/7058/7058012.png",
+        icon: <HighlightIcon style={{color: '#78B7D0'}}/>
     },
     {
         id: 4,
         title: "Innovative",
-        image: "https://cdn-icons-png.flaticon.com/512/8635/8635593.png",
+        icon: <TipsAndUpdatesIcon style={{color: 'orange'}}/>
     },
     {
         id: 5,
         title: "Coherent",
-        image: "https://cdn-icons-png.flaticon.com/128/13322/13322501.png",
+        icon: <FlareIcon style={{color: 'pink'}}/>
     },
     {
         id: 6,
         title: "Academic",
-        image: "https://cdn-icons-png.flaticon.com/512/17314/17314035.png",
+        icon: <SchoolIcon style={{color: 'black'}}/>
     },
 ];
 

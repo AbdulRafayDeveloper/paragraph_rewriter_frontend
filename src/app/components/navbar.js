@@ -19,11 +19,12 @@ const Navbar = () => {
             className="h-[40px] w-[40px]"
             alt="Logo"
           />
+          
           <div>
             <p className="self-center text-lg font-semibold whitespace-nowrap">
               PARAGRAPH
             </p>
-            <span className="self-center text-sm font-serif">REWRITER</span>
+            <span className="self-center text-sm font-serif ">REWRITER</span>
           </div>
         </Link>
 
