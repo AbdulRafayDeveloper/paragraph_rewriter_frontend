@@ -5,13 +5,15 @@ import { Tabs } from "../dataset/data";
 
 const Tool = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const [activeTabName, setActiveTabName] = useState("Normal");
   const [showDropdown, setShowDropdown] = useState(false);
   const [inputData, setInputData] = useState(""); // State for input textarea
   const [rewrittenData, setRewrittenData] = useState(""); // State for rewritten textarea
   const [isRewritten, setIsRewritten] = useState(false); // State to control input visibility on mobile
   const [isMobile, setIsMobile] = useState(false); // State to track if the screen is mobile
-  const [showRewrittenSection, setShowRewrittenSection] = useState(false); // State to show rewritten textarea section on mobile
+  const [showRewrittenSection, setShowRewrittenSection] = useState(false); // State to show rewritten 
   const [wordCount, setWordCount] = useState(0); // State for word count
+  const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const SampleText =
     "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...";
@@ -20,7 +22,9 @@ const Tool = () => {
     setInputData(SampleText);
   };
 
-  const handleTabClick = (idx) => {
+  const handleTabClick = (idx, tabName) => {
+    console.log("Tab is: ", idx);
+    setActiveTabName(tabName)
     setActiveTab(idx);
     setShowDropdown(false); // Close the dropdown after selection
   };
@@ -29,7 +33,7 @@ const Tool = () => {
       const clipboardText = await navigator.clipboard.readText();
       const combinedText = inputData + ' ' + clipboardText; // Add a space to separate the texts
       const wordCount = countWords(combinedText); // Assuming countWords is defined elsewhere
-  
+
       if (wordCount > 1500) {
         const wordsArray = combinedText.trim().split(/\s+/);
         const limitedWords = wordsArray.slice(0, 1500).join(' '); // Get only the first 1500 words
@@ -41,12 +45,12 @@ const Tool = () => {
       console.error("Failed to read clipboard contents: ", err);
     }
   };
-  
+
   // Define the countWords function if not already defined
   const countWords = (text) => {
     return text.trim().split(/\s+/).filter(word => word.length > 0).length;
   };
-  
+
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -58,16 +62,21 @@ const Tool = () => {
       reader.readAsText(file);
     }
   };
+
   const handleRewrite = async (inputparagraph) => {
-    if (!inputData) return;
+    console.log('inputparagraph: ', inputparagraph);
+    console.log('activeTabName: ', activeTabName);
     try {
-      const data = await axios.post("https://paragraph-rewriter-backend.vercel.app/api/rewrite/normal",{message:inputparagraph})
-      if(data)
-      {
-        console.log('data: ',data);
-        console.log("data:data ",data.data);
+      const data = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/rewrite/${activeTabName}`, { message: inputparagraph })
+
+      if (data) {
+        if (data.data.status == 200) {
+          setRewrittenData(data.data.data);
+        } else {
+          setRewrittenData("Sorry this text cannot rewrite right now. Please try again later!");
+        }
       }
-      setRewrittenData(data.data);
+
       if (isMobile) {
         setIsRewritten(true);
         setShowRewrittenSection(true);
@@ -104,7 +113,7 @@ const Tool = () => {
         <div className="w-full sm:w-[600px] lg:w-[800px]">
           <h1 className="text-2xl sm:text-3xl font-bold">Paragraph Rewriter</h1>
           <p className="text-md sm:text-lg mt-4">
-          Use our AI Paragraph Rewriter tool to turn any paragraph into a new and unique one without changing the original context.
+            Use our AI Paragraph Rewriter tool to turn any paragraph into a new and unique one without changing the original context.
           </p>
         </div>
       </div>
@@ -115,50 +124,47 @@ const Tool = () => {
             <div className="sm:hidden">
               <label htmlFor="tabs" className="sr-only">Select rewriting style</label>
               {/* Custom Dropdown for small screens */}
-        <div className="sm:hidden relative">
-          <button
-            onClick={() => setShowDropdown(!showDropdown)}
-            className="bg-gray-50 border border-slate-300 text-gray-900 text-sm rounded-lg block w-[290px] p-2.5"
-          >
-            {Tabs[activeTab] ? Tabs[activeTab].title : 'Select a Tab'}
-          </button>
+              <div className="sm:hidden relative">
+                <button
+                  onClick={() => setShowDropdown(!showDropdown)}
+                  className="bg-gray-50 border border-slate-300 text-gray-900 text-sm rounded-lg block w-[290px] p-2.5"
+                >
+                  {Tabs[activeTab] ? Tabs[activeTab].title : 'Select a Tab'}
+                </button>
 
-          {showDropdown && (
-            <ul className="absolute z-10 w-[290px] bg-white shadow-lg rounded-lg mt-2">
-              {Tabs.map((el, idx) => (
-                <li key={idx} onClick={() => handleTabClick(idx)}>
-                  <button
-                    className={`inline-block w-full p-2 text-gray-900 bg-slate-100 hover:bg-gray-500 hover:text-black border rounded-lg active focus:outline-none ${
-                      activeTab === idx ? "bg-gray-500 text-black" : "bg-gray-50"
-                    }`}
-                  >
-                    <span className="px-2 py-2 flex">
-                      <img src={el.image} alt={el.title} className="w-7 h-7 mr-2" />
-                      {el.title}
-                    </span>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
+                {showDropdown && (
+                  <ul className="absolute z-10 w-[290px] bg-white shadow-lg rounded-lg mt-2">
+                    {Tabs.map((el, idx) => (
+                      <li key={idx} onClick={() => handleTabClick(idx)}>
+                        <button
+                          className={`inline-block w-full p-2 text-gray-900 bg-slate-100 hover:bg-gray-500 hover:text-black border rounded-lg active focus:outline-none ${activeTab === idx ? "bg-gray-500 text-black" : "bg-gray-50"
+                            }`}
+                        >
+                          <span className="px-2 py-2 flex">
+                            <img src={el.image} alt={el.title} className="w-7 h-7 mr-2" />
+                            {el.title}
+                          </span>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
 
             </div>
             <ul className="hidden text-sm font-medium text-center text-gray-500 rounded-lg shadow sm:flex ">
               {
-                Tabs.map((el,idx) => (
-                <li className="w-full focus-within:z-10" key={idx}>
-                  <button
-                    className={`inline-block w-full p-1 text-gray-900 bg-slate-100 hover:bg-gray-500 hover:text-white  border rounded-l-lg  active focus:outline-none ${
-                      activeTab === idx ? "bg-gray-500 text-black" : "bg-gray-50 hover:bg-gray-500 "
-                    }`}
-                    onClick={() => handleTabClick(idx)}
-                  >
-                    <span className="px-2 py-2 flex"><img src={el.image} alt={el.title} className=" w-5 h-6 mr-1" />
-                    {el.title}</span>
-                  </button>
-                </li>
-              ))}
+                Tabs.map((el, idx) => (
+                  <li className="w-full focus-within:z-10" key={idx}>
+                    <button
+                      className={`inline-block w-full p-1 border rounded-l-lg focus:outline-none ${activeTab === idx ? "bg-gray-500 text-white" : "bg-slate-100 hover:bg-gray-500 hover:text-white"}`}
+                      onClick={() => handleTabClick(idx, el.title)}
+                    >
+                      <span className="px-2 py-2 flex"><img src={el.image} alt={el.title} className=" w-5 h-6 mr-1" />
+                        {el.title}</span>
+                    </button>
+                  </li>
+                ))}
             </ul>
           </div>
         </div>
@@ -221,12 +227,11 @@ const Tool = () => {
                 </label>
                 <span className="text-sm px-4">{countWords(inputData)} / 1500 words</span>
                 <button
-                  className={`border border-gray-600 p-1 rounded-lg text-sm ${
-                    inputData.length === 0
-                      ? "cursor-not-allowed opacity-50"
-                      : "hover:bg-gray-700 hover:text-white"
-                  }`}
-                  onClick={handleRewrite(inputData)}
+                  className={`border border-gray-600 p-1 rounded-lg text-sm ${inputData.length === 0
+                    ? "cursor-not-allowed opacity-50"
+                    : "hover:bg-gray-700 hover:text-white"
+                    }`}
+                  onClick={() => handleRewrite(inputData)}
                   disabled={inputData.length === 0}
                 >
                   Rewrite
@@ -248,24 +253,22 @@ const Tool = () => {
               <div className="flex justify-end items-center mt-2 bg-slate-100 rounded-lg">
                 <div className="p-1">
                   <button
-                    className={`border border-gray-600 p-1 rounded-lg ${
-                      rewrittenData.length === 0
-                        ? "cursor-not-allowed opacity-50"
-                        : "hover:bg-gray-300 hover:text-white"
-                    }`}
+                    className={`border border-gray-600 p-1 rounded-lg ${rewrittenData.length === 0
+                      ? "cursor-not-allowed opacity-50"
+                      : "hover:bg-gray-300 hover:text-white"
+                      }`}
                     onClick={handleCopy}
                     disabled={rewrittenData.length === 0}
                   >
-                   <i className="fa-solid fa-copy text-blue-800 text-2xl"></i>
+                    <i className="fa-solid fa-copy text-blue-800 text-2xl"></i>
                   </button>
                 </div>
                 <div className="p-1">
                   <button
-                    className={`border border-gray-600 p-1 rounded-lg ${
-                      rewrittenData.length === 0
-                        ? "cursor-not-allowed opacity-50"
-                        : "hover:bg-gray-300 hover:text-black"
-                    }`}
+                    className={`border border-gray-600 p-1 rounded-lg ${rewrittenData.length === 0
+                      ? "cursor-not-allowed opacity-50"
+                      : "hover:bg-gray-300 hover:text-black"
+                      }`}
                     onClick={() => handleDownload("txt")}
                     disabled={rewrittenData.length === 0}
                   >
@@ -274,11 +277,10 @@ const Tool = () => {
                 </div>
                 <div className="p-1">
                   <button
-                    className={`border border-gray-600 p-1 rounded-lg ${
-                      rewrittenData.length === 0
-                        ? "cursor-not-allowed opacity-50"
-                        : "hover:bg-gray-300 hover:text-black"
-                    }`}
+                    className={`border border-gray-600 p-1 rounded-lg ${rewrittenData.length === 0
+                      ? "cursor-not-allowed opacity-50"
+                      : "hover:bg-gray-300 hover:text-black"
+                      }`}
                     onClick={() => handleDownload("doc")}
                     disabled={rewrittenData.length === 0}
                   >
