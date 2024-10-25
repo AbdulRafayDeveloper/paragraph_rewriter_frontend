@@ -1,13 +1,17 @@
 "use client";
 import { useState, useEffect } from "react";
+import axios from "axios";
+import { Tabs } from "../dataset/data";
 
 const Tool = () => {
-  const [activeTab, setActiveTab] = useState("Normal");
+  const [activeTab, setActiveTab] = useState(0);
+  const [showDropdown, setShowDropdown] = useState(false);
   const [inputData, setInputData] = useState(""); // State for input textarea
   const [rewrittenData, setRewrittenData] = useState(""); // State for rewritten textarea
   const [isRewritten, setIsRewritten] = useState(false); // State to control input visibility on mobile
   const [isMobile, setIsMobile] = useState(false); // State to track if the screen is mobile
   const [showRewrittenSection, setShowRewrittenSection] = useState(false); // State to show rewritten textarea section on mobile
+  const [wordCount, setWordCount] = useState(0); // State for word count
 
   const SampleText =
     "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...";
@@ -16,16 +20,20 @@ const Tool = () => {
     setInputData(SampleText);
   };
 
-  const handleTabClick = (tabName) => {
-    setActiveTab(tabName);
+  const handleTabClick = (idx) => {
+    setActiveTab(idx);
+    setShowDropdown(false); // Close the dropdown after selection
   };
-
   const handlePaste = async () => {
     try {
       const clipboardText = await navigator.clipboard.readText();
-      const combinedText = inputData + clipboardText;
-      if (combinedText.length > 1500) {
-        setInputData(combinedText.substring(0, 1500));
+      const combinedText = inputData + ' ' + clipboardText; // Add a space to separate the texts
+      const wordCount = countWords(combinedText); // Assuming countWords is defined elsewhere
+  
+      if (wordCount > 1500) {
+        const wordsArray = combinedText.trim().split(/\s+/);
+        const limitedWords = wordsArray.slice(0, 1500).join(' '); // Get only the first 1500 words
+        setInputData(limitedWords);
       } else {
         setInputData(combinedText);
       }
@@ -33,6 +41,12 @@ const Tool = () => {
       console.error("Failed to read clipboard contents: ", err);
     }
   };
+  
+  // Define the countWords function if not already defined
+  const countWords = (text) => {
+    return text.trim().split(/\s+/).filter(word => word.length > 0).length;
+  };
+  
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -44,18 +58,19 @@ const Tool = () => {
       reader.readAsText(file);
     }
   };
-
-  const handleRewrite = async () => {
+  const handleRewrite = async (inputparagraph) => {
     if (!inputData) return;
     try {
-      const generatedText =
-        "Rafay-This is a generated text for the rewriting tool...";
-      setRewrittenData(generatedText);
-      
-      // Only hide input if it's mobile view and show the rewritten section
+      const data = await axios.post("https://paragraph-rewriter-backend.vercel.app/api/rewrite/normal",{message:inputparagraph})
+      if(data)
+      {
+        console.log('data: ',data);
+        console.log("data:data ",data.data);
+      }
+      setRewrittenData(data.data);
       if (isMobile) {
         setIsRewritten(true);
-        setShowRewrittenSection(true); // Show the rewritten section in mobile view
+        setShowRewrittenSection(true);
       }
     } catch (error) {
       console.error("Error rewriting text:", error);
@@ -99,27 +114,48 @@ const Tool = () => {
           <div className="w-full">
             <div className="sm:hidden">
               <label htmlFor="tabs" className="sr-only">Select rewriting style</label>
-              <select
-                id="tabs"
-                value={activeTab}
-                onChange={(e) => handleTabClick(e.target.value)}
-                className="bg-gray-50 border border-slate-300 text-gray-900  text-sm rounded-lg focus:ring-gray-900 focus:border-gray-900 block w-[290px] p-2.5"
-              >
-                {["Normal", "Fluent", "Formal", "Innovative", "Coherent", "Academic"].map((tab) => (
-                  <option key={tab} value={tab}>{tab}</option>
-                ))}
-              </select>
+              {/* Custom Dropdown for small screens */}
+        <div className="sm:hidden relative">
+          <button
+            onClick={() => setShowDropdown(!showDropdown)}
+            className="bg-gray-50 border border-slate-300 text-gray-900 text-sm rounded-lg block w-[290px] p-2.5"
+          >
+            {Tabs[activeTab] ? Tabs[activeTab].title : 'Select a Tab'}
+          </button>
+
+          {showDropdown && (
+            <ul className="absolute z-10 w-[290px] bg-white shadow-lg rounded-lg mt-2">
+              {Tabs.map((el, idx) => (
+                <li key={idx} onClick={() => handleTabClick(idx)}>
+                  <button
+                    className={`inline-block w-full p-2 text-gray-900 bg-slate-100 hover:bg-gray-500 hover:text-black border rounded-lg active focus:outline-none ${
+                      activeTab === idx ? "bg-gray-500 text-black" : "bg-gray-50"
+                    }`}
+                  >
+                    <span className="px-2 py-2 flex">
+                      <img src={el.image} alt={el.title} className="w-7 h-7 mr-2" />
+                      {el.title}
+                    </span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
             </div>
             <ul className="hidden text-sm font-medium text-center text-gray-500 rounded-lg shadow sm:flex ">
-              {["Normal", "Fluent", "Formal", "Innovative", "Coherent", "Academic"].map((tab) => (
-                <li className="w-full focus-within:z-10" key={tab}>
+              {
+                Tabs.map((el,idx) => (
+                <li className="w-full focus-within:z-10" key={idx}>
                   <button
-                    className={`inline-block w-full p-4 text-gray-900 bg-slate-100 hover:bg-gray-500 hover:text-white  border-r border-gray-200 rounded-l-lg  active focus:outline-none ${
-                      activeTab === tab ? "bg-blue-600 text-black" : "bg-gray-50 hover:bg-gray-500 "
+                    className={`inline-block w-full p-1 text-gray-900 bg-slate-100 hover:bg-gray-500 hover:text-white  border rounded-l-lg  active focus:outline-none ${
+                      activeTab === idx ? "bg-gray-500 text-black" : "bg-gray-50 hover:bg-gray-500 "
                     }`}
-                    onClick={() => handleTabClick(tab)}
+                    onClick={() => handleTabClick(idx)}
                   >
-                    {tab}
+                    <span className="px-2 py-2 flex"><img src={el.image} alt={el.title} className=" w-5 h-6 mr-1" />
+                    {el.title}</span>
                   </button>
                 </li>
               ))}
@@ -136,11 +172,15 @@ const Tool = () => {
                   placeholder="Enter paragraph to rewrite..."
                   value={inputData}
                   onChange={(e) => {
-                    if (e.target.value.length <= 1500) {
-                      setInputData(e.target.value);
+                    const newInput = e.target.value;
+                    const wordCount = countWords(newInput); // Count words
+
+                    if (wordCount <= 1500) {
+                      setInputData(newInput);
+                      setWordCount(wordCount); // Update word count
                     }
-                  }}
-                  maxLength={1500}
+                  }
+                  }
                 />
                 <div className="mt-24 p-6 inset-0 flex justify-center items-center">
                   {inputData.length === 0 && (
@@ -179,14 +219,14 @@ const Tool = () => {
                     onChange={handleFileChange}
                   />
                 </label>
-                <span className="text-sm px-4">{inputData.length} / 1500 characters</span>
+                <span className="text-sm px-4">{countWords(inputData)} / 1500 words</span>
                 <button
                   className={`border border-gray-600 p-1 rounded-lg text-sm ${
                     inputData.length === 0
                       ? "cursor-not-allowed opacity-50"
                       : "hover:bg-gray-700 hover:text-white"
                   }`}
-                  onClick={handleRewrite}
+                  onClick={handleRewrite(inputData)}
                   disabled={inputData.length === 0}
                 >
                   Rewrite
@@ -194,7 +234,6 @@ const Tool = () => {
               </div>
             </div>
           )}
-          
           {/* Rewritten Section - Only show when the rewrite button is clicked on mobile */}
           {(!isMobile || showRewrittenSection) && (
             <div className="gap-1 grid-cols-2 bg-slate-100 p-5 rounded-lg">
@@ -249,7 +288,6 @@ const Tool = () => {
               </div>
             </div>
           )}
-
         </div>
       </div>
     </div>

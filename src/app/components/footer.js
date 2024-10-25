@@ -39,10 +39,10 @@ const Footer = () => {
                 <h1 className="text-lg lg:text-xl font-bold">Information</h1>
               </div>
               <div className="mt-6 space-y-2 text-lg">
-              <Link href="/contact-us" className="block hover:text-blue-600">
+              <Link href="/contact" className="block hover:text-blue-600">
                   Contact Us
                 </Link>
-                <Link href="/about-us" className="block hover:text-blue-600">
+                <Link href="/about" className="block hover:text-blue-600">
                   About Us
                 </Link>
                 <Link href="/privacy" className="block hover:text-blue-600">

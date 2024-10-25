@@ -11,7 +11,7 @@ const FAQs = () => {
     };
 
     return (
-        <div className="container-fluid p-0">
+        <div className="container-fluid p-0 mb-36">
             <div className="flex justify-center items-center text-center mt-6">
                 <div className="w-full sm:w-[600px] lg:w-[800px] mt-6">
                     <div className="mt-5 w-full lg:max-w-[1320px] mx-auto p-4">

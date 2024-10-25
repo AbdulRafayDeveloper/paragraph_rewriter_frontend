@@ -17,7 +17,7 @@ const RewriterTool=()=>{
                 {/* Cards Section of Rewriter Tool */}
                 <div className="mt-5 w-full lg:max-w-[1320px] mx-auto p-7">
                     <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-8 ">
-                        {
+                        { 
                             Rewritertooldata.map((el,idx)=>(
                                 <div key={idx} className=" p-4 border-l-2  border-gray-200   ">
                                     <img src={el.image} alt={el.alt} className="w-[60px] h-[60px]" />

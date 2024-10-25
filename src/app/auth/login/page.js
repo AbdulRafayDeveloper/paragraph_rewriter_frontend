@@ -2,6 +2,39 @@
 import { useState } from 'react';
 
 const Login = () => {
+    const [data,setdata]=useState(
+        {
+            email:"",
+            pass:"",
+        }
+    );
+    const inputEvent=(e)=>{
+        const {name,value}=event.target;
+       setdata((prevValue=>{
+            return {
+                ...prevValue,
+                [name]:value
+            }
+        }))
+    }
+    const Submit=(event)=>{
+        event.preventDefault();
+        let p=document.createElement("p");
+        let btn=document.querySelector("button");
+        const d=[data.fname,data.pass,data.email,data.number];
+        p.innerText=d;
+        p.style.color="black";
+        btn.appendChild(p);
+        console.log(data);
+        setdata(
+            {
+                fname:'',
+                pass: '',
+                email:'',
+                number:''
+            }
+        );
+    }
     const [showPassword, setShowPassword] = useState(false);
 
     const togglePasswordVisibility = () => {
@@ -30,11 +63,11 @@ const Login = () => {
                         
                         <form action="/auth/login" method="POST" className="space-y-4">
                             <div>
-                                <label htmlFor="email" className="block text-md font-bold text-gray-700">Email</label>
+                                <label htmlFor="email" className="block text-md font-bold text-gray-700" name='email' value={data.email} autoComplete='off' required onChange={inputEvent}>Email</label>
                                 <input type="text" id="email" name="email" required className="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"/>
                             </div>
                             <div className="relative">
-                                <label htmlFor="password" className="block text-md font-bold text-gray-700">Password</label>
+                                <label htmlFor="password" className="block text-md font-bold text-gray-700" name="pass" value={data.pass} autoComplete="off" onChange={inputEvent}>Password</label>
                                 <input 
                                     type={showPassword ? 'text' : 'password'} 
                                     id="password" 
@@ -50,7 +83,7 @@ const Login = () => {
                                 </button>
                             </div>
                             <div>
-                                <button type="submit" className="w-full bg-slate-800 text-white p-2 rounded-md hover:bg-gray-800 focus:outline-none focus:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300">Sign In</button>
+                                <button type="submit" className="w-full bg-slate-800 text-white p-2 rounded-md hover:bg-gray-800 focus:outline-none focus:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300" onSubmit={Submit}>Sign In</button>
                             </div>
                         </form>
                         
