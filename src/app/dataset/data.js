@@ -109,31 +109,49 @@ const CardData=[
 const FeaturedCardData=[
     {
         id: '01',
+        style: {
+            color: '#FF8343',
+        },
         title: " Fast and Accurate",
         content: "Our paragraph rewriter rewrites content in a matter of seconds. You just have to input your paragraph and start the rewriting process. It will rewrite the paragraph accurately in no time.",
     },
     {
         id: '02',
+        style: {
+            color: 'green',
+        },
         title: " Free to Use",
         content: "Rewrite your text with our AI Paragraph Rewriter for totally free. Our paragraph rewriting tool does not charge any kind of fee to make changes to your given content.",
     },
     {
         id: '03',
+        style: {
+            color: '#CC2B52',
+        },
         title: " Contextual Rewriting",
         content: "Our free AI rewriter rewrites the content keeping in mind its context. It only replaced synonyms that fully describe the meaning of the original words.",
     },
     {
         id: '04',
+        style: {
+            color: '#4C4B16',
+        },
         title: " Plagiarism Free Output",
         content: "This free AI rewrite tool removes all the instances of plagiarism from a given content. For this, it changes all the original words and phrases of paragraphs with unique and new ones.",
     },
     {
         id: '05',
+        style:{
+            color: "#EB5B00",
+        },
         title: " High-Quality Result",
         content: "Our tool elevates the quality of paragraphs while rewriting them. For this, the paragraph rewriter removes redundancies, replaces jargon with clear words, and swaps out poor terms with engaging ones.",
     },
     {
         id: '06',
+        style: {
+            color: '#50B498',
+        },
         title: " Connected With Other Tools",
         content: "To provide users with a smooth workflow, the AI rewriter is connected to multiple other writing tools including; Sentence Rewriter and AI Paragraph Generator. These AI tools are one click far away to uplift your productivity.",
     },

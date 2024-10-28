@@ -160,7 +160,7 @@ const Tool = () => {
                       onClick={() => handleTabClick(idx, el.title)}
                     >
                       <span className="p-1 flex">{el.icon}
-                        <span className="ml-1">{el.title}</span>
+                        <span className="m-1">{el.title}</span>
                       </span>
                     </button>
                   </li>
