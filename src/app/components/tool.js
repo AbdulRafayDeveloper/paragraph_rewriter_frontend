@@ -98,6 +98,12 @@ const Tool = () => {
     link.download = `rewritten-text.${fileType}`;
     link.click();
   };
+  const handleRewriteAgain = () => {
+    setInputData(''); // Clear input data
+    setRewrittenData(''); // Clear rewritten data
+    setWordCount(0); // Reset word count
+    setShowRewrittenSection(false); // Show input section again
+  };
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -169,9 +175,9 @@ const Tool = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-5 ">
           {!isRewritten && (
-            <div className="gap-1">
+            <div className="gap-1 hidden lg:block md:block">
               <div className="relative h-[400px] p-4 w-full bg-slate-100 rounded-lg">
                 <textarea
                   className={`bg-slate-100 text-xl w-full ${inputData.length === 0 ? 'h-[180px]' : 'h-full'} resize-none p-2 border-none outline-none`}
@@ -237,9 +243,11 @@ const Tool = () => {
                 >
                   Rewrite
                 </button>
+                
               </div>
             </div>
           )}
+          
           {/* Rewritten Section - Only show when the rewrite button is clicked on mobile */}
           {(!isMobile || showRewrittenSection) && (
             <div className="gap-1 grid-cols-2 bg-slate-100 p-5 rounded-lg">
@@ -252,7 +260,15 @@ const Tool = () => {
                 />
               </div>
               <div className="flex justify-end items-center mt-2 bg-slate-100 rounded-lg">
-                <div className="p-1">
+              <div className="md:hidden lg:hidden mr-2">
+              <button
+                className="bg-gray-500 text-white p-1 rounded-md transition-colors duration-300"
+                onClick={handleRewriteAgain}
+              >
+                Rewrite Again
+              </button>
+              </div>
+                <div>
                   <button
                     className={`border border-gray-600 p-1 rounded-lg ${rewrittenData.length === 0
                       ? "cursor-not-allowed opacity-50"
@@ -264,7 +280,7 @@ const Tool = () => {
                     <i className="fa-solid fa-copy text-blue-800 text-2xl"></i>
                   </button>
                 </div>
-                <div className="p-1">
+                <div>
                   <button
                     className={`border border-gray-600 p-1 rounded-lg ${rewrittenData.length === 0
                       ? "cursor-not-allowed opacity-50"
@@ -276,7 +292,7 @@ const Tool = () => {
                     <i className="fa-solid fa-download text-2xl"></i> .txt
                   </button>
                 </div>
-                <div className="p-1">
+                <div>
                   <button
                     className={`border border-gray-600 p-1 rounded-lg ${rewrittenData.length === 0
                       ? "cursor-not-allowed opacity-50"
@@ -290,7 +306,77 @@ const Tool = () => {
                 </div>
               </div>
             </div>
+            
           )}
+          {!showRewrittenSection && (
+            <div className="gap-1 p-2">
+              <div className="relative h-[400px] p-4 w-full bg-slate-100 rounded-lg md:hidden ">
+                <textarea
+                  className={`bg-slate-100 text-xl w-full ${inputData.length === 0 ? 'h-[180px]' : 'h-full'} resize-none p-2 border-none outline-none`}
+                  placeholder="Enter paragraph to rewrite..."
+                  value={inputData}
+                  onChange={(e) => {
+                    const newInput = e.target.value;
+                    const wordCount = countWords(newInput); // Count words
+
+                    if (wordCount <= 1500) {
+                      setInputData(newInput);
+                      setWordCount(wordCount); // Update word count
+                    }
+                  }}
+                />
+                <div className="mt-24 p-6 inset-0 flex justify-center items-center">
+                  {inputData.length === 0 && (
+                    <div className="flex gap-2 flex-row sm:flex-row h-[30px] justify-center items-center">
+                      <div
+                        className="border rounded-md border-gray-500 p-4 h-[90px] w-full sm:w-[130px] hover:bg-gray-300 cursor-pointer"
+                        onClick={handlePaste}
+                      >
+                        <div className="justify-center items-center text-center">
+                          <i className="fa-solid fa-paste text-2xl text-pink-700"></i>
+                          <p>Paste Text</p>
+                        </div>
+                      </div>
+                      <div
+                        className="border rounded-md border-gray-500 p-4 h-[90px] w-full sm:w-[130px] hover:bg-gray-300 cursor-pointer"
+                        onClick={sampleText}
+                      >
+                        <div className="justify-center items-center text-center">
+                          <i className="fa-regular fa-file-lines text-2xl text-cyan-600"></i>
+                          <p>Sample Text</p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div className="lg:hidden md:hidden flex justify-between items-center mt-2 bg-slate-100 rounded-lg p-4">
+                <label className="border border-gray-600 p-1 rounded-lg hover:bg-gray-300 flex items-center cursor-pointer">
+                  <i className="fa-solid fa-upload p-1 text-cyan-800"></i>
+                  <span className="ml-2">Upload</span>
+                  <input
+                    id="multiple_files"
+                    type="file"
+                    accept=".txt, .doc, .docx, .pdf"
+                    className="hidden"
+                    onChange={handleFileChange}
+                  />
+                </label>
+                <span className="text-sm px-4">{countWords(inputData)} / 1500 words</span>
+                <button
+                  className={`border border-gray-600 p-1 rounded-lg text-sm ${inputData.length === 0
+                    ? "cursor-not-allowed opacity-50"
+                    : "hover:bg-gray-700 hover:text-white"
+                  }`}
+                  onClick={() => handleRewrite(inputData)}
+                  disabled={inputData.length === 0}
+                >
+                  Rewrite
+                </button>
+              </div>
+            </div>
+          )}
+         
         </div>
       </div>
     </div>
