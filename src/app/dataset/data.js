@@ -307,6 +307,6 @@ const FAQsData=[
         question: "How does the Paragraph Rewriter tool help me write an effective blog?",
         answer: "Paragraph rewriting tool will help you write an effective blog by uplifting the quality of your writing paragraphs. As a result, your blog post will be made more creative, unique, as well as compelling."
     },
-]
+];
 export default Menu;
 export {Tabs,Textparagraph,CardData,FeaturedCardData,AIToolData,Rewritertooldata,FAQsData};
