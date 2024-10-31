@@ -1,6 +1,10 @@
+import Footer from "../components/footer";
+import Navbar from "../components/navbar";
+
 const Privacy=()=>{
     return (
         <>
+            <Navbar/>
             <div className="">
                 <section className="bg-gray-800 text-white py-10 mt-14">
                     <div className="max-w-4xl mx-auto text-center">
@@ -218,6 +222,7 @@ const Privacy=()=>{
                     </div>
                 </section>
             </div>
+            <Footer/>
         </>
     )
 }

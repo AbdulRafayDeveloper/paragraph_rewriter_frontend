@@ -6,15 +6,18 @@ import AiTool from "./components/AItool";
 import RewriterTool from "./components/rewritertool";
 import FAQs from "./components/FAQ";
 import Footer from "./components/footer";
+import Navbar from "./components/navbar";
 const Index=()=>{
   return (
     <>
+      <Navbar/>
       <Tool/>
       <WriterText/>
       <Featured/>
       <AiTool/>
       <RewriterTool/>
       <FAQs/>
+      <Footer/>
     </>
   )
 }

@@ -1,6 +1,10 @@
+import Footer from "../components/footer";
+import Navbar from "../components/navbar";
+
 const Terms=()=>{
     return (
         <>
+            <Navbar/>
             <div className="container-fluid p-0">
                 <div className="flex justify-center items-center text-center mt-6">
                     <div className="w-full sm:w-[600px] lg:w-[800px] mt-6">
@@ -61,6 +65,7 @@ const Terms=()=>{
                     </div>
                 </div>
             </div>
+            <Footer/>
         </>
     );
 }

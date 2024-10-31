@@ -1,5 +1,7 @@
 'use client';
 import { useState } from "react";
+import Navbar from "../components/navbar";
+import Footer from "../components/footer";
 const Contact=()=>{
     const [data, setdata] = useState({
         email:'',
@@ -37,6 +39,7 @@ const Contact=()=>{
     }
     return (
         <>
+            <Navbar/>
             <div className="font-[sans-serif] max-w-6xl mx-auto relative bg-white shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-3xl overflow-hidden mt-36 mb-24">
                 <div className="absolute -bottom-6 -left-6 w-20 h-20 rounded-full bg-gray-700"></div>
                 <div className="absolute -top-6 -right-6 w-20 h-20 rounded-full bg-gray-700"></div>
@@ -79,7 +82,8 @@ const Contact=()=>{
                     </div>
                     </form>
                 </div>
-        </div>
+            </div>
+            <Footer/>
         </>
     )
 }
