@@ -227,7 +227,7 @@ const Tool = () => {
                   <input
                     id="multiple_files"
                     type="file"
-                    accept=".txt, .doc, .docx, .pdf"
+                    accept=".txt, .docx, .pdf"
                     className="hidden"
                     onChange={handleFileChange}
                   />
@@ -357,7 +357,6 @@ const Tool = () => {
                   <input
                     id="multiple_files"
                     type="file"
-                    accept=".txt, .doc, .docx, .pdf"
                     className="hidden"
                     onChange={handleFileChange}
                   />
