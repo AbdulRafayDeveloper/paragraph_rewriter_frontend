@@ -13,7 +13,6 @@ const Tool = () => {
   const [isMobile, setIsMobile] = useState(false); // State to track if the screen is mobile
   const [showRewrittenSection, setShowRewrittenSection] = useState(false); // State to show rewritten 
   const [wordCount, setWordCount] = useState(0); // State for word count
-  const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   const SampleText =
     "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...";
@@ -49,18 +48,6 @@ const Tool = () => {
   // Define the countWords function if not already defined
   const countWords = (text) => {
     return text.trim().split(/\s+/).filter(word => word.length > 0).length;
-  };
-
-
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setInputData(e.target.result);
-      };
-      reader.readAsText(file);
-    }
   };
 
   const handleRewrite = async (inputparagraph) => {
@@ -112,6 +99,35 @@ const Tool = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      try {
+        console.log("formData: ", formData);
+        const response = await axios.post(`http://localhost:8000/api/file/upload`, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+
+        console.log("response.data.data: ", response);
+        console.log("response.data.data: ", response.data);
+        console.log("response.data.data: ", response.data.data);
+
+        if (response.status === 200 && response.data) {
+          setInputData(response.data.data);
+        } else {
+          console.error("Error: No data received from the API.");
+        }
+      } catch (error) {
+        console.error("File upload error:", error);
+      }
+    }
+  };
 
   return (
     <div className="container-fluid p-0 mt-28">
@@ -180,20 +196,17 @@ const Tool = () => {
             <div className="gap-1 hidden lg:block md:block">
               <div className="relative h-[400px] p-4 w-full bg-slate-100 rounded-lg">
                 <textarea
-                  className={`bg-slate-100 text-xl w-full ${inputData.length === 0 ? 'h-[180px]' : 'h-full'} resize-none p-2 border-none outline-none`}
-                  
+                  className={`bg-slate-100 text-xl w-full ${inputData?.length === 0 ? 'h-[180px]' : 'h-full'} resize-none p-2 border-none outline-none`}
                   placeholder="Enter paragraph to rewrite..."
-                  value={inputData}
+                  value={inputData || ""}
                   onChange={(e) => {
                     const newInput = e.target.value;
-                    const wordCount = countWords(newInput); // Count words
-
+                    const wordCount = countWords(newInput);
                     if (wordCount <= 1500) {
                       setInputData(newInput);
-                      setWordCount(wordCount); // Update word count
+                      setWordCount(wordCount);
                     }
-                  }
-                  }
+                  }}
                 />
                 <div className="mt-24 p-6 inset-0 flex justify-center items-center">
                   {inputData.length === 0 && (
@@ -243,11 +256,11 @@ const Tool = () => {
                 >
                   Rewrite
                 </button>
-                
+
               </div>
             </div>
           )}
-          
+
           {/* Rewritten Section - Only show when the rewrite button is clicked on mobile */}
           {(!isMobile || showRewrittenSection) && (
             <div className="gap-1 grid-cols-2 bg-slate-100 p-5 rounded-lg">
@@ -260,14 +273,14 @@ const Tool = () => {
                 />
               </div>
               <div className="flex justify-end items-center mt-2 bg-slate-100 rounded-lg">
-              <div className="md:hidden lg:hidden mr-2">
-              <button
-                className="bg-gray-500 text-white p-1 rounded-md transition-colors duration-300"
-                onClick={handleRewriteAgain}
-              >
-                Rewrite Again
-              </button>
-              </div>
+                <div className="md:hidden lg:hidden mr-2">
+                  <button
+                    className="bg-gray-500 text-white p-1 rounded-md transition-colors duration-300"
+                    onClick={handleRewriteAgain}
+                  >
+                    Rewrite Again
+                  </button>
+                </div>
                 <div>
                   <button
                     className={`border border-gray-600 p-1 rounded-lg ${rewrittenData.length === 0
@@ -306,7 +319,7 @@ const Tool = () => {
                 </div>
               </div>
             </div>
-            
+
           )}
           {!showRewrittenSection && (
             <div className="gap-1 p-2">
@@ -366,7 +379,7 @@ const Tool = () => {
                   className={`border border-gray-600 p-1 rounded-lg text-sm ${inputData.length === 0
                     ? "cursor-not-allowed opacity-50"
                     : "hover:bg-gray-700 hover:text-white"
-                  }`}
+                    }`}
                   onClick={() => handleRewrite(inputData)}
                   disabled={inputData.length === 0}
                 >
@@ -375,7 +388,7 @@ const Tool = () => {
               </div>
             </div>
           )}
-         
+
         </div>
       </div>
     </div>
