@@ -99,6 +99,7 @@ const Tool = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+  
 
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
