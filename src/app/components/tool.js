@@ -370,7 +370,6 @@ const Tool = () => {
                   <input
                     id="multiple_files"
                     type="file"
-                    accept=".txt, .doc, .docx, .pdf"
                     className="hidden"
                     onChange={handleFileChange}
                   />
