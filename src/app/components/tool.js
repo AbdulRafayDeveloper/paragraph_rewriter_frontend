@@ -108,7 +108,7 @@ const Tool = () => {
 
       try {
         console.log("formData: ", formData);
-        const response = await axios.post(`http://localhost:8000/api/file/upload`, formData, {
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/file/upload`, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
