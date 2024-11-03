@@ -8,38 +8,38 @@ import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import FlareIcon from '@mui/icons-material/Flare';
 
 const Tool = () => {
-  const Tabs = [
+  const Tabs=[
     {
-      id: 1,
-      title: "Normal",
-      icon: <FormatColorFillIcon style={{ color: '#D4BDAC' }} />
+        id: 1,
+        title: "Normal",
+        icon: <FormatColorFillIcon style={{color: '#D4BDAC'}}/>
     },
     {
-      id: 2,
-      title: "Fluent",
-      icon: <BorderColorIcon style={{ color: 'green' }} />
+        id: 2,
+        title: "Fluent",
+        icon: <BorderColorIcon style={{color: 'green'}}/>
     },
     {
-      id: 3,
-      title: "Formal",
-      icon: <HighlightIcon style={{ color: '#78B7D0' }} />
+        id: 3,
+        title: "Formal",
+        icon: <HighlightIcon style={{color: '#78B7D0'}}/>
     },
     {
-      id: 4,
-      title: "Innovative",
-      icon: <TipsAndUpdatesIcon style={{ color: 'orange' }} />
+        id: 4,
+        title: "Innovative",
+        icon: <TipsAndUpdatesIcon style={{color: 'orange'}}/>
     },
     {
-      id: 5,
-      title: "Coherent",
-      icon: <FlareIcon style={{ color: 'pink' }} />
+        id: 5,
+        title: "Coherent",
+        icon: <FlareIcon style={{color: 'pink'}}/>
     },
     {
-      id: 6,
-      title: "Academic",
-      icon: <SchoolIcon style={{ color: 'black' }} />
+        id: 6,
+        title: "Academic",
+        icon: <SchoolIcon style={{color: 'black'}}/>
     },
-  ];
+];
   const [activeTab, setActiveTab] = useState(0);
   const [activeTabName, setActiveTabName] = useState(Tabs[0]?.title || "Normal");
   const [showDropdown, setShowDropdown] = useState(false);
@@ -48,10 +48,8 @@ const Tool = () => {
   const [isRewritten, setIsRewritten] = useState(false); // State to control input visibility on mobile
   const [isMobile, setIsMobile] = useState(false); // State to track if the screen is mobile
   const [showRewrittenSection, setShowRewrittenSection] = useState(false); // State to show rewritten 
-  const [wordCount, setWordCount] = useState(0);
-  const [loading, setLoading] = useState(false); // State for word count
-  
-    
+  const [wordCount, setWordCount] = useState(0); // State for word count
+  const [loading, setLoading] = useState(false);
   
   const SampleText =
     "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...";
@@ -89,35 +87,37 @@ const Tool = () => {
     return text.trim().split(/\s+/).filter(word => word.length > 0).length;
   };
 
-const handleRewrite = async (inputparagraph) => {
-  console.log('inputparagraph: ', inputparagraph);
-  console.log('activeTabName: ', activeTabName);
-  setLoading(true); // Start loading
-  try {
-    const data = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/rewrite/${activeTabName}`, { message: inputparagraph });
+  const handleRewrite = async (inputparagraph) => {
+    console.log('inputparagraph: ', inputparagraph);
+    console.log('activeTabName: ', activeTabName);
+    setLoading(true); // Start loading state
+    try {
+        const data = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/rewrite/${activeTabName}`, { message: inputparagraph });
+        
+        if (data) {
+            if (data.data.status === 200) {
+                setRewrittenData(data.data.data);
+            } else {
+                alert("Sorry this text cannot be rewritten right now. Please try again later!");
+                setRewrittenData("Error occurred.");
+            }
+        }
 
-    if (data) {
-      if (data.data.status == 200) {
-        setRewrittenData(data.data.data);
-      } else {
-        setRewrittenData("Sorry this text cannot rewrite right now. Please try again later!");
-      }
+        if (isMobile) {
+            setIsRewritten(true);
+            setShowRewrittenSection(true);
+        }
+    } catch (error) {
+        if (error.response) {
+            alert("Error rewriting text: " + error.response.data.message);
+        } else {
+            alert("An error occurred. Please try again later.");
+        }
+    } finally {
+        setLoading(false); // Stop loading state
     }
-    if (isMobile) {
-      setIsRewritten(true);
-      setShowRewrittenSection(true);
-    }
-  } catch (error) {
-    console.error("Error rewriting text:", error);
-  } finally {
-    setLoading(false); // Stop loading
-  }
 };
 
-// In your JSX
-{loading && <div className="spinner">Loading...</div>} // Add a spinner
-
-  
 
   const handleCopy = () => {
     navigator.clipboard.writeText(rewrittenData);
@@ -203,7 +203,7 @@ const handleRewrite = async (inputparagraph) => {
                 {showDropdown && (
                   <ul className="absolute z-10 w-[290px] bg-white shadow-lg rounded-lg mt-2">
                     {Tabs.map((el, idx) => (
-                      <li key={idx} onClick={() => handleTabClick(idx,title)}>
+                      <li key={idx} onClick={() => handleTabClick(idx, el.title)}>
                         <button
                           className={`inline-block w-full p-2 text-gray-900 bg-slate-100 hover:bg-gray-500 hover:text-black border rounded-lg active focus:outline-none ${activeTab === idx ? "bg-gray-500 text-black" : "bg-gray-50"
                             }`}
@@ -219,7 +219,7 @@ const handleRewrite = async (inputparagraph) => {
               </div>
 
             </div>
-            <ul className="hidden text-sm font-medium text-center text-gray-500 rounded-lg shadow sm:flex ">
+            <ul className="hidden text-sm font-medium text-center text-gray-500 rounded-lg shadow sm:flex " >
               {
                 Tabs.map((el, idx) => (
                   <li className="w-full focus-within:z-10" key={idx}>
