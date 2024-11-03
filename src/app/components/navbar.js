@@ -11,7 +11,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-slate-100 fixed w-full z-20 top-0 start-0">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-1 md:p-2">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2 md:p-2">
         <Link href="/" className="flex items-center space-x-2 sm:space-x-3 rtl:space-x-reverse">
           <img
             src="https://th.bing.com/th/id/OIP.-WXWqkczZZsOk3kfdV2jtgHaF7?w=245&h=196&c=7&r=0&o=5&pid=1.7"
@@ -29,7 +29,7 @@ const Navbar = () => {
             Blog
           </Link>
           
-          <Link href="/contact" class="text-white bg-gray-500 hover:bg-gray-600  font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 ">Contact Us</Link>
+          <Link href="/contact" className="text-white bg-gray-500 hover:bg-gray-600  font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 ">Contact Us</Link>
           <button
             onClick={toggleMenu}
             type="button"
