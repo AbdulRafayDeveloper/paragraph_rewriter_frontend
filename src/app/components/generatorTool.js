@@ -74,7 +74,7 @@ const GeneratorTool = () => {
                                         aria-expanded={menuOpen}
                                     >
                                         {selectedTone}
-                                        <svg className="w-2.5 h-2.5 ml-8 md:ml-16 lg:ml-16 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                        <svg className="w-2.5 h-2.5 ml-3 md:ml-16 lg:ml-16 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
                                         </svg>
                                     </button>
@@ -103,7 +103,7 @@ const GeneratorTool = () => {
                                         aria-expanded={lengthMenuOpen}
                                     >
                                         {selectedLength}
-                                        <svg className="w-2.5 h-2.5 ml-16" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                        <svg className="w-2.5 h-2.5 ml-3 md:ml-16 lg:ml-16" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
                                         </svg>
                                     </button>
@@ -127,10 +127,10 @@ const GeneratorTool = () => {
                         </div>
                         <div className="mt-4 md:mt-0">
                             <p className='text-sm'>Number of Paragraphs</p>
-                            <ul className="flex flex-wrap bg-white p-1 space-x-2 text-sm font-medium text-center text-gray-500 border-b border-gray-200">
+                            <ul className="flex flex-wrap bg-white p-1 space-x-2 rounded-lg text-sm font-medium text-center text-gray-500 border-b border-gray-200">
                                 {["Paragraph 1", "Paragraphs 2", "Paragraphs 3"].map((item) => (
                                     <li key={item} className="flex-1">
-                                        <a href="#" className="inline-block p-2 w-full text-center rounded-t-lg hover:bg-gray-50 active">{item}</a>
+                                        <a href="#" className="inline-block p-2 w-full text-center rounded-t-lg hover:bg-slate-100 active">{item}</a>
                                     </li>
                                 ))}
                             </ul>
