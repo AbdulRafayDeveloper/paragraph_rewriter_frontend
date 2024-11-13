@@ -64,9 +64,9 @@ const GeneratorTool = () => {
                     </div>
                     <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:max-w-[990px] gap-4 justify-center items-center">
                         <div className="space-y-4">
-                            <div className='grid grid-cols-2 gap-5 p-1'>
+                            <div className='grid grid-cols-2 gap-2 p-1'>
                             <div>
-                                <p>Paragraph Tone</p>
+                                <p className='text-sm'>Paragraph Tone</p>
                                 <div className="relative flex items-center">
                                     <button
                                         className="inline-flex items-center px-3 py-3 w-full max-w-[200px] text-sm font-normal text-gray-900 bg-white rounded-lg focus:ring-4 focus:outline-none focus:ring-gray-100"
@@ -95,7 +95,7 @@ const GeneratorTool = () => {
                                 </div>
                             </div>
                             <div>
-                                <p>Paragraph Length</p>
+                                <p className='text-sm'>Paragraph Length</p>
                                 <div className="relative flex items-center">
                                     <button
                                         className="inline-flex items-center px-3 py-3 w-full max-w-[200px] text-sm font-normal text-gray-900 bg-white rounded-lg focus:ring-4 focus:outline-none focus:ring-gray-100"
@@ -126,11 +126,11 @@ const GeneratorTool = () => {
                             </div>
                         </div>
                         <div className="mt-4 md:mt-0">
-                            <p>Number of Paragraphs</p>
+                            <p className='text-sm'>Number of Paragraphs</p>
                             <ul className="flex flex-wrap bg-white p-1 space-x-2 text-sm font-medium text-center text-gray-500 border-b border-gray-200">
                                 {["Paragraph 1", "Paragraphs 2", "Paragraphs 3"].map((item) => (
                                     <li key={item} className="flex-1">
-                                        <a href="#" className="inline-block p-2 w-full text-center rounded-t-lg hover:bg-gray-50 active dark:bg-gray-800 dark:text-blue-500">{item}</a>
+                                        <a href="#" className="inline-block p-2 w-full text-center rounded-t-lg hover:bg-gray-50 active">{item}</a>
                                     </li>
                                 ))}
                             </ul>
