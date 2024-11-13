@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-
+import Link from 'next/link';
 const GeneratorTool = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [lengthMenuOpen, setLengthMenuOpen] = useState(false);
@@ -130,7 +130,7 @@ const GeneratorTool = () => {
                             <ul className="flex flex-wrap bg-white p-1 space-x-2 rounded-lg text-sm font-medium text-center text-gray-500 border-b border-gray-200">
                                 {["Paragraph 1", "Paragraphs 2", "Paragraphs 3"].map((item) => (
                                     <li key={item} className="flex-1">
-                                        <a href="#" className="inline-block p-2 w-full text-center rounded-t-lg hover:bg-slate-100 active">{item}</a>
+                                        <Link href="#" className="inline-block p-2 w-full text-center rounded-t-lg hover:bg-slate-100 active">{item}</Link>
                                     </li>
                                 ))}
                             </ul>
