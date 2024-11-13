@@ -6,6 +6,19 @@ const GeneratorTool = () => {
     const [lengthMenuOpen, setLengthMenuOpen] = useState(false);
     const [selectedTone, setSelectedTone] = useState("Formal");
     const [selectedLength, setSelectedLength] = useState("Default");
+    // State to control the visibility of the hidden section
+    const [showSection, setShowSection] = useState(false);
+
+    // random paragraph set
+    const paragraph="allow companies based in the US, EU, UK and Japan to transfer funds to Payoneer users via local banking networks. Common reasons for a payment not arriving or not being credited. allow companies based in the US, EU, UK and Japan to transfer funds to Payoneer users via local banking networks. Common reasons for a payment not arriving or not being credited...";
+    // Character count (including spaces)
+    const characterCount = paragraph.length;
+
+    // Word count (splitting by spaces and filtering out any empty strings)
+    const wordCount = paragraph.split(/\s+/).filter(word => word.length > 0).length;
+
+    // Sentence count (splitting by sentence-ending punctuation and filtering out any empty strings)
+    const sentenceCount = paragraph.split(/[.!?]/).filter(sentence => sentence.trim().length > 0).length;
 
     const MenuOpenHandle = () => {
         setMenuOpen((prev) => !prev);
@@ -23,6 +36,11 @@ const GeneratorTool = () => {
     const handleLengthSelect = (length) => {
         setSelectedLength(length);
         setLengthMenuOpen(false);
+    };
+
+    // Function to toggle the visibility of the section
+    const contentHandle = () => {
+        setShowSection(!showSection);
     };
 
     return (
@@ -120,7 +138,53 @@ const GeneratorTool = () => {
                     </div>
                 </div>
             </div>
+            {/* generate section */}
+            <div>
+            {/* Generate Button Section */}
+            <div className='mt-5 p-4 text-center justify-center'>
+                <button className='bg-gray-600 p-3 text-white rounded-md' onClick={contentHandle}>
+                    Generate Again
+                </button>
+            </div>
+
+            {/* Conditional Rendering of the Section */}
+            {showSection && (
+                <div className='container mt-5 p-4 w-full lg:max-w-[1150px] mx-auto bg-slate-100'>
+                    <div className='flex flex-col sm:flex-row sm:justify-between items-center'>
+                        <div className='flex-1'>
+                            <p className='text-lg font-bold'>Result</p>
+                        </div>
+                        <div className='flex-1 mt-2 sm:mt-0 text-center sm:text-left'>
+                            <p>Characters {characterCount} | Words {wordCount} | Sentences {sentenceCount}</p>
+                        </div>
+                        <div className='flex-1 flex justify-center sm:justify-end gap-5 mt-2 sm:mt-0'>
+                            <i className="fa-solid fa-trash text-xl"></i>
+                            <i className="fa-solid fa-download text-xl"></i>
+                            <i className="fa-solid fa-copy text-xl"></i>
+                        </div>
+                    </div>
+                    
+                    <div className='mt-5'>
+                        <div className='flex flex-col gap-2'>
+                            <div className='flex justify-between items-center'>
+                                <p className='text-lg font-bold'>Paragraph 1</p>
+                                <div className='flex gap-4'>
+                                    <i className="fa-solid fa-download text-xl"></i>
+                                    <i className="fa-solid fa-copy text-xl"></i>
+                                </div>
+                            </div>
+                            
+                            <div className='text-justify leading-relaxed mt-2 text-sm sm:text-base'>
+                                {paragraph}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
+        </div>
+
+        
     );
 }
 
