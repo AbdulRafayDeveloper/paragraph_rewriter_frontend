@@ -10,7 +10,7 @@ const GeneratorTool = () => {
     const [showSection, setShowSection] = useState(false);
 
     // random paragraph set
-    const paragraph="allow companies based in the US, EU, UK and Japan to transfer funds to Payoneer users via local banking networks. Common reasons for a payment not arriving or not being credited. allow companies based in the US, EU, UK and Japan to transfer funds to Payoneer users via local banking networks. Common reasons for a payment not arriving or not being credited...";
+    const [paragraph, setParagraph] = useState("allow companies based in the US, EU, UK and Japan to transfer funds to Payoneer users via local banking networks. Common reasons for a payment not arriving or not being credited...");
     // Character count (including spaces)
     const characterCount = paragraph.length;
 
@@ -42,6 +42,29 @@ const GeneratorTool = () => {
     const contentHandle = () => {
         setShowSection(!showSection);
     };
+     // Download as .doc file
+     const downloadDocFile = () => {
+        const element = document.createElement("a");
+        const file = new Blob([paragraph], { type: 'application/msword' });
+        element.href = URL.createObjectURL(file);
+        element.download = "paragraph.doc";
+        element.click();
+    };
+
+    // Copy to clipboard
+    const copyContent = async () => {
+        try {
+            await navigator.clipboard.writeText(paragraph);
+            alert("Content copied to clipboard!");
+        } catch (err) {
+            console.error("Failed to copy: ", err);
+        }
+    };
+    // Delete content
+    const deleteContent = () => {
+        setParagraph(""); // Clear the paragraph content
+    };
+
 
     return (
         <div className="container-fluid p-4 sm:p-6 md:p-8 lg:p-10 mt-10">
@@ -158,9 +181,9 @@ const GeneratorTool = () => {
                             <p>Characters {characterCount} | Words {wordCount} | Sentences {sentenceCount}</p>
                         </div>
                         <div className='flex-1 flex justify-center sm:justify-end gap-5 mt-2 sm:mt-0'>
-                            <i className="fa-solid fa-trash text-xl"></i>
-                            <i className="fa-solid fa-download text-xl"></i>
-                            <i className="fa-solid fa-copy text-xl"></i>
+                            <i className="fa-solid fa-trash text-xl cursor-pointer" onClick={deleteContent}></i>
+                            <i className="fa-solid fa-download text-xl cursor-pointer" onClick={downloadDocFile}></i>
+                            <i className="fa-solid fa-copy text-xl cursor-pointer" onClick={copyContent}></i>
                         </div>
                     </div>
                     
@@ -168,10 +191,10 @@ const GeneratorTool = () => {
                         <div className='flex flex-col gap-2'>
                             <div className='flex justify-between items-center'>
                                 <p className='text-lg font-bold'>Paragraph 1</p>
-                                <div className='flex gap-4'>
+                                {/* <div className='flex gap-4'>
                                     <i className="fa-solid fa-download text-xl"></i>
                                     <i className="fa-solid fa-copy text-xl"></i>
-                                </div>
+                                </div> */}
                             </div>
                             
                             <div className='text-justify leading-relaxed mt-2 text-sm sm:text-base'>
