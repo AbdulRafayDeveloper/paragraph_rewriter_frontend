@@ -200,7 +200,7 @@ const GeneratorTool = () => {
                                     <li key={item} className="flex-1">
                                         <button
                                             onClick={() => setActiveTab(item)}
-                                            className={`p-2 w-full text-center rounded-lg ${
+                                            className={`p-2 w-full text-center border-2  rounded-lg ${
                                                 activeTab === item ? 'bg-gray-600 text-white' : 'hover:bg-gray-600 hover:text-white'
                                             }`}
                                         >
