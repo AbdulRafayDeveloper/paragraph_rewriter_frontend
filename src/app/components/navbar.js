@@ -80,7 +80,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link href="#" className="text-sm sm:text-lg block py-2 px-3 sm:py-5 sm:px-5 md:p-0 text-gray-500 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-800">
+              <Link href="sentenceRewriter" className="text-sm sm:text-lg block py-2 px-3 sm:py-5 sm:px-5 md:p-0 text-gray-500 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-800">
                 Sentence Rewriter
               </Link>
             </li>

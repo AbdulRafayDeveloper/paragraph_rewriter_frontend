@@ -131,18 +131,18 @@ const GeneratorTool = () => {
                         placeholder="Enter your paragraph topic here..."
                     ></textarea>
                     <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mt-5">
-                    <div className="space-y-4">
+                    <div className="md:space-y-4">
                             <div className='grid grid-cols-2 gap-2 p-1'>
                             <div>
                                 <p className='text-sm'>Paragraph Tone</p>
                                 <div className="relative flex items-center mt-3">
                                     <button
-                                        className="inline-flex items-center px-3 py-3  max-w-[200px] text-sm font-normal text-gray-900 bg-white rounded-lg focus:ring-4 focus:outline-none focus:ring-gray-100"
+                                        className="inline-flex items-center px-3 py-3 min-w-[130px] text-sm font-normal text-gray-900 bg-white rounded-lg focus:ring-4 focus:outline-none focus:ring-gray-100"
                                         onClick={MenuOpenHandle}
                                         aria-expanded={menuOpen}
                                     >
                                         {selectedTone}
-                                        <svg className="w-2.5 h-2.5 ml-3 md:ml-16 lg:ml-16 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                        <svg className="w-2.5 h-2.5 ml-5 md:ml-16 lg:ml-16 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
                                         </svg>
                                     </button>
@@ -166,12 +166,12 @@ const GeneratorTool = () => {
                                 <p className='text-sm'>Paragraph Length</p>
                                 <div className="relative flex items-center mt-3">
                                     <button
-                                        className="inline-flex items-center px-3 py-3 max-w-[200px] text-sm font-normal text-gray-900 bg-white rounded-lg focus:ring-4 focus:outline-none focus:ring-gray-100"
+                                        className="inline-flex items-center px-3 py-3 min-w-[130px] text-sm font-normal text-gray-900 bg-white rounded-lg focus:ring-4 focus:outline-none focus:ring-gray-100"
                                         onClick={LengthMenuOpenHandle}
                                         aria-expanded={lengthMenuOpen}
                                     >
                                         {selectedLength}
-                                        <svg className="w-2.5 h-2.5 ml-3 md:ml-16 lg:ml-16" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                        <svg className="w-2.5 h-2.5 ml-5 md:ml-16 lg:ml-16" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
                                         </svg>
                                     </button>
@@ -230,7 +230,7 @@ const GeneratorTool = () => {
                         <div className='flex-1 mt-2 sm:mt-0 text-center'>
                             <p>Characters {characterCount} | Words {wordCount} | Sentences {sentenceCount}</p>
                         </div>
-                        <div className='flex gap-5'>
+                        <div className='flex gap-5 mt-3'>
                             <i className="fa-solid fa-trash text-xl cursor-pointer" onClick={deleteContent}></i>
                             <i className="fa-solid fa-download text-xl cursor-pointer" onClick={downloadDocFile}></i>
                             <i className="fa-solid fa-copy text-xl cursor-pointer" onClick={copyContent}></i>
