@@ -1,32 +1,25 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Link from 'next/link';
+
 const GeneratorTool = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [lengthMenuOpen, setLengthMenuOpen] = useState(false);
     const [selectedTone, setSelectedTone] = useState("Formal");
     const [selectedLength, setSelectedLength] = useState("Default");
-    // State to control the visibility of the hidden section
+    const [activeTab, setActiveTab] = useState("Paragraph 1");
+    const [paragraphs, setParagraphs] = useState([]);
     const [showSection, setShowSection] = useState(false);
-
-    // random paragraph set
-    const [paragraph, setParagraph] = useState("allow companies based in the US, EU, UK and Japan to transfer funds to Payoneer users via local banking networks. Common reasons for a payment not arriving or not being credited...");
-    // Character count (including spaces)
-    const characterCount = paragraph.length;
-
-    // Word count (splitting by spaces and filtering out any empty strings)
-    const wordCount = paragraph.split(/\s+/).filter(word => word.length > 0).length;
-
-    // Sentence count (splitting by sentence-ending punctuation and filtering out any empty strings)
-    const sentenceCount = paragraph.split(/[.!?]/).filter(sentence => sentence.trim().length > 0).length;
-
-    const MenuOpenHandle = () => {
-        setMenuOpen((prev) => !prev);
-    };
-
-    const LengthMenuOpenHandle = () => {
-        setLengthMenuOpen((prev) => !prev);
-    };
+    const [buttonText, setButtonText] = useState("Generate Paragraphs");
+    const inputRef = useRef(null);
+    const [characterCount, setCharacterCount] = useState(0);
+    const [wordCount, setWordCount] = useState(0);
+    const [sentenceCount, setSentenceCount] = useState(0);
+    const [characterOccurrences, setCharacterOccurrences] = useState({});
+    const [wordOccurrences, setWordOccurrences] = useState({});
+    const [sentenceOccurrences, setSentenceOccurrences] = useState({});
+    const MenuOpenHandle = () => setMenuOpen((prev) => !prev);
+    const LengthMenuOpenHandle = () => setLengthMenuOpen((prev) => !prev);
 
     const handleToneSelect = (tone) => {
         setSelectedTone(tone);
@@ -38,61 +31,113 @@ const GeneratorTool = () => {
         setLengthMenuOpen(false);
     };
 
-    // Function to toggle the visibility of the section
     const contentHandle = () => {
-        setShowSection(!showSection);
+        const newParagraphs = generateParagraphs();
+        setParagraphs(newParagraphs);
+        setShowSection(true);
+        setButtonText("Generate Again");
+        updateCounts(newParagraphs);
+        updateOccurrences(newParagraphs);
     };
-     // Download as .doc file
-     const downloadDocFile = () => {
+
+    const updateCounts = (newParagraphs) => {
+        const text = newParagraphs.join(' ');
+        setCharacterCount(text.length);
+        setWordCount(text.split(/\s+/).filter(word => word.length > 0).length);
+        setSentenceCount(text.split(/[.!?]/).filter(sentence => sentence.trim().length > 0).length);
+    };
+
+    const updateOccurrences = (newParagraphs) => {
+        const text = newParagraphs.join(' ');
+        
+        // Character occurrences
+        const charOccurrences = {};
+        for (let char of text) {
+            if (char.trim()) {
+                charOccurrences[char] = (charOccurrences[char] || 0) + 1;
+            }
+        }
+        setCharacterOccurrences(charOccurrences);
+
+        // Word occurrences
+        const wordOccurrences = {};
+        text.split(/\s+/).forEach(word => {
+            if (word.trim()) {
+                wordOccurrences[word] = (wordOccurrences[word] || 0) + 1;
+            }
+        });
+        setWordOccurrences(wordOccurrences);
+
+        // Sentence occurrences
+        const sentenceOccurrences = {};
+        text.split(/[.!?]/).forEach(sentence => {
+            const trimmed = sentence.trim();
+            if (trimmed) {
+                sentenceOccurrences[trimmed] = (sentenceOccurrences[trimmed] || 0) + 1;
+            }
+        });
+        setSentenceOccurrences(sentenceOccurrences);
+    };
+
+    const generateParagraphs = () => {
+        const paragraphCount = activeTab === "Paragraph 1" ? 1 : activeTab === "Paragraphs 2" ? 2 : 3;
+        return Array.from({ length: paragraphCount }, (_, i) => `${i + 1}. ${inputRef.current?.value || "Generated content goes here."}`);
+    };
+
+    const downloadDocFile = () => {
         const element = document.createElement("a");
-        const file = new Blob([paragraph], { type: 'application/msword' });
+        const file = new Blob([paragraphs.join('\n\n')], { type: 'application/msword' });
         element.href = URL.createObjectURL(file);
-        element.download = "paragraph.doc";
+        element.download = "paragraphs.doc";
         element.click();
     };
 
-    // Copy to clipboard
     const copyContent = async () => {
         try {
-            await navigator.clipboard.writeText(paragraph);
+            await navigator.clipboard.writeText(paragraphs.join('\n\n'));
             alert("Content copied to clipboard!");
         } catch (err) {
             console.error("Failed to copy: ", err);
         }
     };
-    // Delete content
-    const deleteContent = () => {
-        setParagraph(""); // Clear the paragraph content
-    };
 
+    const deleteContent = () => {
+        setShowSection(false);
+        setButtonText("Generate Paragraphs");
+        setParagraphs([]);
+        setCharacterOccurrences({});
+        setWordOccurrences({});
+        setSentenceOccurrences({});
+        inputRef.current.value = "";
+    };
 
     return (
         <div className="container-fluid p-4 sm:p-6 md:p-8 lg:p-10 mt-10">
             <div className="flex flex-col items-center text-center space-y-4">
-                <div className="w-full max-w-[600px] md:max-w-[800px]">
-                    <h1 className="text-xl md:text-3xl font-bold">Paragraph Rewriter</h1>
-                    <p className="text-sm md:text-lg mt-2 md:mt-4">
-                        Use our AI Paragraph Rewriter tool to turn any paragraph into a new and unique one without changing the original context.
+                <div className="w-full max-w-[950px]">
+                    <h1 className="text-xl md:text-3xl font-bold">Paragraph Generator</h1>
+                    <p className="text-sm md:text-lg mt-2">
+                    AI Paragraph Generator is online AI Paragraph Writer that helps you generate informative and compelling paragraphs in seconds.
                     </p>
                 </div>
             </div>
+
             {/* tool section */}
-            <div className="mt-5 p-4 w-full lg:max-w-[1170px] mx-auto">
+            <div className="mt-5 p-4 w-full lg:max-w-[1000px] mx-auto">
                 <div className="p-4 bg-slate-100 rounded-lg shadow-md">
-                    <div className="w-full p-4">
-                        <textarea
-                            className="w-full border-none outline-none bg-slate-100 text-lg resize-none"
-                            placeholder="Enter your paragraph topic here..."
-                        ></textarea>
-                    </div>
-                    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:max-w-[990px] gap-4 justify-center items-center">
-                        <div className="space-y-4">
+                    <textarea
+                        ref={inputRef}
+                        className="w-full border-none outline-none bg-slate-100 text-lg resize-none"
+                        placeholder="Enter your paragraph topic here..."
+                    ></textarea>
+                    <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+                    <div className="space-y-4">
                             <div className='grid grid-cols-2 gap-2 p-1'>
                             <div>
                                 <p className='text-sm'>Paragraph Tone</p>
-                                <div className="relative flex items-center">
+                                <div className="relative flex items-center mt-3">
                                     <button
-                                        className="inline-flex items-center px-3 py-3 w-full max-w-[200px] text-sm font-normal text-gray-900 bg-white rounded-lg focus:ring-4 focus:outline-none focus:ring-gray-100"
+                                        className="inline-flex items-center px-3 py-3  max-w-[200px] text-sm font-normal text-gray-900 bg-white rounded-lg focus:ring-4 focus:outline-none focus:ring-gray-100"
                                         onClick={MenuOpenHandle}
                                         aria-expanded={menuOpen}
                                     >
@@ -119,9 +164,9 @@ const GeneratorTool = () => {
                             </div>
                             <div>
                                 <p className='text-sm'>Paragraph Length</p>
-                                <div className="relative flex items-center">
+                                <div className="relative flex items-center mt-3">
                                     <button
-                                        className="inline-flex items-center px-3 py-3 w-full max-w-[200px] text-sm font-normal text-gray-900 bg-white rounded-lg focus:ring-4 focus:outline-none focus:ring-gray-100"
+                                        className="inline-flex items-center px-3 py-3 max-w-[200px] text-sm font-normal text-gray-900 bg-white rounded-lg focus:ring-4 focus:outline-none focus:ring-gray-100"
                                         onClick={LengthMenuOpenHandle}
                                         aria-expanded={lengthMenuOpen}
                                     >
@@ -148,12 +193,19 @@ const GeneratorTool = () => {
                             </div>
                             </div>
                         </div>
-                        <div className="mt-4 md:mt-0">
+                        <div>
                             <p className='text-sm'>Number of Paragraphs</p>
-                            <ul className="flex flex-wrap bg-white p-1 space-x-2 rounded-lg text-sm font-medium text-center text-gray-500 border-b border-gray-200">
+                            <ul className="grid lg:grid-cols-3 md:grid-cols-3 grid-cols-1 mt-3 bg-white p-1 gap-3 rounded-lg">
                                 {["Paragraph 1", "Paragraphs 2", "Paragraphs 3"].map((item) => (
                                     <li key={item} className="flex-1">
-                                        <Link href="#" className="inline-block p-2 w-full text-center rounded-t-lg hover:bg-slate-100 active">{item}</Link>
+                                        <button
+                                            onClick={() => setActiveTab(item)}
+                                            className={`p-2 w-full text-center rounded-lg ${
+                                                activeTab === item ? 'bg-gray-600 text-white' : 'hover:bg-gray-600 hover:text-white'
+                                            }`}
+                                        >
+                                            {item}
+                                        </button>
                                     </li>
                                 ))}
                             </ul>
@@ -161,54 +213,41 @@ const GeneratorTool = () => {
                     </div>
                 </div>
             </div>
-            {/* generate section */}
-            <div>
-            {/* Generate Button Section */}
-            <div className='mt-5 p-4 text-center justify-center'>
+
+            {/* Generate Section */}
+            <div className='mt-5 text-center'>
                 <button className='bg-gray-600 p-3 text-white rounded-md' onClick={contentHandle}>
-                    Generate Again
+                    {buttonText}
                 </button>
             </div>
 
-            {/* Conditional Rendering of the Section */}
             {showSection && (
-                <div className='container mt-5 p-4 w-full lg:max-w-[1150px] mx-auto bg-slate-100'>
-                    <div className='flex flex-col sm:flex-row sm:justify-between items-center'>
-                        <div className='flex-1'>
+                <div className='container mt-5 p-4 w-full lg:max-w-[980px] rounded-lg shadow-md mx-auto bg-slate-100'>
+                    <div className='flex flex-col sm:flex-row sm:justify-between items-center mb-5'>
+                        <div>
                             <p className='text-lg font-bold'>Result</p>
                         </div>
-                        <div className='flex-1 mt-2 sm:mt-0 text-center sm:text-left'>
+                        <div className='flex-1 mt-2 sm:mt-0 text-center'>
                             <p>Characters {characterCount} | Words {wordCount} | Sentences {sentenceCount}</p>
                         </div>
-                        <div className='flex-1 flex justify-center sm:justify-end gap-5 mt-2 sm:mt-0'>
+                        <div className='flex gap-5'>
                             <i className="fa-solid fa-trash text-xl cursor-pointer" onClick={deleteContent}></i>
                             <i className="fa-solid fa-download text-xl cursor-pointer" onClick={downloadDocFile}></i>
                             <i className="fa-solid fa-copy text-xl cursor-pointer" onClick={copyContent}></i>
                         </div>
                     </div>
-                    
-                    <div className='mt-5'>
-                        <div className='flex flex-col gap-2'>
-                            <div className='flex justify-between items-center'>
-                                <p className='text-lg font-bold'>Paragraph 1</p>
-                                {/* <div className='flex gap-4'>
-                                    <i className="fa-solid fa-download text-xl"></i>
-                                    <i className="fa-solid fa-copy text-xl"></i>
-                                </div> */}
-                            </div>
-                            
-                            <div className='text-justify leading-relaxed mt-2 text-sm sm:text-base'>
-                                {paragraph}
+                    {paragraphs.map((para, idx) => (
+                        <div key={idx} className='mt-5 border-t-2 border-gray-300' >
+                            <div className='mt-5'>
+                                <p className='text-lg font-bold'>Paragraph {idx + 1}</p>
+                                <p className='mt-2 text-justify'>{para}</p>
                             </div>
                         </div>
-                    </div>
+                    ))}
                 </div>
             )}
         </div>
-        </div>
-
-        
     );
-}
+};
 
 export default GeneratorTool;
