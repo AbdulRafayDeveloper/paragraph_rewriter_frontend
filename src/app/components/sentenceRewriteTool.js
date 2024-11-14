@@ -3,9 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";import FormatColorFillIcon from '@mui/icons-material/FormatColorFill';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import HighlightIcon from '@mui/icons-material/Highlight';
-import SchoolIcon from '@mui/icons-material/School';
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
-import FlareIcon from '@mui/icons-material/Flare';
 
 const SentenceRewriteTool = () => {
   const Tabs=[
@@ -31,14 +29,14 @@ const SentenceRewriteTool = () => {
     },
 ];
   const [activeTab, setActiveTab] = useState(0);
-  const [activeTabName, setActiveTabName] = useState(Tabs[0]?.title || "Normal");
+  const [activeTabName, setActiveTabName] = useState(Tabs[0]?.title || "Simplify");
   const [showDropdown, setShowDropdown] = useState(false);
   const [inputData, setInputData] = useState(""); // State for input textarea
   const [rewrittenData, setRewrittenData] = useState(""); // State for rewritten textarea
   const [isRewritten, setIsRewritten] = useState(false); // State to control input visibility on mobile
   const [isMobile, setIsMobile] = useState(false); // State to track if the screen is mobile
   const [showRewrittenSection, setShowRewrittenSection] = useState(false); // State to show rewritten 
-  const [wordCount, setWordCount] = useState(0); // State for word count
+  const [sentenceCount, setSentenceCount] = useState(0); // State for word count
   const [loading, setLoading] = useState(false);
   
   const SampleText =
@@ -58,9 +56,9 @@ const SentenceRewriteTool = () => {
     try {
       const clipboardText = await navigator.clipboard.readText();
       const combinedText = inputData + ' ' + clipboardText; // Add a space to separate the texts
-      const wordCount = countWords(combinedText); // Assuming countWords is defined elsewhere
+      const sentenceCount = countWords(combinedText); // Assuming countWords is defined elsewhere
 
-      if (wordCount > 1500) {
+      if (sentenceCount > 1500) {
         const wordsArray = combinedText.trim().split(/\s+/);
         const limitedWords = wordsArray.slice(0, 1500).join(' '); // Get only the first 1500 words
         setInputData(limitedWords);
@@ -74,7 +72,7 @@ const SentenceRewriteTool = () => {
 
   // Define the countWords function if not already defined
   const countWords = (text) => {
-    return text.trim().split(/\s+/).filter(word => word.length > 0).length;
+    return text.trim().split(/[.!?]/).filter(sentence => sentence.trim().length > 0).length;
   };
 
   const handleRewrite = async (inputparagraph) => {
@@ -124,7 +122,7 @@ const SentenceRewriteTool = () => {
   const handleRewriteAgain = () => {
     setInputData(''); // Clear input data
     setRewrittenData(''); // Clear rewritten data
-    setWordCount(0); // Reset word count
+    setSentenceCount(0); // Reset word count
     setShowRewrittenSection(false); // Show input section again
   };
   useEffect(() => {
@@ -171,7 +169,7 @@ const SentenceRewriteTool = () => {
         <div className="w-full sm:w-[600px] lg:w-[800px]">
           <h1 className="text-2xl sm:text-3xl font-bold">Sentence Rewriter</h1>
           <p className="text-md sm:text-lg mt-4">
-            Use our AI Paragraph Rewriter tool to turn any paragraph into a new and unique one without changing the original context.
+            Use our AI Sentence Rewriter tool to turn any paragraph into a new and unique one without changing the original context.
           </p>
         </div>
       </div>
@@ -237,10 +235,10 @@ const SentenceRewriteTool = () => {
                   value={inputData || ""}
                   onChange={(e) => {
                     const newInput = e.target.value;
-                    const wordCount = countWords(newInput);
-                    if (wordCount <= 1500) {
+                    const sentenceCount = countWords(newInput);
+                    if (sentenceCount <= 1500) {
                       setInputData(newInput);
-                      setWordCount(wordCount);
+                      setSentenceCount(sentenceCount);
                     }
                   }}
                 />
@@ -281,7 +279,7 @@ const SentenceRewriteTool = () => {
                     onChange={handleFileChange}
                   />
                 </label>
-                <span className="text-sm px-4">{countWords(inputData)} / 1500 words</span>
+                <span className="text-sm px-4">{countWords(inputData)} / Sentences</span>
                 <button
                   className={`border border-gray-600 p-1 rounded-lg text-sm ${inputData.length === 0
                     ? "cursor-not-allowed opacity-50"
@@ -361,16 +359,16 @@ const SentenceRewriteTool = () => {
             <div className="gap-1 p-2">
               <div className="relative h-[400px] p-4 w-full bg-slate-100 rounded-lg md:hidden ">
                 <textarea
-                  className={`bg-slate-100 text-xl w-full ${inputData.length === 0 ? 'h-[180px]' : 'h-full'} resize-none p-2 border-none outline-none`}
-                  placeholder="Enter paragraph to rewrite..."
+                  className={`bg-slate-100 text-md w-full ${inputData.length === 0 ? 'h-[180px]' : 'h-full'} resize-none p-2 border-none outline-none`}
+                  placeholder="Enter Text to Rephrase..."
                   value={inputData}
                   onChange={(e) => {
                     const newInput = e.target.value;
-                    const wordCount = countWords(newInput); // Count words
+                    const sentenceCount = countWords(newInput); // Count words
 
-                    if (wordCount <= 1500) {
+                    if (sentenceCount <= 1500) {
                       setInputData(newInput);
-                      setWordCount(wordCount); // Update word count
+                      setSentenceCount(sentenceCount); // Update word count
                     }
                   }}
                 />
@@ -410,16 +408,16 @@ const SentenceRewriteTool = () => {
                     onChange={handleFileChange}
                   />
                 </label>
-                <span className="text-sm px-4">{countWords(inputData)} / 1500 words</span>
+                <span className="text-sm px-1 text-center">{countWords(inputData)} Sentence</span>
                 <button
-                  className={`border border-gray-600 p-1 rounded-lg text-sm ${inputData.length === 0
+                  className={`border border-gray-600 px-1 rounded-lg text-sm ${inputData.length === 0
                     ? "cursor-not-allowed opacity-50"
                     : "hover:bg-gray-700 hover:text-white"
                     }`}
                   onClick={() => handleRewrite(inputData)}
                   disabled={inputData.length === 0}
                 >
-                  Rewrite
+                  Sentence Rewrite
                 </button>
               </div>
             </div>
