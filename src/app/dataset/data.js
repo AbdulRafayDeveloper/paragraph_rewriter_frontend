@@ -76,7 +76,28 @@ const Textparagraph=[
         content: "Our AI paragraph rewriter is an online AI Rewriter tool that is designed to polish and improve existing paragraphs as well as words. It uses advanced systems that are supported by AI algorithms to rewrite paragraphs precisely.Our AI paragraph rewriter is an online AI Rewriter tool that is designed to polish and improve existing paragraphs as well as words. It uses advanced systems that are supported by AI algorithms to rewrite paragraphs precisely. You can start using our AI Paragraph rewriter by following the below-given simple steps.",
     },
 ];
-
+const generatorTextparagraph=[
+    {
+        id: 1,
+        title: "What is the Paragraph Regenerator?",
+        content: "Our AI paragraph rewriter is an online AI Rewriter tool that is designed to polish and improve existing paragraphs as well as words. It uses advanced systems that are supported by AI algorithms to rewrite paragraphs precisely.Our AI paragraph rewriter is an online AI Rewriter tool that is designed to polish and improve existing paragraphs as well as words. It uses advanced systems that are supported by AI algorithms to rewrite paragraphs precisely. Our AI paragraph rewriter is an online AI Rewriter tool that is designed to polish and improve existing paragraphs as well as words. It uses advanced systems that are supported by AI algorithms to rewrite paragraphs precisely.",
+    },
+    {
+        id: 2,
+        title: "How to Use Regenerate Paragraph Tool?",
+        content: "Our AI paragraph rewriter is an online AI Rewriter tool that is designed to polish and improve existing paragraphs as well as words. It uses advanced systems that are supported by AI algorithms to rewrite paragraphs precisely.Our AI paragraph rewriter is an online AI Rewriter tool that is designed to polish and improve existing paragraphs as well as words. It uses advanced systems that are supported by AI algorithms to rewrite paragraphs precisely. You can start using our AI Paragraph rewriter by following the below-given simple steps.",
+    },
+    {
+        id: 3,
+        title: "Why we need Paragraph Regnerate?",
+        content: "Our AI paragraph rewriter is an online AI Rewriter tool that is designed to polish and improve existing paragraphs as well as words. It uses advanced systems that are supported by AI algorithms to rewrite paragraphs precisely.Our AI paragraph rewriter is an online AI Rewriter tool that is designed to polish and improve existing paragraphs as well as words. It uses advanced systems that are supported by AI algorithms to rewrite paragraphs precisely. Our AI paragraph rewriter is an online AI Rewriter tool that is designed to polish and improve existing paragraphs as well as words. It uses advanced systems that are supported by AI algorithms to rewrite paragraphs precisely.",
+    },
+    {
+        id: 4,
+        title: "How to Use Regenerate Paragraph Tool?",
+        content: "Our AI paragraph rewriter is an online AI Rewriter tool that is designed to polish and improve existing paragraphs as well as words. It uses advanced systems that are supported by AI algorithms to rewrite paragraphs precisely.Our AI paragraph rewriter is an online AI Rewriter tool that is designed to polish and improve existing paragraphs as well as words. It uses advanced systems that are supported by AI algorithms to rewrite paragraphs precisely. You can start using our AI Paragraph rewriter by following the below-given simple steps.",
+    },
+];
 // cards data
 const CardData=[
     {
@@ -530,4 +551,4 @@ const UsersInfo=[
     },
 ]
 export default Menu;
-export {Tabs,Textparagraph,CardData,FeaturedCardData,AIToolData,Rewritertooldata,FAQsData,UsersInfo,ParagraphFAQs,GenerateCardData,GenerateFeaturedCardData,paragraphGeneratorTools};
+export {Tabs,Textparagraph,generatorTextparagraph,CardData,FeaturedCardData,AIToolData,Rewritertooldata,FAQsData,UsersInfo,ParagraphFAQs,GenerateCardData,GenerateFeaturedCardData,paragraphGeneratorTools};

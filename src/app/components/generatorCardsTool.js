@@ -1,4 +1,4 @@
-import { Textparagraph } from "../dataset/data";
+import { generatorTextparagraph } from "../dataset/data";
 import GenerateCardData from "./generateCards";
 
 const GeneratorCards=()=>{
@@ -25,7 +25,7 @@ const GeneratorCards=()=>{
                             <div className="mt-8 p-2 border border-gray-300 border-1">
                                 <div className="p-8">
                                     {
-                                        Textparagraph.map((el,idx)=>(
+                                        generatorTextparagraph.map((el,idx)=>(
                                             <div key={idx} className="mt-5">
                                                 <h1 className="text-2xl sm:text-3xl font-bold">{el.title}</h1>
                                                 <p className="text-md sm:text-lg mt-3">{el.content}</p>
