@@ -127,7 +127,7 @@ const GeneratorTool = () => {
                 <div className="p-4 bg-slate-100 rounded-lg shadow-md">
                     <textarea
                         ref={inputRef}
-                        className="w-full border-none outline-none bg-slate-100 text-lg resize-none"
+                        className="w-full border-none outline-none bg-slate-100 md:text-lg lg:text-lg resize-none text-sm"
                         placeholder="Enter your paragraph topic here..."
                     ></textarea>
                     <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mt-5">
@@ -137,7 +137,7 @@ const GeneratorTool = () => {
                                 <p className='text-sm'>Paragraph Tone</p>
                                 <div className="relative flex items-center mt-3">
                                     <button
-                                        className="inline-flex items-center px-3 py-3 min-w-[130px] text-sm font-normal text-gray-900 bg-white rounded-lg focus:ring-4 focus:outline-none focus:ring-gray-100"
+                                        className="inline-flex items-center px-3 py-3 min-w-[128px] text-sm font-normal text-gray-900 bg-white rounded-lg focus:ring-4 focus:outline-none focus:ring-gray-100"
                                         onClick={MenuOpenHandle}
                                         aria-expanded={menuOpen}
                                     >
@@ -166,7 +166,7 @@ const GeneratorTool = () => {
                                 <p className='text-sm'>Paragraph Length</p>
                                 <div className="relative flex items-center mt-3">
                                     <button
-                                        className="inline-flex items-center px-3 py-3 min-w-[130px] text-sm font-normal text-gray-900 bg-white rounded-lg focus:ring-4 focus:outline-none focus:ring-gray-100"
+                                        className="inline-flex items-center px-3 py-3 min-w-[128px] text-sm font-normal text-gray-900 bg-white rounded-lg focus:ring-4 focus:outline-none focus:ring-gray-100"
                                         onClick={LengthMenuOpenHandle}
                                         aria-expanded={lengthMenuOpen}
                                     >
@@ -195,7 +195,7 @@ const GeneratorTool = () => {
                         </div>
                         <div>
                             <p className='text-sm'>Number of Paragraphs</p>
-                            <ul className="grid lg:grid-cols-3 md:grid-cols-3 grid-cols-1 mt-3 bg-white p-1 gap-3 rounded-lg">
+                            <ul className="grid lg:grid-cols-3 md:grid-cols-3 grid-cols-1 mt-3 bg-white p-1 gap-1 rounded-lg">
                                 {["Paragraph 1", "Paragraphs 2", "Paragraphs 3"].map((item) => (
                                     <li key={item} className="flex-1">
                                         <button
