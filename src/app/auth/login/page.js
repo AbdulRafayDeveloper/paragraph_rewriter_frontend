@@ -1,7 +1,9 @@
 "use client";
+import Cookies from 'js-cookie'; 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from "axios";
+import Swal from 'sweetalert2'; // Import SweetAlert2
 
 const Login = () => {
     const router = useRouter();
@@ -18,30 +20,54 @@ const Login = () => {
         // Validation check
         if (!data.email || !data.pass) {
             setError("Please fill out valid credentials.");
+            Swal.fire({
+                icon: 'error',
+                title: 'Validation Error',
+                text: 'Please fill out all the fields.',
+            });
             return; // Stop the submission if validation fails
         } else if (!/\S+@\S+\.\S+/.test(data.email)) { // Check if email contains @
             setError("Please enter a valid email address.");
+            Swal.fire({
+                icon: 'error',
+                title: 'Validation Error',
+                text: 'Please enter a valid email address.',
+            });
             return; // Stop the submission if validation fails
         } else {
             setError(""); // Clear the error message if validation passes
         }
 
-        console.log("data.email: ", data.email);
-        console.log("data.pass: ", data.pass);
+        // Send request to the server
+        try {
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/user/login`, {
+                email: data.email,
+                password: data.pass,
+            });
 
-        const formData = new FormData();
-        formData.append('email', data.email);
-        formData.append('password', data.pass);
+            // If the response is successful
+            if (response.status === 200) {
+                console.log("token: ", response.data.data);
+                // Set the token in the cookie
+                Cookies.set('token', response.data.data, { expires: 7, secure: true, sameSite: 'Strict' });
+                // Show success message
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login Successful',
+                    text: 'Welcome back!',
+                });
 
-        // Uncomment this line when ready to make the API call
-        // const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/user/login`, formData);
-
-        // if (response) {
-        //     console.log("Data: ", response);
-        //     console.log("Data: ", response.data);
-        //     console.log("Data: ", response.data.token);
-        //     router.push("../../");
-        // }
+                // Redirect to admin dashboard
+                router.push('/admin/dashboard');
+            }
+        } catch (error) {
+            // If error response from the API
+            Swal.fire({
+                icon: 'error',
+                title: 'Login Failed',
+                text: error.response?.data?.message || 'An error occurred. Please try again.',
+            });
+        }
     };
 
     const inputEvent = (e) => {

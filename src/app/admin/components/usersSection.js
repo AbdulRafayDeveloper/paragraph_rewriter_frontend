@@ -1,9 +1,16 @@
 "use client";
-import { UsersInfo } from "@/app/dataset/data";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
+import Cookies from "js-cookie";
 
 const UserSection = () => {
     const [isModalOpen, setModalOpen] = useState(false);
+    const [showData, setShowData] = useState(false);
+    const [delData, setDelData] = useState([]); // Stores users fetched from API
+    const [expandedMessages, setExpandedMessages] = useState({});
+    const [loading, setLoading] = useState(false); // Loading state for the fetch operation
+    const [state, setState] = useState(false);
 
     // Function to open the modal
     const openModal = () => {
@@ -15,23 +22,120 @@ const UserSection = () => {
         setModalOpen(false);
     };
 
-    const [showData, setShowData] = useState(false);
-    const [delData, setDeldata] = useState(UsersInfo);
-    const [expandedMessages, setExpandedMessages] = useState({});
+    // Function to handle toggling user menu visibility
     const handleChange = () => {
         setShowData(!showData);
     };
 
-    const handleDelete = (id) => {
-        const updatedData = delData.filter((item) => item.id !== id);
-        setDeldata(updatedData);
-    };
+    // Toggle full/short message
     const toggleMessage = (id) => {
         setExpandedMessages((prevExpandedMessages) => ({
             ...prevExpandedMessages,
             [id]: !prevExpandedMessages[id],
         }));
     };
+
+    // Fetch users data from API on component mount
+    useEffect(() => {
+        const fetchUserData = async () => {
+            setLoading(true);
+            try {
+                // Retrieve token from cookies
+                const token = Cookies.get('token'); // Get token from cookie
+
+                // Check if token exists before making API request
+                if (token) {
+                    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/user/contactus`, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json',
+                        },
+                    });
+
+                    const data = response.data;
+                    
+                    if (response.status === 200) {
+                        setDelData(data.data.records);
+                    } else {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: data.message || 'An error occurred.',
+                            icon: 'error',
+                            confirmButtonText: 'OK',
+                        });
+                    }
+                } else {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Token not found. Please log in again.',
+                        icon: 'error',
+                        confirmButtonText: 'OK',
+                    });
+                }
+            } catch (error) {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Failed to fetch data. Please try again later.',
+                    icon: 'error',
+                    confirmButtonText: 'OK',
+                });
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchUserData();
+    }, [state]);
+
+    // Handle delete action
+    const handleDelete = async (id) => {
+        const confirmation = await Swal.fire({
+            title: 'Are you sure?',
+            text: "You want to delete this record!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'Cancel',
+        });
+
+        if (confirmation.isConfirmed) {
+            try {
+                const token = Cookies.get('token');
+                const response = await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/api/user/contactus/${id}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                    },
+                });
+
+                const data = await response.data;
+
+                if (response.status === 200) {
+                    setState(!state);
+                    Swal.fire({
+                        title: 'Deleted!',
+                        text: 'The contact has been deleted.',
+                        icon: 'success',
+                        confirmButtonText: 'OK',
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: data.message || 'Failed to delete the contact.',
+                        icon: 'error',
+                        confirmButtonText: 'OK',
+                    });
+                }
+            } catch (error) {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Failed to delete. Please try again later.',
+                    icon: 'error',
+                    confirmButtonText: 'OK',
+                });
+            }
+        }
+    };
+
     return (
         <div className="sm:ml-64 rounded-lg max-w-full lg:max-w-[1200px]">
             <div className="p-2">
@@ -51,10 +155,9 @@ const UserSection = () => {
                             >
                                 <span className="sr-only">Open user menu</span>
                                 <img className="w-8 h-8 rounded-full" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..." alt="User avatar" />
-                                
                             </button>
                             {showData && (
-                                <div className="absolute w-[100px] right-0 mt-2 p-3  bg-white border border-gray-400 rounded-lg shadow-lg">
+                                <div className="absolute w-[100px] right-0 mt-2 p-3 bg-white border border-gray-400 rounded-lg shadow-lg">
                                     <p className="cursor-pointer">Settings</p>
                                     <p className="cursor-pointer">Logout</p>
                                 </div>
@@ -75,9 +178,18 @@ const UserSection = () => {
                                 <form className="flex items-center w-full lg:w-auto">
                                     <label htmlFor="simple-search" className="sr-only">Search</label>
                                     <div className="w-full">
-                                        <input type="text" id="simple-search" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5" placeholder="Search branch name..." required />
+                                        <input
+                                            type="text"
+                                            id="simple-search"
+                                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
+                                            placeholder="Search branch name..."
+                                            required
+                                        />
                                     </div>
-                                    <button type="submit" className="p-2.5 w-[100px] ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
+                                    <button
+                                        type="submit"
+                                        className="p-2.5 w-[100px] ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                                    >
                                         Search
                                     </button>
                                 </form>
@@ -93,120 +205,52 @@ const UserSection = () => {
                                 <thead className="text-xs text-center text-gray-700 bg-gray-50 ">
                                     <tr>
                                         <th scope="col" className="px-6 py-3 text-lg">Sr.#</th>
+                                        <th scope="col" className="px-6 py-3 text-lg">Name</th>
                                         <th scope="col" className="px-6 py-3 text-lg">Email</th>
-                                        <th scope="col" className="px-6 py-3 text-lg">Subject</th>
                                         <th scope="col" className="px-6 py-3 text-lg">Message</th>
                                         <th scope="col" className="px-6 py-3 text-lg">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {UsersInfo.map((item, index) => (
-                                        <tr key={item.id} className="bg-white text-center border-b ">
+                                    {delData.map((item, index) => (
+                                        <tr key={item._id} className="bg-white text-center border-b">
                                             <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                                 {index + 1}
                                             </th>
+                                            <td className="px-6 py-4">{item.name}</td>
                                             <td className="px-6 py-4">{item.email}</td>
-                                            <td className="px-6 py-4">{item.subject}</td>
                                             <td className="px-6 py-4">
-                                                {/* Show limited or full message based on expandedMessages state */}
-                                                {expandedMessages[item.id] || item.message.length <= 120
+                                                {expandedMessages[item._id] || (item.message && item.message.length <= 120)
                                                     ? item.message
-                                                    : `${item.message.slice(0, 120)}...`}
-                                                {item.message.length > 120 && (
+                                                    : `${item.message && item.message.slice(0, 120)}...`}
+                                                {item.message && item.message.length > 120 && (
                                                     <button
-                                                        onClick={() => toggleMessage(item.id)}
+                                                        onClick={() => toggleMessage(item._id)}
                                                         className="text-blue-500 ml-2"
                                                     >
-                                                        {expandedMessages[item.id] ? "Read Less" : "Read More"}
+                                                        {expandedMessages[item._id] ? "Read Less" : "Read More"}
                                                     </button>
                                                 )}
                                             </td>
                                             <td className="px-6 py-4">
-                                            <button
-                                                onClick={openModal}
-                                                className="block text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                                                type="button"
-                                            >
-                                                <i className="fa-solid fa-trash text-red-600 cursor-pointer" onClick={() => handleDelete(item.id)}></i>
-                                            </button>
-
-                                            {/* Modal */}
-                                            {isModalOpen && (
-                                                <div
-                                                    id="popup-modal"
-                                                    tabIndex="-1"
-                                                    className="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full bg-black bg-opacity-50"
+                                                <button
+                                                    onClick={openModal}
+                                                    className="block text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                                                    type="button"
                                                 >
-                                                    <div className="relative w-full max-w-md max-h-full">
-                                                        <div className="relative bg-white rounded-lg shadow">
-                                                            <button
-                                                                type="button"
-                                                                className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
-                                                                onClick={closeModal}
-                                                            >
-                                                                <svg
-                                                                    className="w-3 h-3"
-                                                                    aria-hidden="true"
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    fill="none"
-                                                                    viewBox="0 0 14 14"
-                                                                >
-                                                                    <path
-                                                                        stroke="currentColor"
-                                                                        strokeLinecap="round"
-                                                                        strokeLinejoin="round"
-                                                                        strokeWidth="2"
-                                                                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                                                                    />
-                                                                </svg>
-                                                                <span className="sr-only">Close modal</span>
-                                                            </button>
-                                                            <div className="p-4 md:p-5 text-center">
-                                                                <svg
-                                                                    className="mx-auto mb-4 text-gray-400 w-12 h-12"
-                                                                    aria-hidden="true"
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    fill="none"
-                                                                    viewBox="0 0 20 20"
-                                                                >
-                                                                    <path
-                                                                        stroke="currentColor"
-                                                                        strokeLinecap="round"
-                                                                        strokeLinejoin="round"
-                                                                        strokeWidth="2"
-                                                                        d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                                                                    />
-                                                                </svg>
-                                                                <h3 className="mb-5 text-lg font-normal text-gray-500">
-                                                                    Are you sure you want to delete this product?
-                                                                </h3>
-                                                                <button
-                                                                    type="button"
-                                                                    className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center"
-                                                                    onClick={() => {
-                                                                        handleDelete(item.id);
-                                                                        closeModal();
-                                                                    }}
-                                                                >
-                                                                    Yes, I am sure
-                                                                </button>
-                                                                <button
-                                                                    type="button"
-                                                                    className="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-100"
-                                                                    onClick={closeModal}
-                                                                >
-                                                                    No, cancel
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            )}
+                                                    <i className="fa-solid fa-trash text-red-600 cursor-pointer" onClick={() => handleDelete(item._id)}></i>
+                                                </button>
                                             </td>
                                         </tr>
                                     ))}
                                 </tbody>
                             </table>
+
+                            {loading && (
+                                <div className="w-full h-16 flex justify-center items-center mt-4">
+                                    <div className="spinner-border text-blue-500"></div>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

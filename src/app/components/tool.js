@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
-import axios from "axios";import FormatColorFillIcon from '@mui/icons-material/FormatColorFill';
+import axios from "axios"; 
+import FormatColorFillIcon from '@mui/icons-material/FormatColorFill';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import HighlightIcon from '@mui/icons-material/Highlight';
 import SchoolIcon from '@mui/icons-material/School';
@@ -8,38 +9,38 @@ import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import FlareIcon from '@mui/icons-material/Flare';
 
 const Tool = () => {
-  const Tabs=[
+  const Tabs = [
     {
-        id: 1,
-        title: "Normal",
-        icon: <FormatColorFillIcon style={{color: '#D4BDAC'}}/>
+      id: 1,
+      title: "Normal",
+      icon: <FormatColorFillIcon style={{ color: '#D4BDAC' }} />
     },
     {
-        id: 2,
-        title: "Fluent",
-        icon: <BorderColorIcon style={{color: 'green'}}/>
+      id: 2,
+      title: "Fluent",
+      icon: <BorderColorIcon style={{ color: 'green' }} />
     },
     {
-        id: 3,
-        title: "Formal",
-        icon: <HighlightIcon style={{color: '#78B7D0'}}/>
+      id: 3,
+      title: "Formal",
+      icon: <HighlightIcon style={{ color: '#78B7D0' }} />
     },
     {
-        id: 4,
-        title: "Innovative",
-        icon: <TipsAndUpdatesIcon style={{color: 'orange'}}/>
+      id: 4,
+      title: "Innovative",
+      icon: <TipsAndUpdatesIcon style={{ color: 'orange' }} />
     },
     {
-        id: 5,
-        title: "Coherent",
-        icon: <FlareIcon style={{color: 'pink'}}/>
+      id: 5,
+      title: "Coherent",
+      icon: <FlareIcon style={{ color: 'pink' }} />
     },
     {
-        id: 6,
-        title: "Academic",
-        icon: <SchoolIcon style={{color: 'black'}}/>
+      id: 6,
+      title: "Academic",
+      icon: <SchoolIcon style={{ color: 'black' }} />
     },
-];
+  ];
   const [activeTab, setActiveTab] = useState(0);
   const [activeTabName, setActiveTabName] = useState(Tabs[0]?.title || "Normal");
   const [showDropdown, setShowDropdown] = useState(false);
@@ -50,7 +51,7 @@ const Tool = () => {
   const [showRewrittenSection, setShowRewrittenSection] = useState(false); // State to show rewritten 
   const [wordCount, setWordCount] = useState(0); // State for word count
   const [loading, setLoading] = useState(false);
-  
+
   const SampleText =
     "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...";
 
@@ -92,31 +93,31 @@ const Tool = () => {
     console.log('activeTabName: ', activeTabName);
     setLoading(true); // Start loading state
     try {
-        const data = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/rewrite/${activeTabName}`, { message: inputparagraph });
-        
-        if (data) {
-            if (data.data.status === 200) {
-                setRewrittenData(data.data.data);
-            } else {
-                alert("Sorry this text cannot be rewritten right now. Please try again later!");
-                setRewrittenData("Error occurred.");
-            }
-        }
+      const data = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/rewrite/${activeTabName}`, { message: inputparagraph });
 
-        if (isMobile) {
-            setIsRewritten(true);
-            setShowRewrittenSection(true);
-        }
-    } catch (error) {
-        if (error.response) {
-            alert("Error rewriting text: " + error.response.data.message);
+      if (data) {
+        if (data.data.status === 200) {
+          setRewrittenData(data.data.data);
         } else {
-            alert("An error occurred. Please try again later.");
+          alert("Sorry this text cannot be rewritten right now. Please try again later!");
+          setRewrittenData("Error occurred.");
         }
+      }
+
+      if (isMobile) {
+        setIsRewritten(true);
+        setShowRewrittenSection(true);
+      }
+    } catch (error) {
+      if (error.response) {
+        alert("Error rewriting text: " + error.response.data.message);
+      } else {
+        alert("An error occurred. Please try again later.");
+      }
     } finally {
-        setLoading(false); // Stop loading state
+      setLoading(false); // Stop loading state
     }
-};
+  };
 
 
   const handleCopy = () => {

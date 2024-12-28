@@ -1,35 +1,36 @@
 "use client";
 import { useState, useEffect } from "react";
-import axios from "axios";import FormatColorFillIcon from '@mui/icons-material/FormatColorFill';
+import axios from "axios";
+import FormatColorFillIcon from '@mui/icons-material/FormatColorFill';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import HighlightIcon from '@mui/icons-material/Highlight';
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 
 const SentenceRewriteTool = () => {
-  const Tabs=[
+  const Tabs = [
     {
-        id: 1,
-        title: "Simplify",
-        icon: <FormatColorFillIcon style={{color: '#D4BDAC'}}/>
+      id: 1,
+      title: "simplify",
+      icon: <FormatColorFillIcon style={{ color: '#D4BDAC' }} />
     },
     {
-        id: 2,
-        title: "Shorten",
-        icon: <BorderColorIcon style={{color: 'green'}}/>
+      id: 2,
+      title: "shorten",
+      icon: <BorderColorIcon style={{ color: 'green' }} />
     },
     {
-        id: 3,
-        title: "Improver",
-        icon: <HighlightIcon style={{color: '#78B7D0'}}/>
+      id: 3,
+      title: "improver",
+      icon: <HighlightIcon style={{ color: '#78B7D0' }} />
     },
     {
-        id: 4,
-        title: "Randomizer",
-        icon: <TipsAndUpdatesIcon style={{color: 'orange'}}/>
+      id: 4,
+      title: "randomizer",
+      icon: <TipsAndUpdatesIcon style={{ color: 'orange' }} />
     },
-];
+  ];
   const [activeTab, setActiveTab] = useState(0);
-  const [activeTabName, setActiveTabName] = useState(Tabs[0]?.title || "Simplify");
+  const [activeTabName, setActiveTabName] = useState(Tabs[0]?.title || "simplify");
   const [showDropdown, setShowDropdown] = useState(false);
   const [inputData, setInputData] = useState(""); // State for input textarea
   const [rewrittenData, setRewrittenData] = useState(""); // State for rewritten textarea
@@ -38,7 +39,7 @@ const SentenceRewriteTool = () => {
   const [showRewrittenSection, setShowRewrittenSection] = useState(false); // State to show rewritten 
   const [sentenceCount, setSentenceCount] = useState(0); // State for word count
   const [loading, setLoading] = useState(false);
-  
+
   const SampleText =
     "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...";
 
@@ -75,37 +76,38 @@ const SentenceRewriteTool = () => {
     return text.trim().split(/[.!?]/).filter(sentence => sentence.trim().length > 0).length;
   };
 
-  const handleRewrite = async (inputparagraph) => {
-    console.log('inputparagraph: ', inputparagraph);
-    console.log('activeTabName: ', activeTabName);
+  const handleSentenceRewriter = async (inputparagraph) => {
+    console.log('inputText: ', inputparagraph);
+    console.log('tone: ', activeTabName);
     setLoading(true); // Start loading state
     try {
-        const data = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/rewrite/${activeTabName}`, { message: inputparagraph });
-        
-        if (data) {
-            if (data.data.status === 200) {
-                setRewrittenData(data.data.data);
-            } else {
-                alert("Sorry this text cannot be rewritten right now. Please try again later!");
-                setRewrittenData("Error occurred.");
-            }
-        }
+      const data = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/rewrite/sentencerewriter`, { inputText: inputparagraph, tone: activeTabName });
 
-        if (isMobile) {
-            setIsRewritten(true);
-            setShowRewrittenSection(true);
-        }
-    } catch (error) {
-        if (error.response) {
-            alert("Error rewriting text: " + error.response.data.message);
+      if (data) {
+        if (data.data.status === 200) {
+          console.log('data.data.data: ', data.data.data);
+          console.log('data.data.data.content: ', data.data.data.content);
+          setRewrittenData(data.data.data.content);
         } else {
-            alert("An error occurred. Please try again later.");
+          alert("Sorry this Sentence cannot be rewritten right now. Please try again later!");
+          setRewrittenData("Error occurred.");
         }
-    } finally {
-        setLoading(false); // Stop loading state
-    }
-};
+      }
 
+      if (isMobile) {
+        setIsRewritten(true);
+        setShowRewrittenSection(true);
+      }
+    } catch (error) {
+      if (error.response) {
+        alert("Error rewriting text: " + error.response.data.message);
+      } else {
+        alert("An error occurred. Please try again later.");
+      }
+    } finally {
+      setLoading(false); // Stop loading state
+    }
+  };
 
   const handleCopy = () => {
     navigator.clipboard.writeText(rewrittenData);
@@ -285,7 +287,7 @@ const SentenceRewriteTool = () => {
                     ? "cursor-not-allowed opacity-50"
                     : "hover:bg-gray-700 hover:text-white"
                     }`}
-                  onClick={() => handleRewrite(inputData)}
+                  onClick={() => handleSentenceRewriter(inputData)}
                   disabled={inputData.length === 0}
                 >
                   Sentence Rewrite
@@ -414,7 +416,7 @@ const SentenceRewriteTool = () => {
                     ? "cursor-not-allowed opacity-50"
                     : "hover:bg-gray-700 hover:text-white"
                     }`}
-                  onClick={() => handleRewrite(inputData)}
+                  onClick={() => handleSentenceRewriter(inputData)}
                   disabled={inputData.length === 0}
                 >
                   Sentence Rewrite
