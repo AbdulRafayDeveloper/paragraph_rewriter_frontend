@@ -1,5 +1,6 @@
 import Link from "next/link";
-
+import Image from "next/image";
+import Logo from '../assets/logo/logo.jpg'
 const Footer = () => {
   return (
     <>
@@ -11,11 +12,8 @@ const Footer = () => {
                 href="#"
                 className="flex items-center space-x-3 rtl:space-x-reverse"
               >
-                <img
-                  src="https://th.bing.com/th/id/OIP.-WXWqkczZZsOk3kfdV2jtgHaF7?w=245&h=196&c=7&r=0&o=5&pid=1.7"
-                  className="h-[50px] w-[50px]"
-                  alt="Logo"
-                />
+                <Image src={Logo} className="rounded-[50px] w-[40px] h-[40px]"
+                  alt="Logo" />
                 <div>
                   <p className="self-center text-xl font-semibold whitespace-nowrap">
                     PARAGRAPH
@@ -25,7 +23,7 @@ const Footer = () => {
                   </span>
                 </div>
               </a>
-              <div className="mt-6 w-full lg:w-[500px]">
+              <div className="mt-6 w-full lg:w-[300px]">
                 <p className="text-lg leading-relaxed">
                   Paragraph rewriter is an AI-based rewriting tool that can
                   rewrite text with advanced NLP-trained models. This online
@@ -33,8 +31,26 @@ const Footer = () => {
                 </p>
               </div>
             </div>
+            {/* Our Free Tool */}
+            <div className="w-full lg:w-[520px] mt-4">
+              <div>
+                <h1 className="text-lg lg:text-xl font-bold">Our Free Tool</h1>
+              </div>
+              <div className="mt-6 space-y-2 text-lg">
+              <Link href="/" className="block hover:text-blue-600">
+                  Paragraph Rewriter
+                </Link>
+                <Link href="/paragraphGenerator" className="block hover:text-blue-600">
+                  Paragraph Generator
+                </Link>
+                <Link href="/sentenceRewriter" className="block hover:text-blue-600">
+                  Sentence Rewriter
+                </Link>
+              </div>
+              
+            </div>
             {/* Information Section */}
-            <div className="w-full lg:w-[300px] mt-4">
+            <div className="w-full lg:w-[500px] mt-4">
               <div>
                 <h1 className="text-lg lg:text-xl font-bold">Information</h1>
               </div>
@@ -56,8 +72,9 @@ const Footer = () => {
                 </Link>
               </div>
             </div>
+            
             {/* Contact Us Section */}
-            <div className="w-full lg:w-[300px] mt-4">
+            <div className="w-full lg:w-[500px] mt-4">
               <div>
                 <h1 className="text-lg lg:text-xl font-bold">Social Media</h1>
               </div>
@@ -76,6 +93,20 @@ const Footer = () => {
                 </Link>
               </div>
             </div>
+            {/* newsletter */}
+            <div className="w-full lg:w-[500px] mt-4">
+                <div>
+                  <h1 className="text-lg lg:text-xl font-bold">Subscribe to our newsletter</h1>
+                </div>
+                <div className="mt-6 space-y-2">
+                  <div className="mb-2">
+                    <input placeholder="Enter your Email" className="p-2 border-none focus:outline-none rounded-md"/>
+                  </div>
+                  <div>
+                    <button className="bg-gray-600 text-white rounded-md p-1 w-[120px]">Subscribe</button>
+                  </div>
+                </div>
+              </div>            
           </div>
         </div>
         {/* Bottom copyright section */}

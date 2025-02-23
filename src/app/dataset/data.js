@@ -127,24 +127,28 @@ const CardData=[
         image: "https://cdn-icons-png.flaticon.com/512/12966/12966676.png",
         title: "Input Paragraph",
         content: "Type, paste, or upload your original text into the input box of our AI rewriter tool.",
+        color: "bg-gray-200"
     },
     {
         id: 2,
         image: "https://p.kindpng.com/picc/s/222-2225221_text-mining-icon-data-mining-icon-mining-icon.png",
         title: "Select Rewriting Mode",
         content: "Select a rewriting mode in which you want to rewrite a paragraph such as; Normal, Fuent, Formal, Academic, etc.",
+        color: "bg-green-200"
     },
     {
         id: 3,
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSogZzWhpoZ1cryosNOgZVJjJGQFAnBHZ-Y1g&s",
         title: "Start Rewriting Process",
         content: "Now, click on the “Rewrite” button to initiate the paragraph rewriting process.",
+        color: "bg-blue-200"
     },
     {
         id: 4,
         image: "https://cdn-icons-png.flaticon.com/512/8637/8637246.png",
         title: "Extract the Rewritten Paragraph",
         content: "Once the the AI Rewriter has rewritten your paragraph, directly “Copy” or “Download” its document file.",
+        color: "bg-pink-200"
     },
 ];
 
@@ -155,24 +159,28 @@ const GenerateCardData=[
         image: "https://cdn-icons-png.flaticon.com/512/12966/12966676.png",
         title: "Input Paragraph",
         content: "Type, paste, or upload your original text into the input box of our AI rewriter tool.",
+        color: "bg-gray-200"
     },
     {
         id: 2,
         image: "https://p.kindpng.com/picc/s/222-2225221_text-mining-icon-data-mining-icon-mining-icon.png",
         title: "Select Rewriting Mode",
         content: "Select a rewriting mode in which you want to rewrite a paragraph such as; Normal, Fuent, Formal, Academic, etc.",
+        color: "bg-green-200"
     },
     {
         id: 3,
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSogZzWhpoZ1cryosNOgZVJjJGQFAnBHZ-Y1g&s",
         title: "Start Rewriting Process",
         content: "Now, click on the “Rewrite” button to initiate the paragraph rewriting process.",
+        color: "bg-blue-200"
     },
     {
         id: 4,
         image: "https://cdn-icons-png.flaticon.com/512/8637/8637246.png",
         title: "Extract the Rewritten Paragraph",
         content: "Once the the AI Rewriter has rewritten your paragraph, directly “Copy” or “Download” its document file.",
+        color: "bg-pink-200"
     },
 ];
 
@@ -182,24 +190,28 @@ const SentenceCardData=[
         image: "https://cdn-icons-png.flaticon.com/512/12966/12966676.png",
         title: "Input Paragraph",
         content: "Type, paste, or upload your original text into the input box of our AI rewriter tool.",
+        color: "bg-gray-200"
     },
     {
         id: 2,
         image: "https://p.kindpng.com/picc/s/222-2225221_text-mining-icon-data-mining-icon-mining-icon.png",
         title: "Select Rewriting Mode",
         content: "Select a rewriting mode in which you want to rewrite a paragraph such as; Normal, Fuent, Formal, Academic, etc.",
+        color: "bg-green-200"
     },
     {
         id: 3,
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSogZzWhpoZ1cryosNOgZVJjJGQFAnBHZ-Y1g&s",
         title: "Start Rewriting Process",
         content: "Now, click on the “Rewrite” button to initiate the paragraph rewriting process.",
+        color: "bg-blue-200"
     },
     {
         id: 4,
         image: "https://cdn-icons-png.flaticon.com/512/8637/8637246.png",
         title: "Extract the Rewritten Paragraph",
         content: "Once the the AI Rewriter has rewritten your paragraph, directly “Copy” or “Download” its document file.",
+        color: "bg-pink-200"
     },
 ];
 // Featured Cards

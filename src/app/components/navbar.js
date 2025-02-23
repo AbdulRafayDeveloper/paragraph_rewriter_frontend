@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-
+import Image from "next/image";
+import Logo from '../assets/logo/logo.jpg'
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -13,11 +14,8 @@ const Navbar = () => {
     <nav className="bg-slate-100 fixed w-full z-20 top-0 start-0">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2 md:p-2">
         <Link href="/" className="flex items-center space-x-2 sm:space-x-3 rtl:space-x-reverse">
-          <img
-            src="https://th.bing.com/th/id/OIP.-WXWqkczZZsOk3kfdV2jtgHaF7?w=245&h=196&c=7&r=0&o=5&pid=1.7"
-            className="h-6 sm:h-8"
-            alt="Flowbite Logo"
-          />
+          <Image src={Logo} className="rounded-[50px] w-[40px] h-[40px]"
+            alt="Logo" />
           <div className="flex flex-col leading-[1] text-sm sm:text-md">
             <span className="font-bold">PARAGRAPH</span>
             <span className="font-serif">Rewriter</span>

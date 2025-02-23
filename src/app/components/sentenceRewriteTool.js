@@ -183,13 +183,13 @@ const SentenceRewriteTool = () => {
               <label htmlFor="tabs" className="sr-only">Select rewriting style</label>
               {/* Custom Dropdown for small screens */}
               <div className="sm:hidden relative">
-                <button
+              <button
                   onClick={() => setShowDropdown(!showDropdown)}
-                  className="bg-gray-50 border border-slate-300 text-gray-900 text-sm rounded-lg block w-[290px] p-2.5"
+                  className="bg-gray-50 border border-slate-300 text-gray-900 text-sm rounded-lg flex items-center justify-between w-[290px] p-2.5"
                 >
-                  {Tabs[activeTab] ? Tabs[activeTab].title : 'Select a Tab'}
+                  <span>{Tabs[activeTab] ? Tabs[activeTab].title : 'Select a Tab'}</span>
+                  <i className={`fa-solid fa-chevron-down transition-transform duration-300 ${showDropdown ? 'rotate-180' : ''}`}></i>
                 </button>
-
                 {showDropdown && (
                   <ul className="absolute z-10 w-[290px] bg-white shadow-lg rounded-lg mt-2">
                     {Tabs.map((el, idx) => (

@@ -21,7 +21,7 @@ const GenerateRewriteTool=()=>{
                             paragraphGeneratorTools.map((el,idx)=>(
                                 <div key={idx} className=" p-4 border-l-2  border-gray-200   ">
                                     <img src={el.image} alt={el.alt} className="w-[60px] h-[60px]" />
-                                    <a href="#">
+                                    <a>
                                         <h5 className="mb-2 mt-5 font-bold text-2xl tracking-tight text-gray-800 ">{el.title}</h5>
                                     </a>
                                     <p className="mb-3 mt-2 text-lg font-normal text-gray-500">{el.content}</p>

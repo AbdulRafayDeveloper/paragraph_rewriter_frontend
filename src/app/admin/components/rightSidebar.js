@@ -57,8 +57,8 @@ const RightSide = () => {
                             <div key={index} className="p-6 bg-slate-100 border w-full max-w-[350px] md:max-w-full lg:max-w-[400px] border-gray-200 rounded-lg shadow-lg">
                                 <div className="flex justify-between" onClick={incrementCount}>
                                     <div>
-                                        <h5 className="mb-2 text-xl md:text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{count}</h5>
-                                        <p className="mb-3 text-sm md:text-base font-normal text-gray-500 dark:text-gray-400">{item.label}</p>
+                                        <h5 className="mb-2 text-xl md:text-2xl font-semibold tracking-tight text-gray-900">{count}</h5>
+                                        <p className="mb-3 text-sm md:text-base font-normal text-gray-500 ">{item.label}</p>
                                     </div>
                                     <div className="p-4">
                                         <i className={`fa-solid ${item.icon} text-3xl`} style={item.style}></i>
