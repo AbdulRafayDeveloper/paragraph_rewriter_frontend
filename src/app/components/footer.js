@@ -1,12 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
-import Logo from '../assets/logo/logo.jpg'
+import Logo from '../assets/logo/logo.jpg';
+import ScrollToTop from "./scrollTop";
 const Footer = () => {
   return (
     <>
       <div className="container-fluid mt-5 p-0 bg-slate-100">
-        <div className="w-full lg:max-w-[1320px] mx-auto p-5">
-          <div className="flex flex-col lg:flex-row gap-10 justify-center mx-auto lg:max-w-[1200px] p-3">
+        <div className="w-full lg:max-w-[1320px] mx-auto p-2">
+          <div className="flex flex-col lg:flex-row gap-10 justify-center mx-auto lg:max-w-[1270px] p-3">
             <div className="w-full lg:w-[900px]">
               <a
                 href="#"
@@ -118,6 +119,9 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <div>
+        <ScrollToTop />
+    </div>
     </>
   );
 };
