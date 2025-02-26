@@ -16,7 +16,7 @@ const Footer = () => {
                 <Image src={Logo} className="rounded-[50px] w-[40px] h-[40px]"
                   alt="Logo" />
                 <div>
-                  <p className="self-center text-xl font-semibold whitespace-nowrap">
+                  <p className="self-center text-lg font-semibold whitespace-nowrap">
                     PARAGRAPH
                   </p>
                   <span className="self-center text-sm font-serif">
@@ -35,7 +35,7 @@ const Footer = () => {
             {/* Our Free Tool */}
             <div className="w-full lg:w-[520px] mt-4">
               <div>
-                <h1 className="text-lg lg:text-xl font-bold">Our Free Tool</h1>
+                <h1 className="text-lg lg:text-lg font-bold">Our Free Tool</h1>
               </div>
               <div className="mt-6 space-y-2 text-lg">
               <Link href="/" className="block hover:text-blue-600">
@@ -53,7 +53,7 @@ const Footer = () => {
             {/* Information Section */}
             <div className="w-full lg:w-[500px] mt-4">
               <div>
-                <h1 className="text-lg lg:text-xl font-bold">Information</h1>
+                <h1 className="text-lg lg:text-lg font-bold">Information</h1>
               </div>
               <div className="mt-6 space-y-2 text-lg">
               <Link href="/contact" className="block hover:text-blue-600">
@@ -77,7 +77,7 @@ const Footer = () => {
             {/* Contact Us Section */}
             <div className="w-full lg:w-[500px] mt-4">
               <div>
-                <h1 className="text-lg lg:text-xl font-bold">Social Media</h1>
+                <h1 className="text-lg lg:text-lg font-bold">Social Media</h1>
               </div>
               <div className="mt-6 space-y-2 text-lg">
                 <Link href="/about-us" className="flex items-center hover:text-blue-600">
@@ -95,9 +95,9 @@ const Footer = () => {
               </div>
             </div>
             {/* newsletter */}
-            <div className="w-full lg:w-[500px] mt-4">
+            <div className="w-full lg:w-[700px] mt-4">
                 <div>
-                  <h1 className="text-lg lg:text-xl font-bold">Subscribe to our newsletter</h1>
+                  <h1 className="text-lg lg:text-lg font-bold">Subscribe to our Newsletter</h1>
                 </div>
                 <div className="mt-6 space-y-2">
                   <div className="mb-2">

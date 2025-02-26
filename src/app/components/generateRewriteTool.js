@@ -7,9 +7,9 @@ const GenerateRewriteTool=()=>{
                 <div className="flex justify-center items-center text-center mt-6 ">
                     <div className="w-full sm:w-[600px] lg:w-[800px] mt-6">
                         <div className="mt-5 w-full lg:max-w-[1320px] mx-auto p-4">
-                            <h1 className="text-2xl sm:text-3xl font-bold">Who Can Use Our Paragraph Rewriter Tool?</h1>
+                            <h1 className="text-2xl sm:text-3xl font-bold">Who Can Use Our Paragraph Generator?</h1>
                             <p className="text-md sm:text-lg mt-4">
-                                It is very easy to rewrite online with our paragraph rewriter. To rewrite paragraph, follow the steps below.
+                                Here are some of the various individuals who can use our tool in their day-to-day activities.
                             </p>
                         </div>
                     </div>

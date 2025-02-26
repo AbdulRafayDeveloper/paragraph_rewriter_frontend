@@ -15,9 +15,9 @@ const GeneratorrFAQs = () => {
             <div className="flex justify-center items-center text-center mt-6">
                 <div className="w-full sm:w-[600px] lg:w-[800px] mt-6">
                     <div className="mt-5 w-full lg:max-w-[1320px] mx-auto p-4">
-                        <h1 className="text-2xl sm:text-3xl font-bold">Features of Our Paragraph Rewriter:</h1>
+                        <h2 className="text-3xl sm:text-2xl font-bold">FAQs</h2>
                         <p className="text-md sm:text-lg mt-4">
-                            Our AI Rewriter free tool possesses useful features to enhance the results as well as the user experience. The features of our rewrite paragraph tool are below:
+                            If you're confused about the functionality and features of our tool, check out the FAQs provided below. You will be able to find the answers to your questions.
                         </p>
                     </div>
                 </div>

@@ -87,9 +87,9 @@ const GeneratorTool = () => {
         <div className="container-fluid p-4 sm:p-6 md:p-8 lg:p-10 mt-10">
             <div className="flex flex-col items-center text-center space-y-4">
                 <div className="w-full max-w-[950px]">
-                    <h1 className="text-xl md:text-3xl font-bold">Paragraph Generator</h1>
+                    <h1 className="text-4xl md:text-3xl font-bold">Paragraph Generator</h1>
                     <p className="text-sm md:text-lg mt-2">
-                        AI Paragraph Generator is online AI Paragraph Writer that helps you generate informative and compelling paragraphs in seconds.
+                        Our AI paragraph generator allows you to create engaging, compelling, and high-quality paragraphs on any topic. This AI tool is ideal for academic content, blog content, and marketing copies.
                     </p>
                 </div>
             </div>

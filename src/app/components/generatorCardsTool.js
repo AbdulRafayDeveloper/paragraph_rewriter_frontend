@@ -1,6 +1,6 @@
 import { generatorTextparagraph } from "../dataset/data";
 import GenerateCardData from "./generateCards";
-
+import GeneratorBenefits from "./generatorBenefits";
 const GeneratorCards=()=>{
     return (
         <>
@@ -9,8 +9,8 @@ const GeneratorCards=()=>{
                     <div className="w-full sm:w-[600px] lg:w-[950px] p-10">
                         <div className="mt-5 w-full lg:max-w-[1320px] ">
                             <div className="mt-8 p-2">
-                                <h1 className="text-2xl sm:text-3xl font-bold">How to Use Regenerate Paragraph Tool?</h1>
-                                <p className="text-md sm:text-lg mt-3">You can start using our AI Paragraph rewriter by following the below-given simple steps.You can start using our AI Paragraph rewriter by following the below-given simple steps.</p>
+                                <h2 className="text-3xl sm:text-2xl font-bold">How to Use the AI Paragraph Generator?</h2>
+                                <p className="text-md sm:text-lg mt-3">Our tool is simple and easy to use. It involves only a few steps. Here is what you need to do:</p>
                             </div>
                         </div>
                     </div>
@@ -27,7 +27,7 @@ const GeneratorCards=()=>{
                                     {
                                         generatorTextparagraph.map((el,idx)=>(
                                             <div key={idx} className="mt-5">
-                                                <h1 className="text-2xl sm:text-3xl font-bold">{el.title}</h1>
+                                                <h2 className="text-3xl sm:text-2xl font-bold">{el.title}</h2>
                                                 <p className="text-md sm:text-lg mt-3">{el.content}</p>
                                             </div>
                                         ))
@@ -37,7 +37,11 @@ const GeneratorCards=()=>{
                         </div>
                     </div>
                 </div>
+                <div className="flex mt-2 w-full lg:max-w-[1320px] mx-auto">
+                        <GeneratorBenefits/>
+                    </div>
             </div>
+            
         </>
     )
 }

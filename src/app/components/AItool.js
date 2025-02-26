@@ -7,10 +7,7 @@ const AiTool=()=>{
                 <div className="flex justify-center items-center text-center mt-6">
                     <div className="w-full sm:w-[600px] lg:w-[800px] mt-6">
                         <div className="mt-5 w-full lg:max-w-[1320px] mx-auto p-4">
-                            <h1 className="text-2xl sm:text-3xl font-bold">Why Use Our AI Rewriter Tool?</h1>
-                            <p className="text-md sm:text-lg mt-4">
-                            You can choose our rewrite AI tool to rewrite your paragraphs for the following reasons.
-                            </p>
+                            <h2 className="text-3xl sm:text-2xl font-bold">Why Use Our AI Rewriter Tool</h2>
                         </div>
                     </div>
                 </div>
@@ -22,28 +19,32 @@ const AiTool=()=>{
                             <table className="table-auto border-collapse w-full text-left bg-white">
                                 <tbody>
                                 <tr className="border">
+                                    <td className="p-4 border-r"><h3 className="text-xl font-bold">Features</h3></td>
+                                    <td className="p-4"><h3 className="text-xl font-bold">Discription</h3></td>
+                                </tr>
+                                <tr className="border">
                                     <td className="p-4 border-r">⚡ <span>AI Technology</span></td>
-                                    <td className="p-4"><span>Fast and Accurate</span></td>
+                                    <td className="p-4"><span>Fast, Accurate, and Reliable</span></td>
                                 </tr>
                                 <tr className="border">
                                     <td className="p-4 border-r">✅ <span>Better Experience</span></td>
-                                    <td className="p-4"><span>Simple Interface</span></td>
+                                    <td className="p-4"><span>Easy to Use and User-Friendly</span></td>
                                 </tr>
                                 <tr className="border">
-                                    <td className="p-4 border-r">💥 <span>Rewrite Style</span></td>
-                                    <td className="p-4"><span>5 Rewriting Modes</span></td>
+                                    <td className="p-4 border-r">💥 <span>Rewriting Styles</span></td>
+                                    <td className="p-4"><span>6 Different Rewriting Modes</span></td>
                                 </tr>
                                 <tr className="border">
-                                    <td className="p-4 border-r">🚀 <span>Improves</span></td>
-                                    <td className="p-4"><span>Content Quality</span></td>
+                                    <td className="p-4 border-r">🚀 <span>Enhances</span></td>
+                                    <td className="p-4"><span>Content Flow and Quality</span></td>
                                 </tr>
                                 <tr className="border">
                                     <td className="p-4 border-r"> 🧾 <span>Results</span></td>
-                                    <td className="p-4"><span>100% Unique</span></td>
+                                    <td className="p-4"><span>100% Unique and Plagarism-Free</span></td>
                                 </tr>
                                 <tr className="border">
                                     <td className="p-4 border-r">💰 <span>Pricing</span></td>
-                                    <td className="p-4"><span>Free with no Signup</span></td>
+                                    <td className="p-4"><span>Free with no Registration</span></td>
                                 </tr>
                                 </tbody>
                             </table>
