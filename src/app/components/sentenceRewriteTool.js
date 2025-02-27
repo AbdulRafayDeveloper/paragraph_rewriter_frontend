@@ -169,9 +169,9 @@ const SentenceRewriteTool = () => {
     <div className="container-fluid p-0 mt-28">
       <div className="flex justify-center items-center text-center">
         <div className="w-full sm:w-[600px] lg:w-[800px]">
-          <h1 className="text-2xl sm:text-3xl font-bold">Sentence Rewriter</h1>
+          <h1 className="text-4xl sm:text-3xl font-bold">Sentence Rewriter</h1>
           <p className="text-md sm:text-lg mt-4">
-            Use our AI Sentence Rewriter tool to turn any paragraph into a new and unique one without changing the original context.
+            Transform your sentences and enhance their quality with the help of our online sentence rewriter tool. Enter your sentences into the space provided below and start the process for free without any signups.
           </p>
         </div>
       </div>

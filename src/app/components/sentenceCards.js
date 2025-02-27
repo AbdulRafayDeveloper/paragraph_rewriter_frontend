@@ -1,11 +1,11 @@
-import { SentenceCardData } from "../dataset/data";
+import { SentenceCardsData } from "../dataset/data";
 
 const SentenceCards=()=>{
     return (
         <>
         <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-6 p-4 mt-4">
             {
-                SentenceCardData.map((el,idx)=>(
+                SentenceCardsData.map((el,idx)=>(
                     <div key={idx} className={`max-w-sm p-6  border border-gray-200 rounded-lg shadow  hover:scale-110 transition-transform duration-300 ${el.color}`}>
                         <img src={el.image} alt="cards" className="w-[50px] h-[50px] rounded-[500px]" />
                         <a>

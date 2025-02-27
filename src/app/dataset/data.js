@@ -91,28 +91,18 @@ const benefitData=[
         content: "If you have to create a lot of paragraphs on different topics, using an AI generator can give you the benefit of consistency in writing style and tone. Since all of them will originate from a single source, they will be similar in terms of their wording and style.",
     },
 ];
-const SentenceRewriteText=[
-    {
-        id: 1,
-        title: "What is the Sentence Rewriter?",
-        content: "Our AI paragraph rewriter is an online AI Rewriter tool that is designed to polish and improve existing paragraphs as well as words. It uses advanced systems that are supported by AI algorithms to rewrite paragraphs precisely.Our AI paragraph rewriter is an online AI Rewriter tool that is designed to polish and improve existing paragraphs as well as words. It uses advanced systems that are supported by AI algorithms to rewrite paragraphs precisely. Our AI paragraph rewriter is an online AI Rewriter tool that is designed to polish and improve existing paragraphs as well as words. It uses advanced systems that are supported by AI algorithms to rewrite paragraphs precisely.",
-    },
-    {
-        id: 2,
-        title: "How to Use Rewrite Sentence Tool?",
-        content: "Our AI paragraph rewriter is an online AI Rewriter tool that is designed to polish and improve existing paragraphs as well as words. It uses advanced systems that are supported by AI algorithms to rewrite paragraphs precisely.Our AI paragraph rewriter is an online AI Rewriter tool that is designed to polish and improve existing paragraphs as well as words. It uses advanced systems that are supported by AI algorithms to rewrite paragraphs precisely. You can start using our AI Paragraph rewriter by following the below-given simple steps.",
-    },
-    {
-        id: 3,
-        title: "Why we need Sentence Rewriter?",
-        content: "Our AI paragraph rewriter is an online AI Rewriter tool that is designed to polish and improve existing paragraphs as well as words. It uses advanced systems that are supported by AI algorithms to rewrite paragraphs precisely.Our AI paragraph rewriter is an online AI Rewriter tool that is designed to polish and improve existing paragraphs as well as words. It uses advanced systems that are supported by AI algorithms to rewrite paragraphs precisely. Our AI paragraph rewriter is an online AI Rewriter tool that is designed to polish and improve existing paragraphs as well as words. It uses advanced systems that are supported by AI algorithms to rewrite paragraphs precisely.",
-    },
-    {
-        id: 4,
-        title: "How to Use Rewrite Sentence Tool?",
-        content: "Our AI paragraph rewriter is an online AI Rewriter tool that is designed to polish and improve existing paragraphs as well as words. It uses advanced systems that are supported by AI algorithms to rewrite paragraphs precisely.Our AI paragraph rewriter is an online AI Rewriter tool that is designed to polish and improve existing paragraphs as well as words. It uses advanced systems that are supported by AI algorithms to rewrite paragraphs precisely. You can start using our AI Paragraph rewriter by following the below-given simple steps.",
-    },
-];
+// const SentenceRewriteText=[
+//     {
+//         id: 1,
+//         title: "What Exactly is the Sentence Rewriter?",
+//         content: "The sentence rewriter is an online tool that allows you to change the wording and phrasing of any sentence to make it look different from its original version. The purpose of the sentence rewriter is to make the sentence look different but have the same meaning as before. There are many different uses and purposes for our sentence rewriter. For example, you can use it to: Reword a piece of content to remove plagiarism from it. Improve a piece of text by replacing words and phrases with other suitable alternatives. And so on.",
+//     },
+//     {
+//         id: 2,
+//         title: "How Does Our Sentence Rewriter Work?",
+//         content: "Our AI paragraph rewriter is an online AI Rewriter tool that is designed to polish and improve existing paragraphs as well as words. It uses advanced systems that are supported by AI algorithms to rewrite paragraphs precisely.Our AI paragraph rewriter is an online AI Rewriter tool that is designed to polish and improve existing paragraphs as well as words. It uses advanced systems that are supported by AI algorithms to rewrite paragraphs precisely. You can start using our AI Paragraph rewriter by following the below-given simple steps.",
+//     },
+// ];
 // cards data
 const CardData=[
     {
@@ -177,33 +167,33 @@ const GenerateCardData=[
     },
 ];
 
-const SentenceCardData=[
+const SentenceCardsData=[
     {
         id: 1,
         image: "https://cdn-icons-png.flaticon.com/512/12966/12966676.png",
-        title: "Input Paragraph",
-        content: "Type, paste, or upload your original text into the input box of our AI rewriter tool.",
+        title: "Enter your sentence(s)",
+        content: "To get started, enter your sentences into our tool by typing, copy-pasting, or uploading a file from your local storage.",
         color: "bg-gray-200"
     },
     {
         id: 2,
         image: "https://p.kindpng.com/picc/s/222-2225221_text-mining-icon-data-mining-icon-mining-icon.png",
-        title: "Select Rewriting Mode",
-        content: "Select a rewriting mode in which you want to rewrite a paragraph such as; Normal, Fuent, Formal, Academic, etc.",
+        title: "Choose a rewriting mode",
+        content: "Next, select a rewriting mode to adjust the tone of the rewritten sentences. Each mode makes its own unique style of changes.",
         color: "bg-green-200"
     },
     {
         id: 3,
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSogZzWhpoZ1cryosNOgZVJjJGQFAnBHZ-Y1g&s",
-        title: "Start Rewriting Process",
-        content: "Now, click on the “Rewrite” button to initiate the paragraph rewriting process.",
+        title: "Start the rewriting process",
+        content: "Once the input has been entered and the mode has been selected, click on the “Sentence Rewrite” button to start the rewriting process.",
         color: "bg-blue-200"
     },
     {
         id: 4,
         image: "https://cdn-icons-png.flaticon.com/512/8637/8637246.png",
-        title: "Extract the Rewritten Paragraph",
-        content: "Once the the AI Rewriter has rewritten your paragraph, directly “Copy” or “Download” its document file.",
+        title: "Save or copy the rewritten sentences",
+        content: "After the process is complete, you can download the rewritten sentences to your local storage or copy them to your clipboard.",
         color: "bg-pink-200"
     },
 ];
@@ -366,48 +356,72 @@ const SentenceFeaturedCardData=[
         style: {
             color: '#FF8343',
         },
-        title: " Fast and Accurate",
-        content: "Our paragraph rewriter rewrites content in a matter of seconds. You just have to input your paragraph and start the rewriting process. It will rewrite the paragraph accurately in no time.",
+        title: " Offers various rewriting modes",
+        content: "One of the best things about our sentence rewriter is that it offers multiple rewriting modes that you can choose from. You can pick the best one depending on your needs and requirements.",
     },
     {
         id: '02',
         style: {
             color: 'green',
         },
-        title: " Free to Use",
-        content: "Rewrite your text with our AI Paragraph Rewriter for totally free. Our paragraph rewriting tool does not charge any kind of fee to make changes to your given content.",
+        title: " Upload files from local storage",
+        content: "Our tool allows you to upload files from your local storage, making everything quick and easy. If you have a file full of sentences that you need to rewrite, you can simply upload the file instead of copy-pasting the sentences one by one.",
     },
     {
         id: '03',
         style: {
             color: '#CC2B52',
         },
-        title: " Contextual Rewriting",
-        content: "Our free AI rewriter rewrites the content keeping in mind its context. It only replaced synonyms that fully describe the meaning of the original words.",
+        title: " Download rewritten sentences to your device",
+        content: "Not only can you upload files to our tool, but you can also download the rewritten sentences back to your device once the process is complete. You can choose between TXT and DOC formats to download the file.",
     },
     {
         id: '04',
         style: {
             color: '#4C4B16',
         },
-        title: " Plagiarism Free Output",
-        content: "This free AI rewrite tool removes all the instances of plagiarism from a given content. For this, it changes all the original words and phrases of paragraphs with unique and new ones.",
+        title: " Fast and smart results",
+        content: "Our sentence rewriter works quickly and provides outputs fast. You don't have to worry about long delays and pauses for the process to complete. Along with being fast, our tool is also smart and intelligent, thanks to its AI-driven functionality.  ",
     },
     {
         id: '05',
         style:{
             color: "#EB5B00",
         },
-        title: " High-Quality Result",
-        content: "Our tool elevates the quality of paragraphs while rewriting them. For this, the paragraph rewriter removes redundancies, replaces jargon with clear words, and swaps out poor terms with engaging ones.",
+        title: " Ensures correct meaning and context",
+        content: "When rewriting the provided sentences, our tool makes sure that the meaning and context are not disturbed. All of the changes are calculated to ensure that the tone and original meaning of the text are preserved.",
     },
     {
         id: '06',
         style: {
             color: '#50B498',
         },
-        title: " Connected With Other Tools",
-        content: "To provide users with a smooth workflow, the AI rewriter is connected to multiple other writing tools including; Sentence Rewriter and AI Paragraph Generator. These AI tools are one click far away to uplift your productivity.",
+        title: " Sentence counter",
+        content: "There is an integrated sentence counter available in our tool. This counter allows you to check the total number of sentences that you've entered.",
+    },
+    {
+        id: '07',
+        style: {
+            color: '#FF8343',
+        },
+        title: " Completely free to use",
+        content: "There is no payment or subscription that you have to worry about making when using our tool. It is completely free from start to end. Everyone with an internet connection and browser can access and enjoy our sentence rewriter.",
+    },
+    {
+        id: '08',
+        style: {
+            color: 'green',
+        },
+        title: " No registration required",
+        content: "You don't have to sign up with your email address or phone number when it comes to using our tool. There is no registration required.",
+    },
+    {
+        id: '09',
+        style: {
+            color: '#CC2B52',
+        },
+        title: " User-friendly interface",
+        content: "Thanks to the user-friendly interface of our tool, you can easily find all the options and buttons. There are no menus that you have to navigate through, nor are there any complicated website designs that you need to worry about.",
     },
 ];
 const AIToolData=[
@@ -631,98 +645,62 @@ const SentenceFAQsData=[
     {
         id: 1,
         questionNo: "Q1: ",
-        question: "How to rewrite my sentence?",
-        answer: "To rewrite paragraphs, you can use the sentence Rewriter. It will automatically rewrite paragraph and convert them into a unique, compelling, and new style."
+        question: "Why should I rewrite my sentences?",
+        answer: "You should rewrite your sentences if you think they need a little bit of tweaking in their quality. Our rewriter can improve the flow and clarity of the provided sentences. It can also be a good idea to rewrite your sentences if you suspect that they contain plagiarism."
     },
     {
         id: 2,
         questionNo: "Q2: ",
-        question: "Can I remove plagiarism from a sentence?",
-        answer: "Yes, you can remove all instances of plagiarism from a paragraph using an online AI rewriter. All you need to do is to pass your paragraphs through the tool. The Paragraph rewriter will take no time to transform it from a plagiarized to a unique one."
+        question: "What happens if I pick the “Improver” mode?",
+        answer: "The Improver mode is designed to improve the quality of the provided text. It focuses on finding and replacing the clunky parts of the content, such as unsuitable words and phrases."
     },
     {
         id: 3, 
         questionNo: "Q3: ",
-        question: "Can AI sentence Rewriter make my academic essay more fluent?",
-        answer: "Our AI online rewriter tool can help you make your academic essay more fluent. For this, you can try out our “Fluent” mode to make the required changes in your essay to make it more fluent."
+        question: "Does sentence rewriting remove plagiarism?",
+        answer: "Technically, yes, rewriting a sentence (using a tool) does remove plagiarism. However, the tools should not be used for this purpose as it is an unethical practice. In other words, you should not take someone else’s content and then rewrite it using our online tool and then claim it as your own. If there is some accidental plagiarism in your own content, then you can use our online tool to remove it."
     },
     {
         id: 4,
         questionNo: "Q4: ",
-        question: "Is using the rewriter tool for paragraphs Legal?",
-        answer: "Yes, using the online rewriter for your paragraphs is completely legal."
+        question: "Is it okay to use a sentence rewriter in school?",
+        answer: "Typically, teachers and educators discourage the use of such online tools as they sap the creativity of their students. These tools are used as a shortcut by the students so that they don’t have to think and work on their own. If your teacher has disallowed online AI tools to be used for writing assignments and creating presentations, etc., then it will not be okay to use a sentence rewriter since it falls in the aforementioned category."
     },
     {
         id: 5,
         questionNo: "Q5: ",
-        question: "How does the Paragraph Rewriter tool help me write an effective blog?",
-        answer: "Paragraph rewriting tool will help you write an effective blog by uplifting the quality of your writing paragraphs. As a result, your blog post will be made more creative, unique, as well as compelling."
+        question: "Will my data be saved or sold on your platform?",
+        answer: "No, your data will not be sold or saved on our platform. We take care to protect our user's data and make sure that their experience is safe and secure."
     },
     {
         id: 6,
         questionNo: "Q6: ",
-        question: "How to rewrite my paragraph?",
-        answer: "To rewrite paragraphs, you can use the Paragraph Rewriter. It will automatically rewrite paragraph and convert them into a unique, compelling, and new style."
+        question: "What should I do if I don't like the quality of the rewritten results?",
+        answer: "If you don't like the quality of the provided outputs, you can run the process again with the same input and mode. Our tool will rewrite the same text in a different way, and you can then check it to see if it is as per your preferences. You can also try changing the rewriting mode and then see if the changes are made according to your expectations or not."
     },
     {
         id: 7,
         questionNo: "Q7: ",
-        question: "Can I remove plagiarism from a paragraph?",
-        answer: "Yes, you can remove all instances of plagiarism from a paragraph using an online AI rewriter. All you need to do is to pass your paragraphs through the tool. The Paragraph rewriter will take no time to transform it from a plagiarized to a unique one."
+        question: "What makes your tool better than other online rewriting platforms?",
+        answer: "There are a number of things that make our tool better than other online platforms. For one, we provide completely free access without any sort of registration. Many other platforms require users to either sign up or buy a paid plan before they can get full access. Other than the accessibility and availability of our tool, the fast and accurate performance is also a factor that makes it outstanding."
     },
     {
         id: 8, 
         questionNo: "Q8: ",
-        question: "Can AI Paragraph Rewriter make my academic essay more fluent?",
-        answer: "Our AI online rewriter tool can help you make your academic essay more fluent. For this, you can try out our “Fluent” mode to make the required changes in your essay to make it more fluent."
+        question: "What can I do to maximize the quality of this tool's outputs?",
+        answer: "To get the most out of our sentence rewriter, enter only a few sentences into the tool at one time. Don't enter sentences of different tones and topics at once, as that could confuse the AI engine"
     },
     {
         id: 9,
         questionNo: "Q9: ",
-        question: "Is using the rewriter tool for paragraphs Legal?",
-        answer: "Yes, using the online rewriter for your paragraphs is completely legal."
+        question: "Are there any other tools that I can use on your platform?",
+        answer: "Yes, there are other tools that you can use on our platform. You can try out the paragraph rewriter and the paragraph generator for free. "
     },
     {
         id: 10,
         questionNo: "Q10: ",
-        question: "How does the Paragraph Rewriter tool help me write an effective blog?",
-        answer: "Paragraph rewriting tool will help you write an effective blog by uplifting the quality of your writing paragraphs. As a result, your blog post will be made more creative, unique, as well as compelling."
-    },
-    {
-        id: 11,
-        questionNo: "Q11: ",
-        question: "How to rewrite my paragraph?",
-        answer: "To rewrite paragraphs, you can use the Paragraph Rewriter. It will automatically rewrite paragraph and convert them into a unique, compelling, and new style."
-    },
-    {
-        id: 12,
-        questionNo: "Q12: ",
-        question: "Can I remove plagiarism from a paragraph?",
-        answer: "Yes, you can remove all instances of plagiarism from a paragraph using an online AI rewriter. All you need to do is to pass your paragraphs through the tool. The Paragraph rewriter will take no time to transform it from a plagiarized to a unique one."
-    },
-    {
-        id: 13, 
-        questionNo: "Q13: ",
-        question: "Can AI Paragraph Rewriter make my academic essay more fluent?",
-        answer: "Our AI online rewriter tool can help you make your academic essay more fluent. For this, you can try out our “Fluent” mode to make the required changes in your essay to make it more fluent."
-    },
-    {
-        id: 14,
-        questionNo: "Q14: ",
-        question: "Is using the rewriter tool for paragraphs Legal?",
-        answer: "Yes, using the online rewriter for your paragraphs is completely legal."
-    },
-    {
-        id: 15,
-        questionNo: "Q15: ",
-        question: "How does the Paragraph Rewriter tool help me write an effective blog?",
-        answer: "Paragraph rewriting tool will help you write an effective blog by uplifting the quality of your writing paragraphs. As a result, your blog post will be made more creative, unique, as well as compelling."
-    },
-    {
-        id: 16,
-        questionNo: "Q16: ",
-        question: "How does the Paragraph Rewriter tool help me write an effective blog?",
-        answer: "Paragraph rewriting tool will help you write an effective blog by uplifting the quality of your writing paragraphs. As a result, your blog post will be made more creative, unique, as well as compelling."
+        question: "I need to rewrite entire paragraphs and not just sentences. Can I use this tool for that purpose?",
+        answer: "While you can use the sentence rewriter for larger pieces of text, the ideal recourse is to use the dedicated paragraph rewriter instead. We offer this tool on our website as well, and you can access it for free without any registration. "
     },
 ];
 const UsersInfo=[
@@ -740,4 +718,4 @@ const UsersInfo=[
     },
 ]
 export default Menu;
-export {Tabs,generatorTextparagraph,CardData,FeaturedCardData,AIToolData,Rewritertooldata,FAQsData,UsersInfo,ParagraphFAQs,GenerateCardData,benefitData, GenerateFeaturedCardData,paragraphGeneratorTools,SentenceCardData,SentenceRewriteText,SentenceFeaturedCardData,SentenceFAQsData};
+export {Tabs,generatorTextparagraph,CardData,FeaturedCardData,AIToolData,Rewritertooldata,FAQsData,UsersInfo,ParagraphFAQs,GenerateCardData,benefitData, GenerateFeaturedCardData,paragraphGeneratorTools,SentenceCardsData,SentenceFeaturedCardData,SentenceFAQsData};
