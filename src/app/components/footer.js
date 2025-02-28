@@ -68,9 +68,9 @@ const Footer = () => {
                 <Link href="/terms" className="block hover:text-blue-600">
                   Terms & Conditions
                 </Link>
-                <Link href="/disclaimer" className="block hover:text-blue-600">
+                {/* <Link href="/disclaimer" className="block hover:text-blue-600">
                   Disclaimer
-                </Link>
+                </Link> */}
               </div>
             </div>
             
