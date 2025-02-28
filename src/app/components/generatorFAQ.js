@@ -17,7 +17,7 @@ const GeneratorrFAQs = () => {
                     <div className="mt-5 w-full lg:max-w-[1320px] mx-auto p-4">
                         <h2 className="text-3xl sm:text-2xl font-bold">FAQs</h2>
                         <p className="text-md sm:text-lg mt-4">
-                            If you're confused about the functionality and features of our tool, check out the FAQs provided below. You will be able to find the answers to your questions.
+                            If you&apos;re confused about the functionality and features of our tool, check out the FAQs provided below. You will be able to find the answers to your questions.
                         </p>
                     </div>
                 </div>

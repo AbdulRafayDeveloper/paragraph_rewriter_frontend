@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import Image from 'next/image';
 import Cookies from "js-cookie";
 
 const UserSection = () => {
@@ -154,7 +155,7 @@ const UserSection = () => {
                                 onClick={handleChange}
                             >
                                 <span className="sr-only">Open user menu</span>
-                                <img className="w-8 h-8 rounded-full" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..." alt="User avatar" />
+                                <Image className="w-8 h-8 rounded-full" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..." alt="User avatar" />
                             </button>
                             {showData && (
                                 <div className="absolute w-[100px] right-0 mt-2 p-3 bg-white border border-gray-400 rounded-lg shadow-lg">
