@@ -17,7 +17,7 @@ const SentenceFAQs= () => {
                     <div className="mt-5 w-full lg:max-w-[1320px] mx-auto p-4">
                         <h2 className="text-3xl sm:text-2xl font-bold">FAQs</h2>
                         <p className="text-md sm:text-lg mt-4">
-                            Learn more about our rewriting tool by checking out these FAQs. Maybe you'll find the answer to any one of your own queries here.
+                            Learn more about our rewriting tool by checking out these FAQs. Maybe you&apos;ll find the answer to any one of your own queries here.
                         </p>
                     </div>
                 </div>

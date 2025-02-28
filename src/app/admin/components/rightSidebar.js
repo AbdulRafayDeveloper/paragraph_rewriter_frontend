@@ -1,7 +1,6 @@
 "use client";
-import styled from "@emotion/styled";
-import { Style } from "@mui/icons-material";
 import { useState } from "react";
+import Image from 'next/image';
 
 const RightSide = () => {
     const [showData, setShowData] = useState(false);
@@ -31,7 +30,7 @@ const RightSide = () => {
                                 onClick={handleChange}
                             >
                                 <span className="sr-only">Open user menu</span>
-                                <img className="w-8 h-8 rounded-full" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..." alt="User avatar" />
+                                <Image className="w-8 h-8 rounded-full" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..." alt="User avatar" />
                                 
                             </button>
                             {showData && (
