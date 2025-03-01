@@ -75,7 +75,7 @@ const Terms=()=>{
                             You speak to that you are over the age of 18. The Company does not allow those beneath 18 to utilize the Service.
                         </p>
                         <p className="text-md mt-3 text-justify">
-                            Your get to to and utilize of the Benefit is moreover conditioned on Your acknowledgment of and compliance with the Protection Approach of the Company. Our Security Approach portrays Our approaches and strategies on the collection, utilize and divulgence of Your individual data when You utilize the Application or the Site and tells You almost Your protection rights and how the law ensures You. If it's not too much trouble studied Our Protection Approach carefully some time recently utilizing Our Service.
+                            Your get to to and utilize of the Benefit is moreover conditioned on Your acknowledgment of and compliance with the Protection Approach of the Company. Our Security Approach portrays Our approaches and strategies on the collection, utilize and divulgence of Your individual data when You utilize the Application or the Site and tells You almost Your protection rights and how the law ensures You. If it&apos;s not too much trouble studied Our Protection Approach carefully some time recently utilizing Our Service.
                         </p>
                     </div>
                     <div className="mt-3">
@@ -100,13 +100,13 @@ const Terms=()=>{
                     <div className="mt-3">
                         <h2 className="text-3xl sm:text-2xl font-bold">Limitation of Liability</h2>
                         <p className="text-md mt-3 text-justify">
-                            Notwithstanding any harms that You might bring about, the whole obligation of the Company and any of its providers beneath any arrangement of this Terms and Your elite cure for all of the prior might be restricted to the sum really paid by You through the Benefit or 100 USD if You haven't obtained anything through the Service.
+                            Notwithstanding any harms that You might bring about, the whole obligation of the Company and any of its providers beneath any arrangement of this Terms and Your elite cure for all of the prior might be restricted to the sum really paid by You through the Benefit or 100 USD if You haven&apos;t obtained anything through the Service.
                         </p>
                         <p>
                             To the greatest degree allowed by pertinent law, in no occasion should the Company or its providers be at risk for any extraordinary, accidental, roundabout, or considerable harms at all (counting, but not constrained to, harms for misfortune of benefits, misfortune of information or other data, for commerce interference, for individual damage, misfortune of security emerging out of or in any way related to the utilize of or failure to utilize the Benefit, third-party computer program and/or third-party equipment utilized with the Benefit, or something else in association with any arrangement of this Terms), indeed if the Company or any provider has been exhorted of the plausibility of such harms and indeed if the cure falls flat of its basic purpose.
                         </p>
                         <p>
-                            Some states do not permit the avoidance of inferred guarantees or restriction of risk for coincidental or noteworthy harms, which implies that a few of the over impediments may not apply. In these states, each party's obligation will be constrained to the most noteworthy degree allowed by law.
+                            Some states do not permit the avoidance of inferred guarantees or restriction of risk for coincidental or noteworthy harms, which implies that a few of the over impediments may not apply. In these states, each party&apos;s obligation will be constrained to the most noteworthy degree allowed by law.
                         </p>
                     </div>
                     {/*  */}
@@ -116,7 +116,7 @@ const Terms=()=>{
                             The Benefit is given to You "AS IS" and "AS Available" and with all flaws and absconds without guarantee of any kind. To the greatest degree allowed beneath appropriate law, the Company, on its possess sake and on sake of its Members and its and their particular licensors and benefit suppliers, explicitly repudiates all guarantees, whether express, inferred, statutory or something else, with regard to the Benefit, counting all suggested guarantees of merchantability, wellness for a specific reason, title and non-infringement, and guarantees that may emerge out of course of managing, course of execution, utilization or exchange hone. Without impediment to the previous, the Company gives no guarantee or undertaking, and makes no representation of any kind that the Benefit will meet Your necessities, accomplish any expecting comes about, be consistent or work with any other computer program, applications, frameworks or administrations, work without intrusion, meet any execution or unwavering quality guidelines or be mistake free or that any blunders or surrenders can or will be corrected.
                         </p>
                         <p>
-                            Without constraining the previous, not one or the other the Company nor any of the company's supplier makes any representation or guarantee of any kind, express or suggested: (i) as to the operation or accessibility of the Benefit, or the data, substance, and materials or items included consequently; (ii) that the Benefit will be continuous or error-free; (iii) as to the precision, unwavering quality, or money of any data or substance given through the Benefit; or (iv) that the Benefit, its servers, the substance, or e-mails sent from or on sake of the Company are free of infections, scripts, trojan steeds, worms, malware, timebombs or other hurtful components.
+                            Without constraining the previous, not one or the other the Company nor any of the company&apos;s supplier makes any representation or guarantee of any kind, express or suggested: (i) as to the operation or accessibility of the Benefit, or the data, substance, and materials or items included consequently; (ii) that the Benefit will be continuous or error-free; (iii) as to the precision, unwavering quality, or money of any data or substance given through the Benefit; or (iv) that the Benefit, its servers, the substance, or e-mails sent from or on sake of the Company are free of infections, scripts, trojan steeds, worms, malware, timebombs or other hurtful components.
                         </p>
                         <p>
                             Some purviews do not permit the prohibition of certain sorts of guarantees or impediments on pertinent statutory rights of a buyer, so a few or all of the over prohibitions and restrictions may not apply to You. But in such a case the prohibitions and confinements set forward in this area might be connected to the most prominent degree enforceable beneath pertinent law.
@@ -156,7 +156,7 @@ const Terms=()=>{
                     <div className="mt-3">
                         <h2 className="text-3xl sm:text-2xl font-bold">Waiver</h2>
                         <p className="text-md mt-3 text-justify">
-                            Except as given in this, the disappointment to work out a right or to require execution of an commitment beneath these Terms might not influence a party's capacity to work out such right or require such execution at any time from that point nor should the waiver of a breach constitute a waiver of any consequent breach.
+                            Except as given in this, the disappointment to work out a right or to require execution of an commitment beneath these Terms might not influence a party&apos;s capacity to work out such right or require such execution at any time from that point nor should the waiver of a breach constitute a waiver of any consequent breach.
                         </p>
                     </div>
                     {/*  */}
@@ -170,10 +170,10 @@ const Terms=()=>{
                     <div className="mt-3">
                         <h2 className="text-3xl sm:text-2xl font-bold">Changes to These Terms and Conditions</h2>
                         <p className="text-md mt-3 text-justify">
-                            We save the right, at Our sole watchfulness, to adjust or supplant these Terms at any time. If a modification is fabric We will make sensible endeavors to give at slightest 30 days' take note earlier to any unused terms taking impact. What constitutes a fabric alter will be decided at Our sole discretion.
+                            We save the right, at Our sole watchfulness, to adjust or supplant these Terms at any time. If a modification is fabric We will make sensible endeavors to give at slightest 30 days&apos; take note earlier to any unused terms taking impact. What constitutes a fabric alter will be decided at Our sole discretion.
                         </p>
                         <p className="text-md mt-3 text-justify">
-                            By proceeding to get to or utilize Our Benefit after those modifications ended up compelling, You concur to be bound by the reexamined terms. If You do not concur to the unused terms, in entirety or in portion, if you don't mind halt utilizing the site and the Service.
+                            By proceeding to get to or utilize Our Benefit after those modifications ended up compelling, You concur to be bound by the reexamined terms. If You do not concur to the unused terms, in entirety or in portion, if you don&apos;t mind halt utilizing the site and the Service.
                         </p>
                     </div>
                     {/*  */}

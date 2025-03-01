@@ -50,14 +50,14 @@ const Privacy=()=>{
                                 Please note that our Privacy Policy does not cover outside websites connected through our platform. We prompt investigating their particular privacy policies for advance information.
                             </p>
                             {/*  */}
-                            <h2 className="text-3xl sm:text-2xl font-bold mb-4">Children's Information</h2>
+                            <h2 className="text-3xl sm:text-2xl font-bold mb-4">Children&apos;s Information</h2>
                             <p className="mb-4">
                                 We are committed to ensuring the privacy of children. Our services are not coordinated to children under the age of 13, and we do not intentionally collect personal information from them. If you accept that your child has been given such data, please contact us instantly to guarantee its removal.
                             </p>
                             {/*  */}
                             <h2 className="text-3xl sm:text-2xl font-bold mb-4">Your Privacy Rights</h2>
                             <p className="mb-4">
-                                You have the right to get to, overhaul, or delete your personal information collected through our Paragraph Rewriter. To work out these rights, if it's not too much trouble contact us at hi.paragraphrewriter@gmail.com.
+                                You have the right to get to, overhaul, or delete your personal information collected through our Paragraph Rewriter. To work out these rights, if it&apos;s not too much trouble contact us at hi.paragraphrewriter@gmail.com.
                             </p>
                             {/*  */}
                             <h2 className="text-3xl sm:text-2xl font-bold mb-4">Changes to This Privacy Policy</h2>
