@@ -1,10 +1,10 @@
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 
-const Terms=()=>{
+const Terms = () => {
     return (
         <>
-            <Navbar/>
+            <Navbar />
             <div className="container-fluid p-0">
                 <div className="flex justify-center items-center text-center mt-6">
                     <div className="w-full sm:w-[600px] lg:w-[800px] mt-6">
@@ -13,7 +13,7 @@ const Terms=()=>{
                         </div>
                         <div>
                             <p>
-                              Please examined these terms and conditions carefully some time recently utilizing Our Service.
+                                Please examined these terms and conditions carefully some time recently utilizing Our Service.
                             </p>
                         </div>
                     </div>
@@ -30,15 +30,15 @@ const Terms=()=>{
                         <p className="text-md mt-3 text-justify">
                             For the purposes of these Terms and Conditions:
                         </p>
-                        <ul style={{listStyleType: 'disc',marginLeft:"20px"}} >
+                        <ul style={{ listStyleType: 'disc', marginLeft: "20px" }} >
                             <li>
-                                Affiliate means an entity that controls, is controlled by, or is under common control with a party, where "control" implies ownership of 50% or more of the shares, equity interest, or other securities entitled to vote for the election of directors or other governing authority.
+                                Affiliate means an entity that controls, is controlled by, or is under common control with a party, where &quot;control&quot; implies ownership of 50% or more of the shares, equity interest, or other securities entitled to vote for the election of directors or other governing authority.
                             </li>
                             <li>
                                 Country refers to: South Carolina, United States.
                             </li>
                             <li>
-                                Company (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to Paragraph Rewriter.
+                                Company (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in this Agreement) refers to Paragraph Rewriter.
                             </li>
                             <li>
                                 Device means any device that can access the Service such as a computer, a cellphone, or a digital tablet.
@@ -47,7 +47,7 @@ const Terms=()=>{
                                 Service refers to the Website.
                             </li>
                             <li>
-                                Terms and Conditions (also referred to as "Terms") mean these Terms and Conditions that form the entire agreement between You and the Company with respect to the use of the Service. This Terms and Conditions agreement has been made with the help of the Terms and Conditions Generator.
+                                Terms and Conditions (also referred to as &quot;Terms&quot;) mean these Terms and Conditions that form the entire agreement between You and the Company with respect to the use of the Service. This Terms and Conditions agreement has been made with the help of the Terms and Conditions Generator.
                             </li>
                             <li>
                                 Third-party Social Media Service means any services or content (including data, information, products, or services) provided by a third party that may be displayed, included, or made available by the Service.
@@ -111,9 +111,9 @@ const Terms=()=>{
                     </div>
                     {/*  */}
                     <div className="mt-3">
-                        <h2 className="text-3xl sm:text-2xl font-bold">"AS IS" and "AS Available" Disclaimer</h2>
+                        <h2 className="text-3xl sm:text-2xl font-bold">&quot;AS IS&quot; and &quot;AS Available&quot; Disclaimer</h2>
                         <p className="text-md mt-3 text-justify">
-                            The Benefit is given to You "AS IS" and "AS Available" and with all flaws and absconds without guarantee of any kind. To the greatest degree allowed beneath appropriate law, the Company, on its possess sake and on sake of its Members and its and their particular licensors and benefit suppliers, explicitly repudiates all guarantees, whether express, inferred, statutory or something else, with regard to the Benefit, counting all suggested guarantees of merchantability, wellness for a specific reason, title and non-infringement, and guarantees that may emerge out of course of managing, course of execution, utilization or exchange hone. Without impediment to the previous, the Company gives no guarantee or undertaking, and makes no representation of any kind that the Benefit will meet Your necessities, accomplish any expecting comes about, be consistent or work with any other computer program, applications, frameworks or administrations, work without intrusion, meet any execution or unwavering quality guidelines or be mistake free or that any blunders or surrenders can or will be corrected.
+                            The Benefit is given to You &quot;AS IS&quot; and &quot;AS Available&quot; and with all flaws and absconds without guarantee of any kind. To the greatest degree allowed beneath appropriate law, the Company, on its possess sake and on sake of its Members and its and their particular licensors and benefit suppliers, explicitly repudiates all guarantees, whether express, inferred, statutory or something else, with regard to the Benefit, counting all suggested guarantees of merchantability, wellness for a specific reason, title and non-infringement, and guarantees that may emerge out of course of managing, course of execution, utilization or exchange hone. Without impediment to the previous, the Company gives no guarantee or undertaking, and makes no representation of any kind that the Benefit will meet Your necessities, accomplish any expecting comes about, be consistent or work with any other computer program, applications, frameworks or administrations, work without intrusion, meet any execution or unwavering quality guidelines or be mistake free or that any blunders or surrenders can or will be corrected.
                         </p>
                         <p>
                             Without constraining the previous, not one or the other the Company nor any of the company&apos;s supplier makes any representation or guarantee of any kind, express or suggested: (i) as to the operation or accessibility of the Benefit, or the data, substance, and materials or items included consequently; (ii) that the Benefit will be continuous or error-free; (iii) as to the precision, unwavering quality, or money of any data or substance given through the Benefit; or (iv) that the Benefit, its servers, the substance, or e-mails sent from or on sake of the Company are free of infections, scripts, trojan steeds, worms, malware, timebombs or other hurtful components.
@@ -143,7 +143,7 @@ const Terms=()=>{
                     <div className="mt-3">
                         <h2 className="text-3xl sm:text-2xl font-bold">United States Legal Compliance</h2>
                         <p className="text-md mt-3 text-justify">
-                            You speak to and warrant that (i) You are not found in a nation that is subject to the Joined together States government ban, or that has been assigned by the Joined together States government as a "psychological militant supporting" nation, and (ii) You are not recorded on any Joined together States government list of disallowed or confined parties.
+                            You speak to and warrant that (i) You are not found in a nation that is subject to the Joined together States government ban, or that has been assigned by the Joined together States government as a &quot;psychological militant supporting&quot; nation, and (ii) You are not recorded on any Joined together States government list of disallowed or confined parties.
                         </p>
                     </div>
                     <div className="mt-3">
@@ -185,7 +185,7 @@ const Terms=()=>{
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </>
     );
 }
