@@ -56,11 +56,4 @@
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-    
-    <url>
-        <loc>https://paragraph-rewriter-frontend.vercel.app/disclaimer</loc>
-        <lastmod>2025-02-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
 </urlset> -->
