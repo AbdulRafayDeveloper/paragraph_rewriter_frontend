@@ -28,16 +28,7 @@ const WriterText=()=>{
                                         <h2 className="text-3xl sm:text-2xl font-bold">Introducing Our AI-Based Paragraph Rewriter</h2>
                                         <p className="text-md sm:text-lg mt-3">Our paragraph rewriter utilizes AI models to understand the provided text before making changes to it. This helps it to avoid making any modifications that alter the meaning or context of the content. Thanks to this advanced functionality of our AI paragraph rewriting tool, you can trust it with all types of content, whether it is marketing copies or academic papers.</p>
                                     </div>
-                                    <div className="mt-5">
-                                        <h2 className="text-3xl sm:text-2xl font-bold">How Does Our AI Rewriter Work?</h2>
-                                        <p className="text-md sm:text-lg mt-3">Behind the scenes, our rewriter tool performs the following steps on the provided text: </p>
-                                        <ul role="list">
-                                            <li className="text-md sm:text-lg mt-3"><strong>Analyzes</strong> the text to understand its meaning.</li>
-                                            <li className="text-md sm:text-lg mt-3"><strong>Identifies</strong> words and phrases that can be changed.</li>
-                                            <li className="text-md sm:text-lg mt-3"><strong>Replaces</strong> them with suitable alternatives & synonyms.</li>
-                                            <li className="text-md sm:text-lg mt-3"><strong>Verifies</strong> the rewritten text to maintain accuracy & context.</li>
-                                        </ul>
-                                    </div>
+                                    
                                     {/* {
                                         Textparagraph.map((el,idx)=>(
                                             <div key={idx} className="mt-5">
@@ -51,8 +42,29 @@ const WriterText=()=>{
                         </div>
                     </div>
                 </div>
+                <div className="flex justify-center ">
+                    <div className="w-full sm:w-[600px] lg:w-[1200px] p-10">
+                        <div className="mt-5 w-full lg:max-w-[1320px] ">
+                            <div className="mt-4 p-2 border border-gray-300 border-1">
+                                <div className="p-8">
+                                    <div className="mt-2">
+                                        <h2 className="text-3xl sm:text-2xl font-bold">How Does Our AI Rewriter Work?</h2>
+                                        <p className="text-md sm:text-lg mt-3">Behind the scenes, our rewriter tool performs the following steps on the provided text: </p>
+                                        <ul role="list" style={{listStyleType:"disc", marginLeft:"30px"}}>
+                                            <li className="text-md sm:text-lg mt-3"><strong>Analyzes</strong> the text to understand its meaning.</li>
+                                            <li className="text-md sm:text-lg mt-3"><strong>Identifies</strong> words and phrases that can be changed.</li>
+                                            <li className="text-md sm:text-lg mt-3"><strong>Replaces</strong> them with suitable alternatives & synonyms.</li>
+                                            <li className="text-md sm:text-lg mt-3"><strong>Verifies</strong> the rewritten text to maintain accuracy & context.</li>
+                                        </ul>
+                                    </div>
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
     )
 }
 export default WriterText;
+                                    
