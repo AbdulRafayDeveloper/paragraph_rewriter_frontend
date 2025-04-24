@@ -38,8 +38,10 @@ const FAQs = () => {
                                     aria-controls={`accordion-open-body-${index}`}
                                 >
                                     <div className="flex items-center">
-                                        <span className="font-bold text-xl">{item.questionNo}</span>
-                                        <span className="font-normal ml-3 text-lg text-left"> {item.question}</span>
+                                        <h3>
+                                            <span className="font-bold text-2xl">{item.questionNo}</span>
+                                            <span className="font-normal ml-3 text-xl text-left"> {item.question}</span>
+                                        </h3>
                                     </div>
                                     <svg
                                         className={`w-3 h-3 shrink-0 transition-transform duration-200 ${openIndex === index ? 'rotate-180' : ''}`}
@@ -57,7 +59,7 @@ const FAQs = () => {
                                 className={`p-5 text-lg border border-b-0 border-gray-200 bg-slate-200 transition-all duration-200 ${openIndex === index ? '' : 'hidden'}`}
                                 aria-labelledby={`accordion-open-heading-${index}`}
                             >
-                                {item.answer}
+                                <p>{item.answer}</p>
                             </div>
                         </div>
                     ))}

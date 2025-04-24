@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import axios from "axios"; 
+import axios from "axios";
 import FormatColorFillIcon from '@mui/icons-material/FormatColorFill';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import HighlightIcon from '@mui/icons-material/Highlight';
@@ -51,6 +51,7 @@ const Tool = () => {
   const [showRewrittenSection, setShowRewrittenSection] = useState(false); // State to show rewritten 
   const [wordCount, setWordCount] = useState(0); // State for word count
   const [loading, setLoading] = useState(false);
+
 
   const SampleText =
     "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...";
@@ -182,7 +183,7 @@ const Tool = () => {
         <div className="w-full sm:w-[600px] lg:w-[800px]">
           <h1 className="text-4xl sm:text-3xl font-bold">Paragraph Rewriter</h1>
           <p className="text-md sm:text-lg mt-4">
-          Improve the quality of your paragraphs with the help of our free paragraph rewriter. Enjoy our AI-powered rewriter with no sign-up or registration.
+            Improve the quality of your paragraphs with the help of our free paragraph rewriter. Enjoy our AI-powered rewriter with no sign-up or registration.
           </p>
         </div>
       </div>
@@ -296,15 +297,44 @@ const Tool = () => {
                 </label>
                 <span className="text-sm px-4">{countWords(inputData)} / 1500 words</span>
                 <button
-                  className={`border border-gray-600 p-1 rounded-lg text-sm ${inputData.length === 0
-                    ? "cursor-not-allowed opacity-50"
-                    : "hover:bg-gray-700 hover:text-white"
-                    }`}
                   onClick={() => handleRewrite(inputData)}
-                  disabled={inputData.length === 0}
+                  disabled={inputData.length === 0 || loading}
+                  className={`
+    border border-gray-600 p-1 rounded-lg text-sm
+    ${inputData.length === 0 || loading
+                      ? "cursor-not-allowed opacity-50"
+                      : "hover:bg-gray-700 hover:text-white"
+                    }
+  `}
                 >
-                  Rewrite
+                  {loading
+                    ? (
+                      <span className="flex items-center">
+                        {/* Tailwind spinning SVG */}
+                        <svg
+                          className="w-4 h-4 mr-2 animate-spin"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12" cy="12" r="10"
+                            stroke="currentColor" strokeWidth="4"
+                          />
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8v8H4z"
+                          />
+                        </svg>
+                        Rewriting…
+                      </span>
+                    )
+                    : "Rewrite"
+                  }
                 </button>
+
 
               </div>
             </div>
@@ -330,7 +360,7 @@ const Tool = () => {
                     Rewrite Again
                   </button>
                 </div>
-                <div>
+                <div className="relative group inline-block">
                   <button
                     className={`border border-gray-600 p-1 rounded-lg ${rewrittenData.length === 0
                       ? "cursor-not-allowed opacity-50"
@@ -341,30 +371,39 @@ const Tool = () => {
                   >
                     <i className="fa-solid fa-copy text-blue-800 text-2xl"></i>
                   </button>
+                  <div className="absolute left-1/2 -translate-x-1/2 mt-2 px-2 py-1 text-sm text-white bg-gray-600 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    Copy
+                  </div>
                 </div>
-                <div>
+                <div className="relative group inline-block">
                   <button
                     className={`border border-gray-600 p-1 rounded-lg ${rewrittenData.length === 0
                       ? "cursor-not-allowed opacity-50"
-                      : "hover:bg-gray-300 hover:text-black"
+                      : "hover:bg-gray-300 hover:text-gray-600"
                       }`}
                     onClick={() => handleDownload("txt")}
                     disabled={rewrittenData.length === 0}
                   >
                     <i className="fa-solid fa-download text-2xl"></i> .txt
                   </button>
+                  <div className="absolute left-1/2 -translate-x-1/2 mt-2 px-2 py-1 text-sm text-white bg-gray-600 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    Download file .txt
+                  </div>
                 </div>
-                <div>
+                <div className="relative group inline-block">
                   <button
                     className={`border border-gray-600 p-1 rounded-lg ${rewrittenData.length === 0
                       ? "cursor-not-allowed opacity-50"
-                      : "hover:bg-gray-300 hover:text-black"
+                      : "hover:bg-gray-300 hover:text-gray-600"
                       }`}
                     onClick={() => handleDownload("doc")}
                     disabled={rewrittenData.length === 0}
                   >
                     <i className="fa-solid fa-download text-2xl"></i> .doc
                   </button>
+                  <div className="absolute left-1/2 -translate-x-1/2 mt-2 px-2 py-1 text-sm text-white bg-gray-600 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    Download file .doc
+                  </div>
                 </div>
               </div>
             </div>
@@ -423,17 +462,41 @@ const Tool = () => {
                     onChange={handleFileChange}
                   />
                 </label>
-                <span className="text-sm px-4">{countWords(inputData)} / 1500 words</span>
+                <span className="text-[10px] px-4">{countWords(inputData)} / 1500 words</span>
                 <button
-                  className={`border border-gray-600 p-1 rounded-lg text-sm ${inputData.length === 0
-                    ? "cursor-not-allowed opacity-50"
-                    : "hover:bg-gray-700 hover:text-white"
-                    }`}
                   onClick={() => handleRewrite(inputData)}
-                  disabled={inputData.length === 0}
+                  disabled={inputData.length === 0 || loading}
+                  className={`
+    border border-gray-600 p-1 rounded-lg text-sm
+    ${inputData.length === 0 || loading
+                      ? "cursor-not-allowed opacity-50"
+                      : "hover:bg-gray-700 hover:text-white"
+                    }
+  `}
                 >
-                  Rewrite
+                  {loading
+                    ? (
+                      <span className="flex items-center">
+                        {/* Tailwind spin on an SVG for no-extra-icons: */}
+                        <svg className="w-4 h-4 mr-2 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle
+                            className="opacity-25"
+                            cx="12" cy="12" r="10"
+                            stroke="currentColor" strokeWidth="4"
+                          />
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8v8H4z"
+                          />
+                        </svg>
+                        Rewriting…
+                      </span>
+                    )
+                    : "Rewrite"
+                  }
                 </button>
+
               </div>
             </div>
           )}

@@ -11,7 +11,7 @@ const GenerateCards=()=>{
                         <a>
                             <h5 className="mb-2 mt-5 font-thin text-xl tracking-tight text-gray-900">{el.title}</h5>
                         </a>
-                        <p className="mb-3 mt-2 text-lg font-normal text-gray-500">{el.content}</p>
+                        <p className={ `mb-3 mt-2 text-lg font-normal ${el.textColor}`}>{el.content}</p>
                         
                     </div>
                 ))

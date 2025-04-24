@@ -22,7 +22,7 @@ const SentenceRewriteCards=()=>{
                 <div className="flex justify-center items-center text-center">
                     <div className="w-full sm:w-[600px] lg:w-[1200px] p-10">
                         <div className="mt-5 w-full lg:max-w-[1320px] ">
-                            <div className="mt-8 p-2 border border-gray-300 border-1">
+                            <div className="mt-8 p-2 border border-gray-300 border-1 bg-slate-100">
                                 <div className="p-8">
                                     <div className="mt-5">
                                         <h2 className="text-3xl sm:text-2xl font-bold">What Exactly is the Sentence Rewriter?</h2>

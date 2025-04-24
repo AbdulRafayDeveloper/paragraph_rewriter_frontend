@@ -11,6 +11,7 @@ const GeneratorTool = () => {
     const [paragraphs, setParagraphs] = useState("");
     const [buttonText, setButtonText] = useState("Generate Paragraphs");
     const inputRef = useRef(null);
+    const [loading, setLoading] = useState(false);
     const [plainTextParagraphs, setPlainTextParagraphs] = useState(""); // New state for plain text
 
     const MenuOpenHandle = () => setMenuOpen((prev) => !prev);
@@ -50,12 +51,14 @@ const GeneratorTool = () => {
     };
 
     const handleParagraphGenerator = async () => {
+        setLoading(true);
+        setButtonText("Generating…");
         const inputText = inputRef.current?.value || ""; // Get text from the textarea
         if (!inputText.trim()) {
             alert("Please enter some text to generate paragraphs.");
             return;
         }
-    
+
         try {
             const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/paragraph/paragraphgeneration`, {
                 inputText: inputText,
@@ -63,7 +66,7 @@ const GeneratorTool = () => {
                 length: selectedLength,
                 paragraphCount: activeTab,
             });
-    
+
             if (response.data.status === 200) {
                 const content = response.data.data.content;
                 const formattedParagraphs = content.split("\n\n").map((para, index) => (
@@ -80,6 +83,9 @@ const GeneratorTool = () => {
             alert("An error occurred. Please try again later.");
             setParagraphs("");
             setPlainTextParagraphs(""); // Clear plain text in case of error
+        } finally {
+            setLoading(false);
+            setButtonText("Generate Paragraph");
         }
     };
 
@@ -187,11 +193,44 @@ const GeneratorTool = () => {
             </div>
 
             {/* Generate Section */}
-            <div className='mt-5 text-center'>
-                <button className='bg-gray-600 p-3 text-white rounded-md' onClick={handleParagraphGenerator}>
-                    {buttonText}
+            <div className="mt-5 text-center">
+                <button
+                    onClick={handleParagraphGenerator}
+                    disabled={loading}
+                    className={`
+      bg-gray-600 p-3 text-white rounded-md transition
+      ${loading ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-700"}
+    `}
+                >
+                    {loading
+                        ? (
+                            <span className="inline-flex items-center">
+                                {/* Tailwind spinning SVG */}
+                                <svg
+                                    className="w-5 h-5 mr-2 animate-spin"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <circle
+                                        className="opacity-25"
+                                        cx="12" cy="12" r="10"
+                                        stroke="currentColor" strokeWidth="4"
+                                    />
+                                    <path
+                                        className="opacity-75"
+                                        fill="currentColor"
+                                        d="M4 12a8 8 0 018-8v8H4z"
+                                    />
+                                </svg>
+                                Generating…
+                            </span>
+                        )
+                        : buttonText
+                    }
                 </button>
             </div>
+
 
             {paragraphs && (
                 <div className='container mt-5 p-4 w-full lg:max-w-[980px] rounded-lg shadow-md mx-auto bg-slate-100'>
@@ -207,9 +246,24 @@ const GeneratorTool = () => {
                             </p>
                         </div>
                         <div className='flex gap-5 mt-3'>
-                            <i className="fa-solid fa-trash text-xl cursor-pointer" onClick={deleteContent}></i>
-                            <i className="fa-solid fa-download text-xl cursor-pointer" onClick={downloadDocFile}></i>
-                            <i className="fa-solid fa-copy text-xl cursor-pointer" onClick={copyContent}></i>
+                            <div className='relative group inline-block'>
+                                <i className="fa-solid fa-trash text-xl cursor-pointer" onClick={deleteContent}></i>
+                                <div className="absolute left-1/2 -translate-x-1/2 mt-2 px-2 py-1 text-sm text-white bg-black rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                                    Delete
+                                </div>
+                            </div>
+                            <div className='relative group inline-block'>
+                                <i className="fa-solid fa-download text-xl cursor-pointer" onClick={downloadDocFile}></i>
+                                <div className='absolute left-1/2 -translate-x-1/2 mt-2 px-2 py-2 text-sm text-white bg-black rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200'>
+                                    Download
+                                </div>
+                            </div>
+                            <div className='relative group inline-block'>
+                                <i className="fa-solid fa-copy text-xl cursor-pointer" onClick={copyContent}></i>
+                                <div className='absolute left-1/2 -translate-x-1/2 mt-2 px-2 py-2 text-sm text-white bg-black rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200'>
+                                    Copy
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div>{paragraphs}</div>

@@ -26,19 +26,19 @@ const Footer = () => {
               </a>
               <div className="mt-6 w-full lg:w-[300px]">
                 <p className="text-lg leading-relaxed">
-                  Paragraph rewriter is an AI-based rewriting tool that can
-                  rewrite text with advanced NLP-trained models. This online
-                  paragraph rewriter is the best solution for writers block.
+                  Improve and enhance the flow and quality of your paragraphs with our free AI-based
+                  paragraph rewriter tool. Eliminate plagiarism and clunky sentences from your content in
+                  seconds.
                 </p>
               </div>
             </div>
             {/* Our Free Tool */}
             <div className="w-full lg:w-[520px] mt-4">
               <div>
-                <h1 className="text-lg lg:text-lg font-bold">Our Free Tool</h1>
+                <h1 className="text-lg lg:text-lg font-bold">Our Free AI Tools</h1>
               </div>
               <div className="mt-6 space-y-2 text-lg">
-              <Link href="/" className="block hover:text-blue-600">
+                <Link href="/" className="block hover:text-blue-600">
                   Paragraph Rewriter
                 </Link>
                 <Link href="/paragraphGenerator" className="block hover:text-blue-600">
@@ -48,7 +48,7 @@ const Footer = () => {
                   Sentence Rewriter
                 </Link>
               </div>
-              
+
             </div>
             {/* Information Section */}
             <div className="w-full lg:w-[500px] mt-4">
@@ -56,7 +56,7 @@ const Footer = () => {
                 <h1 className="text-lg lg:text-lg font-bold">Information</h1>
               </div>
               <div className="mt-6 space-y-2 text-lg">
-              <Link href="/contact" className="block hover:text-blue-600">
+                <Link href="/contact" className="block hover:text-blue-600">
                   Contact Us
                 </Link>
                 <Link href="/about" className="block hover:text-blue-600">
@@ -70,7 +70,7 @@ const Footer = () => {
                 </Link>
               </div>
             </div>
-            
+
             {/* Contact Us Section */}
             <div className="w-full lg:w-[500px] mt-4">
               <div>
@@ -93,32 +93,32 @@ const Footer = () => {
             </div>
             {/* newsletter */}
             <div className="w-full lg:w-[700px] mt-4">
+              <div>
+                <h1 className="text-lg lg:text-lg font-bold">Subscribe to our Newsletter</h1>
+              </div>
+              <div className="mt-6 space-y-2">
+                <div className="mb-2">
+                  <input placeholder="Enter your Email" className="p-2 border-none focus:outline-none rounded-md" />
+                </div>
                 <div>
-                  <h1 className="text-lg lg:text-lg font-bold">Subscribe to our Newsletter</h1>
+                  <button className="bg-gray-600 text-white rounded-md p-1 w-[120px]">Subscribe</button>
                 </div>
-                <div className="mt-6 space-y-2">
-                  <div className="mb-2">
-                    <input placeholder="Enter your Email" className="p-2 border-none focus:outline-none rounded-md"/>
-                  </div>
-                  <div>
-                    <button className="bg-gray-600 text-white rounded-md p-1 w-[120px]">Subscribe</button>
-                  </div>
-                </div>
-              </div>            
+              </div>
+            </div>
           </div>
         </div>
         {/* Bottom copyright section */}
         <div className="bg-slate-800">
           <div className="flex p-4 text-center justify-center items-center">
             <h1 className="text-white text-sm lg:text-lg">
-              Copyright © 2024 Paragraph Rewriter
+              Copyright © 2025 Paragraph Rewriter
             </h1>
           </div>
         </div>
       </div>
       <div>
         <ScrollToTop />
-    </div>
+      </div>
     </>
   );
 };
