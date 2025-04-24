@@ -5,6 +5,9 @@ import FormatColorFillIcon from '@mui/icons-material/FormatColorFill';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import HighlightIcon from '@mui/icons-material/Highlight';
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
+import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SentenceRewriteTool = () => {
   const Tabs = [
@@ -73,13 +76,24 @@ const SentenceRewriteTool = () => {
 
   // Define the countWords function if not already defined
   const countWords = (text) => {
-    return text.trim().split(/[.!?]/).filter(sentence => sentence.trim().length > 0).length;
+    return text.trim().split(/\s+/).filter(word => word.length > 0).length;
   };
+  
 
   const handleSentenceRewriter = async (inputparagraph) => {
+    
     console.log('inputText: ', inputparagraph);
     console.log('tone: ', activeTabName);
-    setLoadingSentence(true); // Start loading state
+    setLoadingSentence(true);
+     // Start loading state
+     const wordCount = countWords(inputparagraph);
+  if (wordCount < 10) {
+    toast.warning("Please enter at least 10 words to rewrite sentence.", {
+            position: "top-right",
+            autoClose: 4000,
+            theme: "colored",})
+    return; 
+  }
     try {
       const data = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/rewrite/sentencerewriter`, { inputText: inputparagraph, tone: activeTabName });
 
@@ -168,6 +182,7 @@ const SentenceRewriteTool = () => {
   return (
     <div className="container-fluid p-0 mt-28">
       <div className="flex justify-center items-center text-center">
+        <ToastContainer/>
         <div className="w-full sm:w-[600px] lg:w-[800px]">
           <h1 className="text-4xl sm:text-3xl font-bold">Sentence Rewriter</h1>
           <p className="text-md sm:text-lg mt-4">
@@ -281,7 +296,7 @@ const SentenceRewriteTool = () => {
                     onChange={handleFileChange}
                   />
                 </label>
-                <span className="text-sm px-4">{countWords(inputData)} / Sentences</span>
+                <span className="text-sm px-4">{countWords(inputData)} / words</span>
                 <button
                   onClick={() => handleSentenceRewriter(inputData)}
                   disabled={inputData.length === 0 || loadingSentence}
@@ -448,7 +463,7 @@ const SentenceRewriteTool = () => {
                     onChange={handleFileChange}
                   />
                 </label>
-                <span className="text-sm px-1 text-center">{countWords(inputData)} Sentence</span>
+                <span className="text-sm px-1 text-center">{countWords(inputData)} words</span>
                 <button
                   onClick={() => handleSentenceRewriter(inputData)}
                   disabled={inputData.length === 0 || loadingSentence}

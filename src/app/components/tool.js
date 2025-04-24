@@ -7,7 +7,9 @@ import HighlightIcon from '@mui/icons-material/Highlight';
 import SchoolIcon from '@mui/icons-material/School';
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import FlareIcon from '@mui/icons-material/Flare';
-
+import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Tool = () => {
   const Tabs = [
     {
@@ -90,6 +92,14 @@ const Tool = () => {
   };
 
   const handleRewrite = async (inputparagraph) => {
+    if (wordCount < 30) {
+      toast.warning("Please enter at least 30 words to rewrite.", {
+        position: "top-right",
+        autoClose: 4000,
+        theme: "colored",
+      });
+      return; // stop execution
+    }
     console.log('inputparagraph: ', inputparagraph);
     console.log('activeTabName: ', activeTabName);
     setLoading(true); // Start loading state
@@ -180,6 +190,7 @@ const Tool = () => {
   return (
     <div className="container-fluid p-0 mt-28">
       <div className="flex justify-center items-center text-center">
+        <ToastContainer/>
         <div className="w-full sm:w-[600px] lg:w-[800px]">
           <h1 className="text-4xl sm:text-3xl font-bold">Paragraph Rewriter</h1>
           <p className="text-md sm:text-lg mt-4">
@@ -300,12 +311,9 @@ const Tool = () => {
                   onClick={() => handleRewrite(inputData)}
                   disabled={inputData.length === 0 || loading}
                   className={`
-    border border-gray-600 p-1 rounded-lg text-sm
-    ${inputData.length === 0 || loading
-                      ? "cursor-not-allowed opacity-50"
-                      : "hover:bg-gray-700 hover:text-white"
-                    }
-  `}
+                    border border-gray-600 p-1 rounded-lg text-sm
+                    ${inputData.length === 0 || loading ? "cursor-not-allowed opacity-50": "hover:bg-gray-700 hover:text-white"}
+                  `}
                 >
                   {loading
                     ? (
@@ -502,6 +510,7 @@ const Tool = () => {
           )}
 
         </div>
+
       </div>
     </div>
   );
