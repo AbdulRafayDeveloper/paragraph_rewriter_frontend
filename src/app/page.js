@@ -11,6 +11,7 @@ export const metadata = {
   title: "Free AI Paragraph Rewriter | Improve Your Paragraphs with AI",
   description: "Enjoy our paragraph rewriting tool for free. Improve the quality of your paragraphs and make them easier to read. Pick from six different rewriting modes.",
 };
+
 const Index=()=>{
   return (
     <>
