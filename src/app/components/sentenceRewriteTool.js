@@ -13,22 +13,22 @@ const SentenceRewriteTool = () => {
   const Tabs = [
     {
       id: 1,
-      title: "simplify",
+      title: "Simplify",
       icon: <FormatColorFillIcon style={{ color: '#D4BDAC' }} />
     },
     {
       id: 2,
-      title: "shorten",
+      title: "Shorten",
       icon: <BorderColorIcon style={{ color: 'green' }} />
     },
     {
       id: 3,
-      title: "improver",
+      title: "Improver",
       icon: <HighlightIcon style={{ color: '#78B7D0' }} />
     },
     {
       id: 4,
-      title: "randomizer",
+      title: "Randomizer",
       icon: <TipsAndUpdatesIcon style={{ color: 'orange' }} />
     },
   ];
@@ -186,7 +186,7 @@ const SentenceRewriteTool = () => {
         <div className="w-full sm:w-[600px] lg:w-[800px]">
           <h1 className="text-4xl sm:text-3xl font-bold">Sentence Rewriter</h1>
           <p className="text-md sm:text-lg mt-4">
-            Transform your sentences and enhance their quality with the help of our online sentence rewriter tool. Enter your sentences into the space provided below and start the process for free without any signups.
+            Transform Your Sentences and Enhance Their Quality With the Help of Our Online Sentence Rewriter Tool. Enter Your Sentences Into the Space Provided Below and Start the Process for Free Without Any Signups.
           </p>
         </div>
       </div>

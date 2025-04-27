@@ -118,7 +118,7 @@ const CardData=[
         image: "https://p.kindpng.com/picc/s/222-2225221_text-mining-icon-data-mining-icon-mining-icon.png",
         title: "Select the Rewriting Mode",
         content: "After entering the paragraph, select the mode that you want to use. Pick from the different modes, including Normal, Fluent, Formal, Innovative, Coherent, and Academic.",
-        color: "bg-[#CF0F47]",
+        color: "bg-pink-700",
         textColor:"text-black"
     },
     {
@@ -126,7 +126,7 @@ const CardData=[
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSogZzWhpoZ1cryosNOgZVJjJGQFAnBHZ-Y1g&s",
         title: "Start the Rewriting Process",
         content: "Click on the “Rewrite” button to start the rewriting process. Wait for a few seconds for our tool to finish.",
-        color: "bg-[#2DAA9E]",
+        color: "bg-cyan-600",
         textColor:"text-black"
     },
     {
@@ -134,7 +134,7 @@ const CardData=[
         image: "https://cdn-icons-png.flaticon.com/512/8637/8637246.png",
         title: "Copy or Download the Rewritten Text",
         content: "After the process is complete, click on the “Copy” or “Download” buttons to copy or save the text.",
-        color: "bg-[#27548A]",
+        color: "bg-blue-800",
         textColor:"text-black"
     },
 ];
@@ -154,7 +154,7 @@ const GenerateCardData=[
         image: "https://p.kindpng.com/picc/s/222-2225221_text-mining-icon-data-mining-icon-mining-icon.png",
         title: "Select paragraph tone",
         content: "Next, select the tone that you want the paragraph to have. Choose between seven different tones, including Diplomatic, Formal, and Informal.",
-        color: "bg-[#CF0F47]",
+        color: "bg-pink-700",
         textColor:"text-black"
     },
     {
@@ -162,7 +162,7 @@ const GenerateCardData=[
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSogZzWhpoZ1cryosNOgZVJjJGQFAnBHZ-Y1g&s",
         title: "Select length/number",
         content: "After that, select the length of the generated paragraphs along with the total number of paragraphs you need.",
-        color: "bg-[#2DAA9E]",
+        color: "bg-cyan-600",
         textColor:"text-black"
     },
     {
@@ -170,7 +170,7 @@ const GenerateCardData=[
         image: "https://cdn-icons-png.flaticon.com/512/8637/8637246.png",
         title: "Copy/save the results",
         content: "Wait a few seconds for the paragraph(s) to be generated, and then copy or download the output using the provided buttons.",
-        color: "bg-[#27548A]",
+        color: "bg-blue-800",
         textColor:"text-black"
     },
 ];
@@ -189,7 +189,7 @@ const SentenceCardsData=[
         image: "https://p.kindpng.com/picc/s/222-2225221_text-mining-icon-data-mining-icon-mining-icon.png",
         title: "Choose a rewriting mode",
         content: "Next, select a rewriting mode to adjust the tone of the rewritten sentences. Each mode makes its own unique style of changes.",
-        color: "bg-[#CF0F47]",
+        color: "bg-pink-700",
         textColor:"text-black"
     },
     {
@@ -197,7 +197,7 @@ const SentenceCardsData=[
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSogZzWhpoZ1cryosNOgZVJjJGQFAnBHZ-Y1g&s",
         title: "Start the rewriting process",
         content: "Once the input has been entered and the mode has been selected, click on the “Sentence Rewrite” button to start the rewriting process.",
-        color: "bg-[#2DAA9E]",
+        color: "bg-cyan-600",
         textColor:"text-black"
     },
     {
@@ -205,7 +205,7 @@ const SentenceCardsData=[
         image: "https://cdn-icons-png.flaticon.com/512/8637/8637246.png",
         title: "Save or copy the rewritten sentences",
         content: "After the process is complete, you can download the rewritten sentences to your local storage or copy them to your clipboard.",
-        color: "bg-[#27548A]",
+        color: "bg-blue-800",
         textColor:"text-black"
     },
 ];
