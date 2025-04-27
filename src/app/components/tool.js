@@ -92,8 +92,8 @@ const Tool = () => {
   };
 
   const handleRewrite = async (inputparagraph) => {
-    if (wordCount < 30) {
-      toast.warning("Please enter at least 30 words to rewrite.", {
+    if (wordCount < 50) {
+      toast.warning("Please enter at least 50 words to rewrite.", {
         position: "top-right",
         autoClose: 4000,
         theme: "colored",
@@ -194,7 +194,7 @@ const Tool = () => {
         <div className="w-full sm:w-[600px] lg:w-[800px]">
           <h1 className="text-4xl sm:text-3xl font-bold">Paragraph Rewriter</h1>
           <p className="text-md sm:text-lg mt-4">
-            Improve the quality of your paragraphs with the help of our free paragraph rewriter. Enjoy our AI-powered rewriter with no sign-up or registration.
+            Improve the Quality of Your Paragraphs With the Help of Our Free Paragraph Rewriter. Enjoy Our AI-Powered Rewriter With No Sign-Up or Registration.
           </p>
         </div>
       </div>

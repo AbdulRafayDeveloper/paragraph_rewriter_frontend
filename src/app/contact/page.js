@@ -105,9 +105,7 @@ const Contact = () => {
                             <p className="text-md mt-5 text-justify">
                                 Have questions or feedback? We are here to help! Our dedicated support team is just a click away, ready to assist you on your learning journey. Whether you need technical assistance, guidance on course selection, or simply want to share your thoughts, we value your input and are committed to providing a seamless experience. Reach out to us today and lets embark on this educational adventure together!
                             </p>
-                            <p className="mt-5">
-                                <i className="fa-solid fa-phone"></i><span className="ml-5">111-222-333</span>
-                            </p>
+                            
                             <p className="mt-5">
                                 <i className="fa-solid fa-envelope"></i><span className="ml-5">hi.paragraphreqriter@gmail.com</span>
                             </p>
