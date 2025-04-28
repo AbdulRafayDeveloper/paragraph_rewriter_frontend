@@ -59,7 +59,8 @@ const Tool = () => {
 
   const sampleText = () => {
     setInputData(SampleText);
-  };
+    setWordCount(countWords(SampleText)); 
+  };sampleText 
 
   const handleTabClick = (idx, tabName) => {
     console.log("Tab is: ", idx);
