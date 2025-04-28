@@ -115,7 +115,7 @@ const CardData=[
     },
     {
         id: 2,
-        image: "https://p.kindpng.com/picc/s/222-2225221_text-mining-icon-data-mining-icon-mining-icon.png",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMkcUh5lEpv5hmoVSw8mO3hfWoqbFyDucy3w&s",
         title: "Select the Rewriting Mode",
         content: "After entering the paragraph, select the mode that you want to use. Pick from the different modes, including Normal, Fluent, Formal, Innovative, Coherent, and Academic.",
         color: "bg-pink-700",
@@ -151,7 +151,7 @@ const GenerateCardData=[
     },
     {
         id: 2,
-        image: "https://p.kindpng.com/picc/s/222-2225221_text-mining-icon-data-mining-icon-mining-icon.png",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMkcUh5lEpv5hmoVSw8mO3hfWoqbFyDucy3w&s",
         title: "Select paragraph tone",
         content: "Next, select the tone that you want the paragraph to have. Choose between seven different tones, including Diplomatic, Formal, and Informal.",
         color: "bg-pink-700",
@@ -186,7 +186,7 @@ const SentenceCardsData=[
     },
     {
         id: 2,
-        image: "https://p.kindpng.com/picc/s/222-2225221_text-mining-icon-data-mining-icon-mining-icon.png",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMkcUh5lEpv5hmoVSw8mO3hfWoqbFyDucy3w&s",
         title: "Choose a rewriting mode",
         content: "Next, select a rewriting mode to adjust the tone of the rewritten sentences. Each mode makes its own unique style of changes.",
         color: "bg-pink-700",
