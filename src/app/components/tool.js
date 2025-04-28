@@ -54,9 +54,8 @@ const Tool = () => {
   const [wordCount, setWordCount] = useState(0); // State for word count
   const [loading, setLoading] = useState(false);
 
-
   const SampleText =
-    "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...";
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.";
 
   const sampleText = () => {
     setInputData(SampleText);
@@ -92,8 +91,8 @@ const Tool = () => {
   };
 
   const handleRewrite = async (inputparagraph) => {
-    if (wordCount < 50) {
-      toast.warning("Please enter at least 50 words to rewrite.", {
+    if (wordCount < 30) {
+      toast.warning("Please enter at least 30 words to rewrite.", {
         position: "top-right",
         autoClose: 4000,
         theme: "colored",

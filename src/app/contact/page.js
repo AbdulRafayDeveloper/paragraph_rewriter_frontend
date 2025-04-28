@@ -107,7 +107,7 @@ const Contact = () => {
                             </p>
                             
                             <p className="mt-5">
-                                <i className="fa-solid fa-envelope"></i><span className="ml-5">hi.paragraphreqriter@gmail.com</span>
+                                <i className="fa-solid fa-envelope"></i><span className="ml-5">hi.paragraphrewriter.io@gmail.com</span>
                             </p>
                         </div>
                     </div>

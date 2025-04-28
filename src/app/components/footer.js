@@ -110,9 +110,9 @@ const Footer = () => {
         {/* Bottom copyright section */}
         <div className="bg-slate-800">
           <div className="flex p-4 text-center justify-center items-center">
-            <h1 className="text-white text-sm lg:text-lg">
+            <p className="text-white text-sm lg:text-lg">
               Copyright © 2025 Paragraph Rewriter
-            </h1>
+            </p>
           </div>
         </div>
       </div>
